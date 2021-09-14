@@ -1,0 +1,10 @@
+mixin video(info)
+            div
+                h4=info.title
+                ul 
+                    li #{info.rating}/5
+                    li #{info.comments} comments.
+                    li Posted #{createdAt}.
+                    li #{info.views} views.
+
+//- mixin을 적고 이름적고 () 안에 받을 데이터를 넣음 - 이제 구조를 짜자

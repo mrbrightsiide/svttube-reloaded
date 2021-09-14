@@ -1,0 +1,10 @@
+extends base.pug
+
+block content
+    h4 Change Title of video
+    //- where are you going to send data? -> url
+    //- 하지만 get이 아니라 POST 메소드를 사용해서
+    //- data를 보내고있는건 아는데 어떻게 backend로 보내는지를 모르겟네..?
+    form(method="POST")
+        input(name="title", placeholder = "video title", value=video.title + " video", required)
+        input(value="Save", type="submit")

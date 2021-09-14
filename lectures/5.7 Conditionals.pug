@@ -1,0 +1,24 @@
+doctype html
+html(lang="ko")
+    head 
+        title #{pageTitle}｜Wetube
+        //- we have to send this variable. how do we send variable to template? -> who is rendering the template? => the controllers 
+        link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+    body
+        header 
+            if fakeUser.loggedIn
+                small hello, #{fakeUser.username}
+            nav
+                ul
+                    if fakeUser.loggedIn
+                        li
+                            a(href="/logout") Log out
+                    else
+                        li
+                            a(href="/login") Log in
+            h1=pageTitle
+            //- text랑 변수랑 섞어쓸떄는 #{}를 넣어야하지만, 하나의 태그에 하나의 변수만 줄때는 =다음에 그냥 변수명을쓰면 변수로 인식한다! 
+            
+        main
+            block content
+    include partials/footer.pug

@@ -1,0 +1,7 @@
+extends base.pug
+
+block content
+    h3 #{video.views} #{video.views === 1 ? "view" : "views"}
+    //- 만약 view가 1이면 views가 아니라 view가되면 좋겠는데 -> ternary operator
+    a(href=`${video.id}/edit`) Edit Video &rarr;
+    

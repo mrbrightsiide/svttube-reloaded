@@ -1,0 +1,9 @@
+extends base.pug
+block content
+    h1 Welcome here you will see the trending videos
+    ul
+        each video in videos
+            li=video.title
+            //- 아직도 그냥 video 만쓰면되는줄알아 video.title이런문법이 안익숙하네
+        else
+            li sorry nothing found.
