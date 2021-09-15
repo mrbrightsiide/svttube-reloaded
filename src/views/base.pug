@@ -1,7 +1,7 @@
 doctype html
 html(lang="ko")
     head 
-        title #{pageTitle}｜Wetube
+        title #{pageTitle}｜SvtTube
         //- we have to send this variable. how do we send variable to template? -> who is rendering the template? => the controllers 
         link(rel="stylesheet" href="https://unpkg.com/mvp.css")
     body
@@ -11,12 +11,21 @@ html(lang="ko")
                 ul 
                     li
                         a(href="/") Home
+                    if loggedIn 
+                        li 
+                            a(href="/logout") Logout
+                        li 
+                            a(href="/my-profile") #{loggedInUser.name}의 Profile
+                    else
+                        li 
+                            a(href="/join") Join
+                        li 
+                            a(href="/login") Login         
                     li 
                         a(href="videos/upload") Upload Videos
                     li 
                         a(href="/search") Search
-                    li 
-                        a(href="/join") Join
+
                     
         main
             h1 #{pageTitle}
