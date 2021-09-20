@@ -1,4 +1,4 @@
-import "./db";
+
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
@@ -18,11 +18,13 @@ app.set("view engine", "pug");
 
 
 app.use(session({
-    secret: "secretId",
+    secret: process.env.COOKIE_SECRET,
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({mongoUrl:process.env.DB_URL}),
 })
 );
+
 
 app.get("/addone",(req,res,next)=>{
     req.session.potato += 1;
