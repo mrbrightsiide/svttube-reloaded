@@ -1,5 +1,5 @@
-import User from "../models/User";
-import bcrypt from "bcrypt";
+import User from "../models/User.js";
+import bcryptjs from "bcryptjs";
 
 export const getJoin = (req, res) => res.render("join", {pageTitle : "Join"});
 export const postJoin = async (req, res) => {
@@ -47,7 +47,7 @@ export const postLogin = async (req,res) => {
             errorMessage: "An account with this username does not exist",
     });
     }
-    const ok = await bcrypt.compare(password, user.password);
+    const ok = await bcryptjs.compare(password, user.password);
     if(!ok){
         return res.status(400).render("login", {
             pageTitle,
@@ -72,7 +72,7 @@ export const startGithubLogin = (req, res) => {
 };
 
 export const finishGithubLogin = (req,res) => {
-
+    res.redirect("/");
 };
 
 export const logout = (req,res) => res.send("logout");
