@@ -151,7 +151,17 @@ export const finishGithubLogin = async (req, res) => {
        await User.findByIdAndUpdate( _id, {
             email, username, name, location
        })
-       return res.render("edit-profile");
+       const updatedUser = await User.findByIdAndUpdate( _id,
+        {
+        email,
+        username,
+        name,
+        location,
+        },
+        { new : true }
+        );
+        req.session.user = updatedUser;
+       return res.redirect("/users/edit");
     };
 
     export const see = (req,res) => res.send("See User");
