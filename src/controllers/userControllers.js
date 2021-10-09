@@ -100,7 +100,7 @@ export const finishGithubLogin = async (req, res) => {
               },
         })
         ).json();
-        console.log(userData);
+        // console.log(userData);
         const emailData =  await(
             await fetch(`${apiUrl}/user/emails`, {
             headers: {
@@ -144,15 +144,18 @@ export const finishGithubLogin = async (req, res) => {
     export const postEdit = async (req,res) => {
         const {
             session : {
-                user : { _id },
+                user : { _id, avatarUrl },
             },
             body : {  email, username, name, location},
+            file,
         } = req;
+        console.log(file);
        await User.findByIdAndUpdate( _id, {
             email, username, name, location
        })
        const updatedUser = await User.findByIdAndUpdate( _id,
         {
+        avatarUrl: file ? file.path : avatarUrl,
         email,
         username,
         name,
