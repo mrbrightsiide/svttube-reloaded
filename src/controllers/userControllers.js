@@ -149,7 +149,7 @@ export const finishGithubLogin = async (req, res) => {
             body : {  email, username, name, location},
             file,
         } = req;
-        console.log(file);
+        // console.log(file);
        await User.findByIdAndUpdate( _id, {
             email, username, name, location
        })
