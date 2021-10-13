@@ -5,8 +5,13 @@ block content
     video(src="/"+video.fileUrl ,controls, width="1080")
     div
         p=video.description
-        small=video.createdAt 
-    a(href=`${video.id}/edit`) Edit Video &rarr;
-    br
-    a(href=`${video.id}/delete`) Delete Video &rarr;
+        small=video.createdAt
+    div
+        small Uploaded by 
+            a(href=`/users/${video.owner._id}`)=video.owner.name
+        //- 전에는 video.owner가 그냥 id였는데 이제는 object(유저정보 전체를 담은 객체)니까 수정이 필요하겠지
+    if String(video.owner._id) === String(loggedInUser._id)
+        a(href=`${video.id}/edit`) Edit Video &rarr;
+        br
+        a(href=`${video.id}/delete`) Delete Video &rarr;
     
