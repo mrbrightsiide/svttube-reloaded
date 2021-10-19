@@ -1,12 +1,17 @@
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 module.exports = {
     entry: "./src/client/js/main.js",
     mode: "development",
     output:{
-        filename: "main.js",
-        path: path.resolve(__dirname, "assets", "js"),
+        filename: "js/main.js",
+        path: path.resolve(__dirname, "assets"),
     },
+    plugins: [new MiniCssExtractPlugin({
+        filename:"css/styles.css"
+    })],
+    // 그냥코드문법임. 문서만 따라가도 됨
     module: {
         rules: [
             {
@@ -20,7 +25,7 @@ module.exports = {
             },
         {
             test: /\.scss$/,
-            use: ["style-loader", "css-loader", "sass-loader"],
+            use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
         },
         ],
     },
