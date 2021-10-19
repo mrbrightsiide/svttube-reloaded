@@ -4,9 +4,12 @@ const path = require("path");
 module.exports = {
     entry: "./src/client/js/main.js",
     mode: "development",
+    watch: true,
     output:{
         filename: "js/main.js",
         path: path.resolve(__dirname, "assets"),
+        clean:true
+        // 새로운 output폴더를 빌드하면, 기존에 있던 사용하지 않게되는 output폴더를 지워주는 속성.
     },
     plugins: [new MiniCssExtractPlugin({
         filename:"css/styles.css"
