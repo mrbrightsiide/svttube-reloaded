@@ -2,7 +2,10 @@ extends base.pug
 include mixins/video
 
 block content
-        each video in videos
-            +video(video)
-        else
-            li sorry nothing found.
+  .masthead_ad
+    h1 Check out the new song "Pretty you" by Seventeen!
+  .contents-container
+    each video in videos
+      +video(video)
+    else
+      li sorry nothing found.
