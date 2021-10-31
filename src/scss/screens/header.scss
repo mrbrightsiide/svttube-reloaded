@@ -1,0 +1,20 @@
+.masthead-container{
+    width: 100%;
+    background: pink;
+    height: 56px;
+    display: flex;
+    align-items: center;
+        nav{
+            display: inline-block;
+            
+        }
+        ul li{
+            display: inline-block;
+            vertical-align:middle;
+        }
+        .user-profilepic img{
+            border-radius: 200px;
+            height: 32px;
+            width: 32px;
+        }
+}
