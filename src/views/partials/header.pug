@@ -1,28 +1,43 @@
 header
-.masthead-container
-  a(href="/")
-    i.fab.fa-youtube
-  nav
-    ul
-      if loggedIn
-        li 
-          a(href=`/users/${loggedInUser._id}`) My Videos
-        li 
-          a(href="/users/logout") Logout
-        li 
-          a(href="videos/upload") Upload Videos
-        li 
-          a(href="/search") Search  
-        li
-          a(href="/users/edit" title="edit profile")
-            .user-profilepic
-              img(src="/"+loggedInUser.avatarUrl, width="100", height="100")
-
-      else
-        li 
-          a(href="/join") Join
-        li 
-          a(href="/login")
-            .loginbtn Login
-        li 
-          a(href="/search") Search
+.masthead
+  .masthead-container
+    .masthead-start
+      button.guide-menu
+        svg(viewBox="0 0 100 80" width="23" height="23")
+          rect(width="100" height="4") 
+          rect(y="30" width="100" height="4") 
+          rect(y="60" width="100" height="4")
+      a.svttube-logo(href="/")
+        i.fab.fa-youtube.logo-icon
+        i SvtTube
+    .searchbox
+      input(type="text")
+    nav
+      ul
+        if loggedIn
+          li 
+            a(href=`/users/${loggedInUser._id}`) My Videos
+          li 
+            a(href="/search") Search
+          li 
+            a(href="/users/logout") Logout
+          li 
+            a(href="videos/upload") Upload Videos
+          li
+            a(href="/users/edit", title="edit profile")
+              .user-profilepic
+                img(
+                  src='/' + loggedInUser.avatarUrl,
+                  width="100",
+                  height="100"
+                )
+        else
+          li 
+            a(href="/search") Search
+          li 
+            a(href="/join") Join
+          li
+            button.loginbtn.svt-icon
+              a(href="/login")
+                i.far.fa-user-circle
+                i 로그인
