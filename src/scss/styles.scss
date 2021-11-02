@@ -7,6 +7,20 @@
 
 // Screens
 @import "./screens/header.scss";
+@import "./screens/home.scss";
+
+.svt-icon{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    vertical-align: middle;
+}
+
+.opend{
+    visibility: visible;
+}
+
 
 a {
     color: inherit;

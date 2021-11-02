@@ -1,0 +1,11 @@
+.contents-container{
+    width: calc(100% - 240px);
+    display: inline-block;
+    position: relative;
+}
+
+.contents-item{
+    position: relative;
+    display: flex;
+    max-width: 200px;
+}
