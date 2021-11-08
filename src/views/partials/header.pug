@@ -1,73 +1,52 @@
 header
-  .masthead
-    .masthead-container
-      .masthead-start
-        button.guide-menu
-          svg(viewBox="0 0 100 80" width="23" height="23")
-            rect(width="100" height="4") 
-            rect(y="30" width="100" height="4") 
-            rect(y="60" width="100" height="4")
-        a.svttube-logo(href="/")
-          i.fab.fa-youtube.logo-icon
-          i SvtTube
-      .searchbox
-        input(type="text")
-      nav.masthead-end
-        ul
-          if loggedIn
-            li 
-              a(href=`/users/${loggedInUser._id}`) My Videos
-            li 
-              a(href="/search") Search
-            li 
-              a(href="/users/logout") Logout
-            li 
-              a(href="videos/upload") Upload Videos
-            li
-              a(href="/users/edit", title="edit profile")
-                .user-profilepic
-                  img(
-                    src='/' + loggedInUser.avatarUrl,
-                    width="100",
-                    height="100"
-                  )
-          else
-            //- li 
-            //-   a(href="/search") Search
-            //- li 
-            //-   a(href="/join") Join
-            li
-              button.loginbtn.svt-icon
-                a(href="/login")
-                  i.far.fa-user-circle
-                  i 로그인
-  .guide-container
-    .guide-wrap
-      .section
-        ul
-          li
-           i.fas.fa-home
-           span 홈
-          li
-            i.far.fa-compass 
-            span 탐색
-          li
-            i.far.fa-caret-square-right 
-            span 구독
-          hr
-          li
-            i.far.fa-hdd 
-            span 보관함
+.masthead
+  .masthead-container
+    .masthead-start
+      button.guide-menu
+        svg(viewBox="0 0 100 80" width="23" height="23")
+          rect(width="100" height="4") 
+          rect(y="30" width="100" height="4") 
+          rect(y="60" width="100" height="4")
+      a.svttube-logo(href="/")
+        i.fab.fa-youtube.logo-icon
+        i SvtTube
+    .searchbox
+      input(type="text")
+    nav
+      ul
+        if loggedIn
           li 
-           i.far.fa-clock 
-           span 시청기록
-          hr
-          if loggedIn
-            li 좋아요 표시한 동영상
-          else
-            li.login-text 로그인하면 동영상에 좋아요를 표시하고 댓글을 달거나 구독할 수 있습니다
+            a(href=`/users/${loggedInUser._id}`) My Videos
+          li 
+            a(href="/search") Search
+          li 
+            a(href="/users/logout") Logout
+          li 
+            a(href="videos/upload") Upload Videos
+          li
+            a(href="/users/edit", title="edit profile")
+              .user-profilepic
+                img(
+                  src='/' + loggedInUser.avatarUrl,
+                  width="100",
+                  height="100"
+                )
+        else
+          li 
+            a(href="/search") Search
+          li 
+            a(href="/join") Join
+          li
             button.loginbtn.svt-icon
-                a(href="/login")
-                  i.far.fa-user-circle
-                  i 로그인
-            
+              a(href="/login")
+                i.far.fa-user-circle
+                i 로그인
+.guide-container
+  .guide-wrap
+    .section
+      ul
+        li 홈
+        li 탐색
+        li 구독
+        li 보관함
+        li 시청기록
