@@ -1,14 +1,27 @@
-
-
-
+// login btn style
+button.loginbtn{
+    border: 1px solid $button-color;
+    color: $button-color;
+    background: transparent;
+    padding: 8px 11px;
+}
+button.loginbtn a i{
+        vertical-align: middle;
+        font-size: 14px;
+    }
+button.loginbtn a i:first-child{
+        font-size: 23px;
+        margin-right: 10px;
+        }
 
 .masthead{
     display: block;
+    position: fixed;
     width: 100%;
+    top: 0;
 }
 
 .masthead-container{
-    // background: pink;
     padding: 0 20px 0 25px;
     height: 56px;
     display: flex;
@@ -54,45 +67,45 @@
             display: inline-block;
             vertical-align:middle;
         }
+        .masthead-end{
+            min-width: 99px;
+        }
         .user-profilepic img{
             border-radius: 200px;
             height: 32px;
             width: 32px;
         }
-        button.loginbtn{
-            border: 1px solid $button-color;
-            color: $button-color;
-            background: transparent;
-            padding: 8px 11px;
-        }
-        button.loginbtn a i{
-                vertical-align: middle;
-                font-size: 14px;
-            }
-        button.loginbtn a i:first-child{
-                font-size: 23px;
-                margin-right: 10px;
-                }
 }
 
 
 .guide-container{
-    position: relative;
-    left:0;
-    display: inline-block;
+    position: fixed;
+    width: 240px;
     .guide-wrap{
         height: 100%;
-        display: flex;
         flex-direction: column;
     }
     .section{
-        width: 240px;
         display: block;
-        background: red;
+        
          & ul li{
             min-height: 40px;
             display: flex;
             align-items: center;
+            line-height: 2.5rem;
+            padding: 0 34px;
+                .fas, .far{
+                    margin-right: 21px;
+                    width: 21px;
+                    height: 21px;
+                }
+                span{
+                    font-size: 1rem;    
+                }
         }
+        & .login-text{
+            line-height: 1.3;
+        }
+        
     }
 }
