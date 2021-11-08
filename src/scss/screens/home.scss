@@ -4,13 +4,19 @@
     position: relative;
 }
 
+.video-wrap{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 
 
 .video-item-wrap{
     position: relative;
-    display: flex;
-}
-
-.video-item{
-    max-width: 200px;
+    margin-left: calc(16px / 2);
+    margin-right: calc(16px / 2);
+    margin-bottom: 40px;
+    width: calc(100%/  4 - 16px - 0.01px);
+    contain: style layout;
 }
