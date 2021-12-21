@@ -4,11 +4,9 @@ include mixins/video
 block content
   //- .masthead_ad
     h1 Check out the new song "Pretty you" by Seventeen!
-  
-  .page-manager
-    .contents-container
-      .video-wrap
-        each video in videos
-          +video(video)
-        else
-          li sorry nothing found.
+  .contents-container
+    .video-wrap
+      each video in videos
+        +video(video)
+      else
+        li sorry nothing found.

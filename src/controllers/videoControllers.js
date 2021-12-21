@@ -2,8 +2,7 @@ import Video from "../models/Video.js";
 import User from "../models/User.js";
 
 export const home = async (req, res) => {
-  const videos = await Video.find({}).populate("owner");
-  console.log(videos)
+  const videos = await Video.find({});
   return res.render("home", { pageTitle: "Home", videos });
 };
 
