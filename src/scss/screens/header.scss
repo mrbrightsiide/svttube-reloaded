@@ -1,6 +1,8 @@
 .masthead{
     display: block;
+    position: fixed;
     width: 100%;
+    top:0;
 }
 
 .masthead-container{
@@ -83,11 +85,23 @@
     }
     .section{
         display: block;
-        background: red;
+        // background: red;
          & ul li{
+            letter-spacing: -1px;
             min-height: 40px;
             display: flex;
             align-items: center;
+            line-height: 2.5rem;
+            padding: 0px 34px;
+            & i{
+                margin-right: 21px;
+                width: 21px;
+                height: 21px;
+                font-size: 20px;
+            }
+            & span{
+                font-size: 0.9rem;
+            }
         }
     }
 }
