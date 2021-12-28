@@ -5,27 +5,29 @@
     flex: 1 1 0%;
 }
 
-
-.contents-container{
-    width: calc(100% - 240px);
-    display: inline-block;
-    position: relative;
+.contents-wrap{
+    width: 100%;
+    background: rgb(249, 249, 249);
 }
 
+.contents-container{
+    margin-top: 24px;
+    // padding: 0.5%;
+    }
+
 .video-wrap{
-    position: relative;
     display: flex;
-    background: rgb(249, 249, 249);
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .video-item-wrap{
     position: relative;
-    margin-left: 8px;
-    margin-right: 8px;
+    margin: 0 8px;
     margin-bottom: 40px;
-    width: calc(25% - 16px - 0.01px);
     contain: style layout;
     overflow: hidden;
+    width: calc(100% / 4 - 24px);
 }
 
 .video-item{
