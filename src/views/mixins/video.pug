@@ -6,7 +6,12 @@ mixin video(video)
             .thumbnail
               .thumbnail-img hi
         .details
-          a(href=`/videos/${video.id}`)=video.title
-            .user-profilepic
+          a(href=`/videos/${video.id}`)
+            a(id="user-profilepic")
               img(src=video.owner.avatarUrl)
-          p=video.owner.username
+          .meta
+            h3
+              a(href=`/videos/${video.id}`)
+                #video-title=video.title
+            .video-meta-block
+              p=video.owner.username

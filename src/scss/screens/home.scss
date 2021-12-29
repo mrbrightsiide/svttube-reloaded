@@ -37,10 +37,48 @@
         background: pink;
     }
     .details{
-        .user-profilepic img{
-            width: 36px;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        cursor: pointer;
+        #user-profilepic {
             height: 36px;
-            border-radius: 50%;
+            margin-top: 12px;
+            margin-right: 12px;
+                img {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                }
+        }
+        .meta{
+            overflow: hidden;
+            padding-right: 24px;
+                h3{
+                    margin: 12px 0 4px 0;
+                a{
+                    #video-title{
+                    font-family: "Roboto","Arial",sans-serif;
+                    font-size: 1.6rem;
+                    line-height: 2.2rem;
+                    max-height: 4.4rem;
+                    overflow: hidden;
+                    white-space: normal;
+                    -webkit-line-clamp: 2;
+                    text-overflow: ellipsis;
+                    font-weight: 500;
+                        }
+                    }
+                }
+                .video-meta-block{
+                    color: #606060;
+                    display: flex;
+                    flex-direction: column;
+                    p  {font-family: "Roboto","Arial",sans-serif;
+                        font-size: 1.4rem;
+                        line-height: 2rem;
+                        font-weight: 400;}
+                }
         }
     }
 }
