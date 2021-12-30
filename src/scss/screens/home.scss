@@ -1,3 +1,8 @@
+//video variables
+$grid-items-per-row: 4;
+$grid-item-margin: 16px;
+$grid-item-max-width: 380px;
+
 .page-manager{
     display: flex;
     margin-left: 240px;
@@ -10,24 +15,50 @@
     background: rgb(249, 249, 249);
 }
 
+.masthead_ad{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 260px;
+    background: #fff;
+    .svt-promo-banner{
+        margin: 0 24px;
+        max-width: none;
+        display: flex;
+        .banner-text{
+            position: relative;
+            font-size: 24px;
+        }
+    }
+}
+
 .contents-container{
     margin-top: 24px;
-    // padding: 0.5%;
+    display: flex;
+    justify-content: center;
+    .contents{
+        width: 100%;
+        max-width: calc($grid-items-per-row * $grid-item-max-width + $grid-item-margin );
+        display: flex;
+        margin: 0 16px;
+    }
     }
 
 .video-wrap{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    align-content: center;
 }
 
 .video-item-wrap{
     position: relative;
-    margin: 0 8px;
+    margin-left: calc($grid-item-margin / 2);
+    margin-right: calc($grid-item-margin / 2);
     margin-bottom: 40px;
     contain: style layout;
     overflow: hidden;
-    width: calc(100% / 4 - 24px);
+    width: calc(100% / $grid-items-per-row - $grid-item-margin - 0.01px);
 }
 
 .video-item{
