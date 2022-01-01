@@ -8,6 +8,7 @@
 // Screens
 @import "./screens/header.scss";
 @import "./screens/home.scss";
+@import "./screens/login.scss";
 
 
 //Fonts
@@ -21,7 +22,7 @@ html{
 
 body{
     font-size: 1.2rem;
-    overflow:hidden;
+    overflow-x:hidden;
 }
 
 .svt-icon{
