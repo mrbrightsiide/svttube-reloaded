@@ -3,6 +3,8 @@
     position: fixed;
     width: 100%;
     top:0;
+    background: #fff;
+    z-index: 100;
 }
 
 .masthead-container{
@@ -12,7 +14,7 @@
     align-items: center;
     justify-content: space-between;
     .masthead-start{
-            min-width: 200px;
+            min-width: 250px;
             .guide-menu{
                 background: none;
                 border: none;
@@ -36,8 +38,7 @@
                     color: $icon-active;
                     font-size: 23px;
                     font-weight: bold;
-                    letter-spacing: -0.9px;
-                    margin-top: -2px;
+                    letter-spacing: -1.2px;
                     margin-left: 2px;
                 }
             
@@ -119,17 +120,27 @@
     .guide-wrap{
         height: 100%;
         flex-direction: column;
+        padding-top: 10px;
+    }
+    hr{
+        margin: 15px 0;
+        border: 0px;
+        height: 1px;
+        background-color: rgba(0, 0, 0, 0.1);
     }
     .section{
         display: block;
-        // background: red;
          & ul li{
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
             min-height: 40px;
             display: flex;
             align-items: center;
             line-height: 2.5rem;
             padding: 0px 34px;
+            cursor: pointer;
+            &:hover{
+                background: rgba(0, 0, 0, 0.1);
+            }
             & i{
                 margin-right: 21px;
                 width: 21px;
@@ -141,10 +152,11 @@
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 font-family: "Roboto","Arial",sans-serif;
-                font-size: 1.4rem;
+                font-size: 1.42rem;
                 line-height: 2rem;
                 font-weight: 400;
             }
+        
         }
     }
 }

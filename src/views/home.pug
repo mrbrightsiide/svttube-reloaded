@@ -4,11 +4,22 @@ include mixins/video
 block content
   .page-manager
     .contents-wrap
+      .category-bar
+        ul
+          li 전체
+          li 음악
+          li 랩
+          li 요리
+          li 애완동물
+          li 예능
+          li 최근에 업로드된 동영상
       .masthead_ad
         .svt-promo-banner
-          video(src="http://localhost:4000/uploads/videos/c3b15c426ad21afeed562a7eb2904549", controls, autoplay, muted=true)
-          .banner-text
-            h1 Check out the new song "Pretty you" by Seventeen!
+          .video
+            video(src="http://localhost:4000/uploads/videos/c3b15c426ad21afeed562a7eb2904549", controls, autoplay, muted=true, allowfullscreen)
+          .banner
+            .banner-text
+              h1 Check out the new song "Pretty you" by Seventeen!
         .close-btn
           span X
       .contents-container
