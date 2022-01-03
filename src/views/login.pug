@@ -2,9 +2,9 @@ extends base
 
 block content
     .page-manager
-        .account-page-wrap
-            .account-wrap
-                    .account-box
+        .form-page-wrap
+            .form-wrap
+                    .form-box
                         h1(id="page-title")=pageTitle
                         if errorMessage
                             span=errorMessage
@@ -18,6 +18,6 @@ block content
                                 
 
                         hr
-                        .account-btn
-                            a(href="/join") Don't have an account? Join now
+                        .form-btn
+                            a(href="/join") Don't have an form? Join now
             

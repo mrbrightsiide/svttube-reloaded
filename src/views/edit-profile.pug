@@ -2,15 +2,20 @@ extends base.pug
 
 block content
     .page-manager
-        form(method="POST", enctype="multipart/form-data")
-            img(src="/"+loggedInUser.avatarUrl, width="100", height="100")
-            label(for="avartar") Avartar 
-            input(type="file", id="avatar", name="avatar", accept="image/*")
-            input(placeholder="name" name="name", type="text",required, value=loggedInUser.name)
-            input(placeholder="email" name="email", type="email",required, value=loggedInUser.email)
-            input(placeholder="username" name="username", type="text",required,unique, value=loggedInUser.username)
-            input(placeholder="location" name="location", type="text",required, value=loggedInUser.location)
-            input(type="submit", value="Update Profile")
-            if !loggedInUser.socialOnly
-                hr
-                a(href="change-password") Change Password &rarr;
+         .form-page-wrap
+            .form-wrap
+                .form-box
+                    h1(id="page-title")=pageTitle
+                    form(method="POST", enctype="multipart/form-data")
+                        .edit-profile-img
+                            img(src="/"+loggedInUser.avatarUrl, width="140")
+                        input(type="file", id="avatar", name="avatar", accept="image/*")
+                        input(placeholder="name" name="name", type="text",required, value=loggedInUser.name)
+                        input(placeholder="email" name="email", type="email",required, value=loggedInUser.email)
+                        input(placeholder="username" name="username", type="text",required,unique, value=loggedInUser.username)
+                        input(placeholder="location" name="location", type="text",required, value=loggedInUser.location)
+                        if !loggedInUser.socialOnly
+                            hr
+                            .form-btn
+                                a(href="change-password") Change Password &rarr;
+                        button(type="submit", value="Update Profile", id="edit-profile-btn") Update Profile

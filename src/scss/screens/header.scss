@@ -3,7 +3,6 @@
     position: fixed;
     width: 100%;
     top:0;
-    background: #fff;
     z-index: 100;
 }
 
@@ -13,6 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: #fff;
     .masthead-start{
             min-width: 250px;
             .guide-menu{
@@ -115,8 +115,10 @@
 
 
 .guide-container{
+    flex-direction: column;
     position: fixed;
     width: 240px;
+    display: flex;
     .guide-wrap{
         height: 100%;
         flex-direction: column;
@@ -159,4 +161,11 @@
         
         }
     }
+}
+
+#footer-wrap{
+    color: rgb(139, 139, 139);
+    font-size: 1.2rem;
+    padding-left: 34px;
+    margin-top: 20px;
 }

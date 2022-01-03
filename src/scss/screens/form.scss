@@ -1,16 +1,16 @@
-.account-page-wrap{
+.form-page-wrap{
     position: relative;
     display: flex;
     min-height:80vh;
     width: 100%;
 }
-.account-wrap{
+.form-wrap{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
-    .account-box{
+    .form-box{
         text-align: center;
         max-width: 450px;
         border:1px solid #dadce0;
@@ -62,7 +62,7 @@
         hr{
             margin: 20px 0;
         }
-        .account-btn a{
+        .form-btn a{
             font-size: 1.28rem;
             color: #606060;
             &:hover{

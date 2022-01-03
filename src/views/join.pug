@@ -2,9 +2,9 @@ extends base
 
 block content
     .page-manager
-            .account-page-wrap
-                .account-wrap
-                        .account-box
+            .form-page-wrap
+                .form-wrap
+                        .form-box
                             h1(id="page-title")=pageTitle
                             if errorMessage
                                 span=errorMessage
@@ -17,5 +17,5 @@ block content
                                     input(placeholder="location" name="location", type="text",required)
                                     button(type="submit", value="join") 가입하기
                             hr
-                            .account-btn
-                                a(href="/login") Already have an account? Log in now
+                            .form-btn
+                                a(href="/login") Already have an form? Log in now
