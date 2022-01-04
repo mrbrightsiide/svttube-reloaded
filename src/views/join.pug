@@ -1,21 +1,42 @@
 extends base
 
 block content
-    .page-manager
-            .form-page-wrap
-                .form-wrap
-                        .form-box
-                            h1(id="page-title")=pageTitle
-                            if errorMessage
-                                span=errorMessage
-                            form(method="POST")
-                                    input(placeholder="name" name="name", type="text",required)
-                                    input(placeholder="email" name="email", type="email",required)
-                                    input(placeholder="username" name="username", type="text",required,unique)
-                                    input(placeholder="password" name="password", type="password",required)
-                                    input(placeholder="Confirm Password2" name="password2", type="password", required)
-                                    input(placeholder="location" name="location", type="text",required)
-                                    button(type="submit", value="join") 가입하기
-                            hr
-                            .form-btn
-                                a(href="/login") Already have an form? Log in now
+  .page-manager
+    .form-page-wrap
+      .form-wrap
+        .form-box
+          h1#page-title= pageTitle
+          if errorMessage
+            span= errorMessage
+          form(method="POST")
+            input(placeholder="name", name="name", type="text", required)
+            input(placeholder="email", name="email", type="email", required)
+            input(
+              placeholder="username",
+              name="username",
+              type="text",
+              required,
+              unique
+            )
+            input(
+              placeholder="password",
+              name="password",
+              type="password",
+              required
+            )
+            input(
+              placeholder="Confirm Password2",
+              name="password2",
+              type="password",
+              required
+            )
+            input(
+              placeholder="location",
+              name="location",
+              type="text",
+              required
+            )
+            button(type="submit", value="join") 가입하기
+          hr
+          .form-btn
+            a(href="/login") Already have an account? Log in now

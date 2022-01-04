@@ -1,11 +1,15 @@
-.edit-profile-img{
-    border-radius: 500px;
-    overflow: hidden;
-    height: 140px;
-    width: 140px;
+.edit-profile-img {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 500px;
 }
 
-#edit-profile-btn{
-    width: auto !important;
-    padding: 10px;
+#edit-profile-btn,
+#upload-btn {
+  width: auto !important;
+  padding: 10px;
 }

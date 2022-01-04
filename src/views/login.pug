@@ -1,23 +1,32 @@
 extends base
 
 block content
-    .page-manager
-        .form-page-wrap
-            .form-wrap
-                    .form-box
-                        h1(id="page-title")=pageTitle
-                        if errorMessage
-                            span=errorMessage
-                        form(method="POST")
-                                input(placeholder="username" name="username", type="text",required,unique)
-                                input(placeholder="password" name="password", type="password",required)
-                                button(type="submit", value="log in") 로그인
-                                br
-                                a(href="/users/github/start") Continue with GitHub
-                                    i.fab.fa-github
-                                
+  .page-manager
+    .form-page-wrap
+      .form-wrap
+        .form-box
+          h1#page-title= pageTitle
+          if errorMessage
+            span= errorMessage
+          form(method="POST")
+            input(
+              placeholder="username",
+              name="username",
+              type="text",
+              required,
+              unique
+            )
+            input(
+              placeholder="password",
+              name="password",
+              type="password",
+              required
+            )
+            button(type="submit", value="log in") 로그인
+            br
+            a(href="/users/github/start") Continue with GitHub
+              i.fab.fa-github
 
-                        hr
-                        .form-btn
-                            a(href="/join") Don't have an form? Join now
-            
+          hr
+          .form-btn
+            a(href="/join") Don't have an account? Join now

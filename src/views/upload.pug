@@ -1,13 +1,34 @@
 extends base.pug
 
 block content
-    .page-manager
-        if errorMessage 
-            span=errorMessage
-        form(method="POST", enctype="multipart/form-data")
-            label(for="video") Video File
-            input(type="file", accept="video/*", required, id="video", name="video")
-            input(name="title" placeholder="Title", required , type="text" maxlength="50")
-            input(name="description" placeholder="Description", required , type="text" minlength="10")
-            input(name="hashtags" placeholder="Hashtags, separated by comma.", required , type="text")
-            input(type="submit", value="upload video")
+  .page-manager
+    .form-page-wrap
+      .form-wrap
+        .form-box
+          h1#page-title= pageTitle
+          if errorMessage
+            span= errorMessage
+          form(method="POST", enctype="multipart/form-data")
+            label(for="video")
+            input#video(type="file", accept="video/*", required, name="video")
+            input(
+              name="title",
+              placeholder="Title",
+              required,
+              type="text",
+              maxlength="50"
+            )
+            input(
+              name="description",
+              placeholder="Description",
+              required,
+              type="text",
+              minlength="10"
+            )
+            input(
+              name="hashtags",
+              placeholder="Hashtags, separated by comma.",
+              required,
+              type="text"
+            )
+            button#upload-btn(type="submit", value="upload video") Upload Video
