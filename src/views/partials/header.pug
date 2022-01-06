@@ -19,26 +19,22 @@ header
       nav.masthead-end
         ul
           if loggedIn
-            li 
-              a(href=`/users/${loggedInUser._id}`) My Videos
-            li 
-              a(href="/users/logout") Logout
-              img(
-                src="/static/css/img/logout-icon.png",
-                alt="logout-icon",
-                width="20px"
-              )
-            li 
-              a(href="videos/upload") Upload Videos
+            .loggedinUser-icons-wrap
+              li
+                a(href=`/users/${loggedInUser._id}`, title="My videos")
+                  #myvideos-icon.loggedin-user-icons
+              li 
+                a(href="videos/upload", title="Upload video")
+                  #upload-video-icon.loggedin-user-icons
+
+              li 
+                a(href="/users/logout", title="Log out")
+                  #logout-icon.loggedin-user-icons
             li
-              a(href="/users/edit", title="edit profile")
+              a(href="/users/edit", title="Edit profile")
                 .user-profilepic
                   img(src='/' + loggedInUser.avatarUrl, width="36")
           else
-            //- li 
-            //-   a(href="/search") Search
-            //- li 
-            //-   a(href="/join") Join
             li
               button.loginbtn.svt-icon
                 a(href="/login")

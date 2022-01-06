@@ -3,6 +3,10 @@ $grid-items-per-row: 4;
 $grid-item-margin: 16px;
 $grid-item-max-width: 380px;
 
+.close{
+    display: none;
+}
+
 .page-manager{
     display: flex;
     margin-left: 240px;
@@ -19,7 +23,7 @@ $grid-item-max-width: 380px;
     display: flex;
     width: 100%;
     position: fixed;
-    z-index: 100;
+    z-index: 99;
     background: rgb(255, 255, 255, 0.96);
     height: 56px;
     flex-wrap: row;
@@ -52,28 +56,51 @@ $grid-item-max-width: 380px;
     margin-top: 56px;
     display: flex;
     width: 100%;
-    // justify-content: center;
     height: 260px;
-    background: #ff7676;
+    background: #ffeaea;
     .svt-promo-banner{
-        margin: 0 67px;
+        margin: 0 70px;
         max-width: none;
-        display: flex;
         overflow:hidden;
-        align-items: center;
-        .video{
-            width: 20%;
-            video{
-                width: 100%;
-                height: auto;
-            }
-        }
+        display: flex;
         .banner{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             .banner-text{
-                position: relative;
+                display: inline-block;
                 font-size: 24px;
+                line-height: 35px;
+                width: 60%;
+            }
+            .banner-btn{
+                display: inline-block;
+                font-size: 1.7rem;
+                padding: 4px 10px;
+                border: 1px solid #1a73e8;
+                color: #1a73e8;
+                margin-top: 30px;
+            }
+            .video{
+                display: inline-block;
+                width: 55%;
+                min-width: 458px;
+                video{
+                    width: 100%;
+                    height: auto;
+                }
             }
         }
+    }
+    #close-btn{
+        display: inline-block;
+    }&:after {
+        content: "\00d7";
+        width: 50px;
+        height: 30px;
+        font-size: 35px;
+        margin-top:3px;
+        cursor: pointer;
     }
 }
 

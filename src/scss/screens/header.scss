@@ -89,6 +89,51 @@
   }
   .masthead-end {
     min-width: 99px;
+    .loggedinUser-icons-wrap {
+      display: inline-block;
+      margin-right: 20px;
+      a {
+        position: relative;
+        z-index: 999;
+        display: inline-block;
+        margin: 6px;
+        padding: 6px;
+      }
+      a[title]:hover:after {
+        position: absolute;
+        bottom: -150%;
+        left: -30%;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        padding: 5px 10px;
+        color: #fff;
+        font-size: 1.3rem;
+        line-height: 1.2;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 2px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.185);
+        content: attr(title);
+      }
+    }
+    .loggedin-user-icons {
+      width: 24px;
+      height: 24px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    #myvideos-icon {
+      background-image: url("http://localhost:4000/static/css/img/myvideos-icon.png");
+    }
+    #logout-icon {
+      margin-left: -6px;
+      background-image: url("http://localhost:4000/static/css/img/logout-icon.png");
+    }
+    #upload-video-icon {
+      background-image: url("http://localhost:4000/static/css/img/uploadvideos-icon.png");
+    }
   }
   .user-profilepic {
     display: flex;
@@ -98,6 +143,8 @@
     justify-items: center;
     width: 32px;
     height: 32px;
+    margin-right: 20px;
+    margin-left: 5px;
     overflow: hidden;
     border-radius: 50%;
   }

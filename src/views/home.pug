@@ -15,19 +15,22 @@ block content
           li 최근에 업로드된 동영상
       .masthead_ad
         .svt-promo-banner
-          .video
-            video(
-              src="http://localhost:4000/uploads/videos/c3b15c426ad21afeed562a7eb2904549",
-              controls,
-              autoplay,
-              muted,
-              allowfullscreen
-            )
           .banner
             .banner-text
-              h1 Check out the new song "Pretty you" by Seventeen!
-        .close-btn
-          span X
+              h1 Check out the new song<br>"Pretty you" by Seventeen!
+                a(href="http://localhost:4000/videos/61d433efa11ad303fa6d6cbe")
+              a#banner-btn(
+                href="http://localhost:4000/videos/61d433efa11ad303fa6d6cbe"
+              )
+                .banner-btn Check out now!
+            .video
+              video(
+                src="/uploads/videos/9961300332fd80d2005df5560d6902cc",
+                controls,
+                autoplay,
+                muted
+              )
+        #close-btn
       .contents-container
         .contents
           .video-wrap

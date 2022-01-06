@@ -1,11 +1,14 @@
 doctype html
 html(lang="ko")
-    head 
-        title #{pageTitle}｜SvtTube
-        //- we have to send this variable. how do we send variable to template? -> who is rendering the template? => the controllers 
-        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css")
-        link(rel="stylesheet", href="/static/css/styles.css")
-    body
-        include partials/header
-        block content
-    script(src="/static/js/main.js") 
+  head 
+    title #{ pageTitle }｜SvtTube
+    //- we have to send this variable. how do we send variable to template? -> who is rendering the template? => the controllers 
+    link(
+      rel="stylesheet",
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    )
+    link(rel="stylesheet", href="/static/css/styles.css")
+  body
+    include partials/header
+    block content
+  script(src="/static/js/main.js") 
