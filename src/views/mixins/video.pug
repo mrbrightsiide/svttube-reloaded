@@ -15,3 +15,4 @@ mixin video(video)
               #video-title= video.title
           .video-meta-block
             p= video.owner.username
+            p= ` · 조회수 ${video.meta.views}회`

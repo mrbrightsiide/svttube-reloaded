@@ -182,11 +182,12 @@ $grid-item-max-width: 380px;
                 .video-meta-block{
                     color: #606060;
                     display: flex;
-                    flex-direction: column;
+                    flex-direction: row;
                     p  {font-family: "Roboto","Arial",sans-serif;
-                        font-size: 1.4rem;
-                        line-height: 2rem;
-                        font-weight: 400;}
+                        font-size: 1.25rem;
+                        line-height: 1.8rem;
+                        font-weight: 400;
+                    letter-spacing: -0.02rem;}
                 }
         }
     }
