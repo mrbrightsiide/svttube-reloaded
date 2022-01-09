@@ -23,13 +23,39 @@ block content
                 href="http://localhost:4000/videos/61d433efa11ad303fa6d6cbe"
               )
                 .banner-btn Check out now!
-            .video
+            #videoContainer
               video(
                 src="/uploads/videos/9961300332fd80d2005df5560d6902cc",
-                controls,
                 autoplay,
                 muted
               )
+              #videoControls.videoControls
+                .videoControls__play
+                  span#play.videoControls__playBtn
+                    i.fas.fa-play
+                  .videoControls__time
+                    span#currenTime 00:00
+                    span /
+                    span#totalTime 00:00
+                input#timeline.videoControls__timeline(
+                  type="range",
+                  step="1",
+                  value="0",
+                  min="0"
+                )
+                .videoControls__volume
+                  input#volume(
+                    type="range",
+                    step="0.1",
+                    value=0.5,
+                    min="0",
+                    max="1"
+                  )
+                  span#mute
+                    i.fas.fa-volume-up
+                div
+                  span#fullScreen
+                    i.fas.fa-expand
         #close-btn
       .contents-container
         .contents
@@ -38,3 +64,6 @@ block content
               +video(video)
             else
               li sorry nothing found.
+
+block scripts
+  script(src="/static/js/videoPlayer.js") 

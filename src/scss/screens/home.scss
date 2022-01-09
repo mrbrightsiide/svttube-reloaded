@@ -86,14 +86,10 @@ $grid-item-max-width: 380px;
                 margin-top: 30px;
                 border-radius: 5px;
             }
-            .video{
+            #videoContainer{
                 display: inline-block;
                 width: 55%;
                 min-width: 458px;
-                video{
-                    width: 100%;
-                    height: auto;
-                }
             }
         }
     }
