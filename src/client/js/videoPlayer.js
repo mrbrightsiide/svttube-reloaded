@@ -122,7 +122,7 @@ volumeRange.addEventListener("input", handleVolumeChange);
 video.addEventListener("loadeddata", handleLoadedMetadata);
 video.addEventListener("timeupdate", handleTimeUpdate);
 video.addEventListener("ended", handleEended);
-videoContainer.addEventListener("click", handlePlayClick);
+video.addEventListener("click", handlePlayClick);
 videoContainer.addEventListener("mousemove", handleMouseMove);
 videoContainer.addEventListener("mouseleave", handleMouseLeave);
 document.addEventListener("keyup", handleSpacebarPress);

@@ -5,6 +5,9 @@ block content
     .form-page-wrap
       .form-wrap
         .form-box
+          div
+            video#preview
+            button#startBtn Start Recording
           h1#page-title= pageTitle
           if errorMessage
             span= errorMessage
@@ -32,3 +35,5 @@ block content
               type="text"
             )
             button#upload-btn(type="submit", value="upload video") Upload Video
+block scripts
+  script(src="/static/js/recorder.js")

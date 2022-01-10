@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     main: "./src/client/js/main.js",
     videoplayer: "./src/client/js/videoPlayer.js",
+    recorder: "./src/client/js/recorder.js",
   },
   mode: "development",
   watch: true,
@@ -19,7 +20,6 @@ module.exports = {
       filename: "css/styles.css",
     }),
   ],
-  // 그냥코드문법임. 문서만 따라가도 됨
   module: {
     rules: [
       {
