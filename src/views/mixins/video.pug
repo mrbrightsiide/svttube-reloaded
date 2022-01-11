@@ -1,14 +1,14 @@
 mixin video(video)
   .video-item-wrap
     .video-item
-      a(href=`/videos/${video.id}`)
+      a(href=`/videos/${video.id}`,style=`background-image:url(${video.thumbUrl})`)
         .thumbnail-wrap
           .thumbnail
             .thumbnail-img hi
       .details
         a(href=`/videos/${video.id}`)
           a#user-profilepic
-            img(src=video.owner.avatarUrl)
+            img(src=video.owner.avatarUrl, crossorigin)
         .meta
           h3
             a(href=`/videos/${video.id}`)

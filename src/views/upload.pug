@@ -7,13 +7,15 @@ block content
         .form-box
           div
             video#preview
-            button#startBtn Start Recording
+            button#actionBtn Start Recording
           h1#page-title= pageTitle
           if errorMessage
             span= errorMessage
           form(method="POST", enctype="multipart/form-data")
             label(for="video")
             input#video(type="file", accept="video/*", required, name="video")
+            label(for="video") Thumbnail File
+            input(type="file", accept="image/*", id="thumb", name="thumb")
             input(
               name="title",
               placeholder="Title",
