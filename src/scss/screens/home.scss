@@ -136,7 +136,9 @@ $grid-item-max-width: 380px;
     .thumbnail-wrap .thumbnail{
         width: 100%;
         padding-bottom: 56.25%;
-        background: pink;
+        overflow: hidden;
+        background-position: center;
+        background-size: cover;
     }
     .details{
         position: relative;

@@ -2,7 +2,7 @@ import Video from "../models/Video.js";
 import User from "../models/User.js";
 
 export const home = async (req, res) => {
-  const videos = await Video.find({}).populate("video");
+  const videos = await Video.find({}).populate("video").populate("owner");
   console.log(videos);
   return res.render("home", { pageTitle: "Home", videos });
 };
@@ -63,14 +63,13 @@ export const postUpload = async (req, res) => {
     user: { _id },
   } = req.session;
   const { video, thumb } = req.files;
-  console.log(video, thumb);
   const { title, description, hashtags } = req.body;
   try {
     const newVideo = await Video.create({
       title,
       description,
       fileUrl: video[0].path,
-      thumbUrl: thumb[0].path,
+      thumbUrl: thumb[0].destination + thumb[0].filename,
       owner: _id,
       hashtags: Video.formatHashtags(hashtags),
     });
