@@ -8,6 +8,7 @@ import userRouter from "./routers/userRouter.js";
 import videoRouter from "./routers/videoRouters.js";
 import { localsMiddleware } from "./middlewares.js";
 import apiRouter from "./routers/apiRouter.js";
+import flash from "express-flash";
 
 const app = express();
 // const logger = morgan("combined");
@@ -36,6 +37,7 @@ app.get("/addone", (req, res, next) => {
   return res.send(`${req.session.id}\n${req.session.potato}`);
 });
 
+app.use(flash());
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("assets"));
