@@ -125,28 +125,31 @@
       background-position: center;
     }
     #myvideos-icon {
-      background-image: url("http://localhost:4000/static/css/img/myvideos-icon.png");
+      background-image: url("http://localhost:4000/static/img/myvideos-icon.png");
     }
     #logout-icon {
       margin-left: -6px;
-      background-image: url("http://localhost:4000/static/css/img/logout-icon.png");
+      background-image: url("http://localhost:4000/static/img/logout-icon.png");
     }
     #upload-video-icon {
-      background-image: url("http://localhost:4000/static/css/img/uploadvideos-icon.png");
+      background-image: url("http://localhost:4000/static/img/uploadvideos-icon.png");
     }
   }
   .user-profilepic {
     display: flex;
     flex-grow: 0;
     flex-shrink: 0;
-    align-items: center;
-    justify-items: center;
     width: 32px;
     height: 32px;
     margin-right: 20px;
     margin-left: 5px;
     overflow: hidden;
     border-radius: 50%;
+    & img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
   }
   button.loginbtn {
     padding: 8px 11px;

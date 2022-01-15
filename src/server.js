@@ -11,12 +11,13 @@ import apiRouter from "./routers/apiRouter.js";
 import flash from "express-flash";
 
 const app = express();
-// const logger = morgan("combined");
-// app.use(logger);
-app.use(express.urlencoded({ extended: true }));
+// const logger = morgan("dev");
+
 app.set("views", process.cwd() + "/src/views");
 app.set("view engine", "pug");
-
+// app.use(logger);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use((req, res, next) => {
   res.header("Cross-Origin-Embedder-Policy", "require-corp");
   res.header("Cross-Origin-Opener-Policy", "same-origin");
@@ -36,7 +37,6 @@ app.get("/addone", (req, res, next) => {
   req.session.potato += 1;
   return res.send(`${req.session.id}\n${req.session.potato}`);
 });
-
 app.use(flash());
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads"));

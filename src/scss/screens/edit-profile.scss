@@ -1,11 +1,14 @@
 .edit-profile-img {
   display: flex;
-  align-items: center;
-  justify-items: center;
   width: 140px;
   height: 140px;
   overflow: hidden;
-  border-radius: 500px;
+  border-radius: 50%;
+  & img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
 }
 
 #edit-profile-btn,

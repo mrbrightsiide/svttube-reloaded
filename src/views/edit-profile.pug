@@ -8,7 +8,7 @@ block content
                     h1(id="page-title")=pageTitle
                     form(method="POST", enctype="multipart/form-data")
                         .edit-profile-img
-                            img(src="/"+loggedInUser.avatarUrl, width="140")
+                            img(src="/"+loggedInUser.avatarUrl)
                         input(type="file", id="avatar", name="avatar", accept="image/*")
                         input(placeholder="name" name="name", type="text",required, value=loggedInUser.name)
                         input(placeholder="email" name="email", type="email",required, value=loggedInUser.email)
