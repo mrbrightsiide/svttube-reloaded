@@ -119,7 +119,6 @@ export const finishGithubLogin = async (req, res) => {
     let user = await User.findOne({ email: emailObj.email });
     if (!user) {
       user = await User.create({
-        avatarUrl: userData.avatar_url,
         name: userData.name,
         username: userData.login,
         email: emailObj.email,
@@ -213,7 +212,7 @@ export const postChnagePassword = async (req, res) => {
 export const see = async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id).populate("videos");
-  console.log(user);
+  // console.log(user);
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User Not Found." });
   }
