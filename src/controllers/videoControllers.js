@@ -150,7 +150,6 @@ export const createComment = async (req, res) => {
 export const deleteComment = async (req, res) => {
   const { id } = req.params;
   const comment = await Comment.findByIdAndDelete(id);
-  comment.pop(id);
   comment.save();
   return res.sendStatus(201);
 };
