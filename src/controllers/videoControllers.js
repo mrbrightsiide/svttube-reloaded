@@ -4,7 +4,8 @@ import User from "../models/User.js";
 
 export const home = async (req, res) => {
   const videos = await Video.find({}).populate("video").populate("owner");
-  // console.log(videos);
+  console.log(videos);
+  console.log(req.session);
   return res.render("home", { pageTitle: "Home", videos });
 };
 
@@ -76,7 +77,7 @@ export const postUpload = async (req, res) => {
       hashtags: Video.formatHashtags(hashtags),
     });
     const user = await User.findById(_id);
-    user.videos.push(newVideo._id);
+    user.video.push(newVideo._id);
     user.save();
     return res.redirect("/");
   } catch (error) {

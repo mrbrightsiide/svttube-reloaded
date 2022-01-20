@@ -1,8 +1,11 @@
-extends ../base.pug
+extends ../layouts/base.pug
 include ../mixins/video
 
+
 block content
-        each video in user.videos
-            +video(video)
-        else
-            li sorry nothing found.
+    .page-manager
+        .contents-wrap
+            each video in user.video
+                +video(video)
+            else
+                li sorry nothing found :(

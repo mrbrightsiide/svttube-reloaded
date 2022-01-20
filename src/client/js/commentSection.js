@@ -11,11 +11,11 @@ const addComment = (text, id) => {
   icon.className = "fas fa-comment";
   const span = document.createElement("span");
   span.innerText = ` ${text}`;
-  const span2 = document.createElement("span");
-  span2.innerText = "❌";
+  const button = document.createElement("button");
+  button.innerText = "❌";
   newComment.appendChild(icon);
   newComment.appendChild(span);
-  newComment.appendChild(span2);
+  newComment.appendChild(button);
   videoComments.prepend(newComment);
 };
 
@@ -47,13 +47,16 @@ if (form) {
 
 export const handleDelete = async (event) => {
   event.preventDefault();
+  const commentList = document.getElementById("comment");
   const clickedButton = event.target;
   const comment = clickedButton.parentElement;
-  const id = comment.dataset.id;
+  const id = commentList.dataset.id;
   const respons = await fetch(`/api/comment/${id}/delete`, {
     method: "DELETE",
   });
-  if (respons.status === 201) {
+  if (respons.status === 403) {
+    alert("Not authorized!");
+  } else if (respons.status === 201) {
     comment.remove();
   }
 };

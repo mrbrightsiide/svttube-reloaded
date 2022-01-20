@@ -1,4 +1,4 @@
-extends base
+extends layouts/base
 
 block content
   #videoContainer(data-id=video._id)
@@ -24,7 +24,7 @@ block content
       div
         span#fullScreen
           i.fas.fa-expand
-    .video__data
+  .video__data
         p.vidieo__title=video.title
         small.video__owner Uploaded by
           a(href=`/users/${video.owner._id}`)=video.owner.name
@@ -44,10 +44,8 @@ block content
                 li.video__comment#comment(data-id=val._id)
                     i.fas.fa-comment
                     span #{val.text}
-                    if String(val.owner) === String(loggedInUser._id)
+                    if loggedIn && String(val.owner) === String(loggedInUser._id)
                       button.delete_comment_btn ❌
-
-        
 block scripts
   script(src="/static/js/videoPlayer.js")
   if loggedIn 
