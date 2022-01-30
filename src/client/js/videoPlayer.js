@@ -128,5 +128,3 @@ videoContainer.addEventListener("mouseleave", handleMouseLeave);
 document.addEventListener("keyup", handleSpacebarPress);
 timeline.addEventListener("input", handleTimelineChange);
 fullScreenBtn.addEventListener("click", handleFullscreen);
-
-console.log(videoContainer.dataset);

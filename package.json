@@ -30,7 +30,8 @@
     "multer": "^1.4.2",
     "node-fetch": "^2.6.1",
     "pug": "^3.0.2",
-    "regenerator-runtime": "^0.13.7"
+    "regenerator-runtime": "^0.13.7",
+    "spf": "^2.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",

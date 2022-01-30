@@ -2,7 +2,7 @@ header
   .masthead
     .masthead-container
       .masthead-start
-        button.guide-menu
+        button.guide-menu#guide_menu_btn
           svg(viewBox="0 0 100 80", width="20", height="20")
             rect(width="100", height="4") 
             rect(y="30", width="100", height="4") 
@@ -46,24 +46,24 @@ header
         ul
           li 
             i.fas.fa-home
-            span 홈
+            p 홈
           li
             i.far.fa-compass
-            span 탐색
+            p 탐색
           li
             i.far.fa-caret-square-right
-            span 구독
+            p 구독
           hr
           li
             i.far.fa-hdd
-            span 보관함
+            p 보관함
           li
             i.far.fa-clock
-            span 시청기록
+            p 시청기록
           hr
           li
             i.far.fa-thumbs-up
-            span 좋아요 표시한 동영상
+            p 좋아요 표시한 동영상
           hr
     #footer-wrap
       footer &copy; #{ new Date().getFullYear() } SVTtube

@@ -4,7 +4,7 @@ $grid-item-margin: 16px;
 $grid-item-max-width: 380px;
 
 .close{
-    display: none;
+    display: none !important;
 }
 
 .open{
@@ -77,15 +77,6 @@ $grid-item-max-width: 380px;
                 line-height: 35px;
                 width: 60%;
             }
-            .banner-btn{
-                display: inline-block;
-                font-size: 1.7rem;
-                padding: 4px 10px;
-                border: 2px solid #1a73e8;
-                color: #1a73e8;
-                margin-top: 30px;
-                border-radius: 5px;
-            }
             #videoContainer{
                 display: inline-block;
                 width: 55%;
@@ -94,14 +85,17 @@ $grid-item-max-width: 380px;
         }
     }
     #close-btn{
-        display: inline-block;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 0;
+        cursor: pointer;
     }&:after {
         content: "\00d7";
         width: 50px;
         height: 30px;
         font-size: 35px;
         margin-top:3px;
-        cursor: pointer;
     }
 }
 

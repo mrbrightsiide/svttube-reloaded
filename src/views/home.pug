@@ -5,13 +5,19 @@ block content
   .page-manager
     .contents-wrap
       .category-bar
-        ul
-          li 전체
-          li 음악
-          li 랩
-          li 요리
-          li 애완동물
-          li 최근에 업로드된 동영상
+        ul#category_bar_chips
+          a(href="/")
+            li 전체
+          a(href="/videos/filtered/music")  
+            li(data-id="music") 음악
+          a(href="/videos/filtered/rap")
+            li(data-id="rap") 랩
+          a(href="/videos/filtered/cooking")
+            li(data-id="cooking") 요리
+          a(href="/videos/filtered/pet")
+            li(data-id="pet") 애완동물
+          a(href="/videos/filtered/recent")
+            li(data-id="recent") 최근에 업로드된 동영상
       .masthead_ad
         .svt-promo-banner
           .banner
@@ -21,7 +27,7 @@ block content
               a#banner-btn(
                 href="http://localhost:4000/videos/61dda92a448bc44760dda6e4"
               )
-                .banner-btn Check out now!
+                #-btn Check out now!
             #videoContainer
               video(
                 src="/uploads/videos/9961300332fd80d2005df5560d6902cc",
@@ -65,4 +71,4 @@ block content
               h1 No video found :(
 
 block scripts
-  script(src="/static/js/videoPlayer.js") 
+  script(src="/static/js/closeAd.js")
