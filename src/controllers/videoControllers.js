@@ -3,21 +3,27 @@ import Video from "../models/Video.js";
 import Comment from "../models/Comment.js";
 import User from "../models/User.js";
 
+// export const home = async (req, res) => {
+//   const { id } = req.params;
+//   let videos = [];
+//   if (!id) {
+//     videos = await Video.find({})
+//       .sort({ meta: -1 })
+//       .populate("video")
+//       .populate("owner");
+//   } else if (id === "recent") {
+//     videos = await Video.find({}).populate("video").populate("owner");
+//   } else {
+//     videos = await Video.find({ hashtags: `#${id}` })
+//       .populate("video")
+//       .populate("owner");
+//   }
+//   return res.render("home", { pageTitle: "Home", videos });
+// };
+
 export const home = async (req, res) => {
-  const { id } = req.params;
   let videos = [];
-  if (!id) {
-    videos = await Video.find({})
-      .sort({ meta: -1 })
-      .populate("video")
-      .populate("owner");
-  } else if (id === "recent") {
-    videos = await Video.find({}).populate("video").populate("owner");
-  } else {
-    videos = await Video.find({ hashtags: `#${id}` })
-      .populate("video")
-      .populate("owner");
-  }
+  videos = await Video.find({}).populate("video");
   return res.render("home", { pageTitle: "Home", videos });
 };
 
@@ -169,4 +175,12 @@ export const deleteComment = async (req, res) => {
   const comment = await Comment.findByIdAndDelete(id);
   comment.save();
   return res.sendStatus(201);
+};
+
+export const getVideoCategory = async (req, res) => {
+  const { id } = req.params;
+  let videos = [];
+  videos = await Video.find({ hashtags: `#${id}` });
+  console.log(videos);
+  return res.status(201).json({ videos });
 };
