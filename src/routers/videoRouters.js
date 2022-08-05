@@ -8,11 +8,9 @@ import {
   deleteVideo,
 } from "../controllers/videoControllers.js";
 import { protectorMiddleware, videoUpload } from "../middlewares.js";
-import { home } from "../controllers/videoControllers.js";
 
 const videoRouter = express.Router();
 
-videoRouter.get("/filtered/:id", home);
 videoRouter.get("/:id([0-9a-f]{24})", watch);
 videoRouter
   .route("/:id([0-9a-f]{24})/edit")

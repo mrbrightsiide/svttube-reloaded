@@ -3,28 +3,8 @@ import Video from "../models/Video.js";
 import Comment from "../models/Comment.js";
 import User from "../models/User.js";
 
-// export const home = async (req, res) => {
-//   const { id } = req.params;
-//   let videos = [];
-//   if (!id) {
-//     videos = await Video.find({})
-//       .sort({ meta: -1 })
-//       .populate("video")
-//       .populate("owner");
-//   } else if (id === "recent") {
-//     videos = await Video.find({}).populate("video").populate("owner");
-//   } else {
-//     videos = await Video.find({ hashtags: `#${id}` })
-//       .populate("video")
-//       .populate("owner");
-//   }
-//   return res.render("home", { pageTitle: "Home", videos });
-// };
-
 export const home = async (req, res) => {
-  let videos = [];
-  videos = await Video.find({}).populate("video");
-  return res.render("home", { pageTitle: "Home", videos });
+  return res.render("home", { pageTitle: "Home" });
 };
 
 export const watch = async (req, res) => {
@@ -177,10 +157,22 @@ export const deleteComment = async (req, res) => {
   return res.sendStatus(201);
 };
 
-export const getVideoCategory = async (req, res) => {
+export const getVideos = async (req, res) => {
   const { id } = req.params;
   let videos = [];
-  videos = await Video.find({ hashtags: `#${id}` });
-  console.log(videos);
+  if (id === "all") {
+    videos = await Video.find({});
+  } else if (id === "recent") {
+    //비디오 최신순정렬
+    videos = await Video.find({});
+    videos.reverse();
+  } else {
+    videos = await Video.find({ hashtags: `#${id}` });
+  }
+
   return res.status(201).json({ videos });
+};
+
+export const getCategory = (req, res) => {
+  res.redirect("/");
 };
