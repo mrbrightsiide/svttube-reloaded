@@ -3,73 +3,68 @@ include mixins/video
 
 block content
   .page-manager
-    .contents-wrap#contents-wrap
+    #contents-wrap.contents-wrap
       .category-bar
         ul#category_bar_chips
-          a
-            li 전체
-          a
-            li(data-id="music") 음악
-          a(href="/category/rap")
-            li(data-id="rap" id="rap") 랩
-          a
-            li(data-id="cooking") 요리
-          a
-            li(data-id="pet") 애완동물
-          a
-            li(data-id="recent") 최근에 업로드된 동영상
-      //- .masthead_ad
-      //-   .svt-promo-banner
-      //-     .banner
-      //-       .banner-text
-      //-         h1 Check out the new song<br>"Pretty you" by Seventeen!
-      //-           a(href="http://localhost:4000/videos/61d433efa11ad303fa6d6cbe")
-      //-         a#banner-btn(
-      //-           href="http://localhost:4000/videos/61dda92a448bc44760dda6e4"
-      //-         )
-      //-           #default-btn Check out now!
-      //-       #videoContainer
-      //-         video(
-      //-           src="/uploads/videos/9961300332fd80d2005df5560d6902cc",
-      //-           autoplay,
-      //-           muted
-      //-         )
-      //-         #videoControls.videoControls
-      //-           .videoControls__play
-      //-             span#play.videoControls__playBtn
-      //-               i.fas.fa-play
-      //-             .videoControls__time
-      //-               span#currenTime 00:00
-      //-               span /
-      //-               span#totalTime 00:00
-      //-           input#timeline.videoControls__timeline(
-      //-             type="range",
-      //-             step="1",
-      //-             value="0",
-      //-             min="0"
-      //-           )
-      //-           .videoControls__volume
-      //-             input#volume(
-      //-               type="range",
-      //-               step="0.1",
-      //-               value=0.5,
-      //-               min="0",
-      //-               max="1"
-      //-             )
-      //-             span#mute
-      //-               i.fas.fa-volume-up
-      //-           div
-      //-             span#fullScreen
-      //-               i.fas.fa-expand
-      //-   #close-btn
-      //- .contents-container
-      //-   .contents
-      .video-wrap#video-wrap
-      //-       //- each video in videos
-      //-       //-   +video(video)
-      //-       //- else
-      //-       //-   h1 No video found :(
-              
+          li
+            a.category-chip(href="/category/all") 전체
+          li
+            a.category-chip(href="/category/music") 음악
+          li
+            a.category-chip(href="/category/rap") 랩
+          li
+            a.category-chip(href="/category/cooking") 요리
+          li
+            a.category-chip(href="/category/pet") 애완동물
+          li
+            a.category-chip(href="/category/recent") 최근에 업로드된 동영상
+      .masthead_ad
+        .svt-promo-banner
+          .banner
+            .banner-text
+              h1 Check out the new song<br>"Pretty you" by Seventeen!
+                a(href="http://localhost:4000/videos/61d433efa11ad303fa6d6cbe")
+              a#banner-btn(
+                href="http://localhost:4000/videos/61dda92a448bc44760dda6e4"
+              )
+                #default-btn Check out now!
+            #videoContainer
+              video(
+                src="/uploads/videos/9961300332fd80d2005df5560d6902cc",
+                autoplay,
+                muted
+              )
+              #videoControls.videoControls
+                .videoControls__play
+                  span#play.videoControls__playBtn
+                    i.fas.fa-play
+                  .videoControls__time
+                    span#currenTime 00:00
+                    span /
+                    span#totalTime 00:00
+                input#timeline.videoControls__timeline(
+                  type="range",
+                  step="1",
+                  value="0",
+                  min="0"
+                )
+                .videoControls__volume
+                  input#volume(
+                    type="range",
+                    step="0.1",
+                    value=0.5,
+                    min="0",
+                    max="1"
+                  )
+                  span#mute
+                    i.fas.fa-volume-up
+                div
+                  span#fullScreen
+                    i.fas.fa-expand
+        #close-btn
+      .contents-container
+        .contents
+          #video-wrap.video-wrap
 
 block scripts
-  script(src="/static/js/closeAd.js")
+  script(src="/static/js/videoCategory.js")

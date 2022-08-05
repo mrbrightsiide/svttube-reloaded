@@ -19,13 +19,39 @@ export class VideoCard {
   async setProductList() {
     await this.getProductData();
     this.product.forEach((item) => {
-      const videoList = document.createElement("li");
-      const productname = document.createElement("p");
-      const productImg = document.createElement("img");
-      productImg.setAttribute("src", `/${item.thumbUrl}`);
-      productname.innerText = item.title;
-      videoList.append(productname);
-      videoList.append(productImg);
+      const videoList = document.createElement("article");
+      videoList.innerHTML = `
+      <div class="video-item-wrap">
+        <div class="video-item">
+          <a href="/videos/${item._id}">
+            <div class="thumbnail-wrap">
+              <div
+                class="thumbnail"
+                style="background-image: url(/${item.thumbUrl})"
+              >
+              </div>
+            </div>
+          </a>
+          <div class="details">
+              <a id="user-profilepic" href="/users/${item.owner._id}">
+                <img src="/${item.owner.avatarUrl}" crossorigin="crossorigin" />
+              </a>
+            <div class="meta">
+              <h3>
+                <a href="/videos/${item._id}">
+                  <div id="video-title">
+                    <p>${item.title}</p>
+                  </div>
+                </a>
+              </h3>
+              <div class="video-meta-block">
+                <p>${item.owner.username}</p>
+                <p> · 조회수 ${item.meta.views}회</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>`;
       return this.main.append(videoList);
     });
   }
@@ -57,13 +83,40 @@ export class InitPage {
   async setProductList() {
     await this.getProductData();
     this.product.forEach((item) => {
-      const videoList = document.createElement("li");
-      const productname = document.createElement("p");
-      const productImg = document.createElement("img");
-      productImg.setAttribute("src", `/${item.thumbUrl}`);
-      productname.innerText = item.title;
-      videoList.append(productname);
-      videoList.append(productImg);
+      console.log(item);
+      const videoList = document.createElement("article");
+      videoList.innerHTML = `
+      <div class="video-item-wrap">
+        <div class="video-item">
+          <a href="/videos/${item._id}">
+            <div class="thumbnail-wrap">
+              <div
+                class="thumbnail"
+                style="background-image: url(/${item.thumbUrl})"
+              >
+              </div>
+            </div>
+          </a>
+          <div class="details">
+              <a id="user-profilepic" href="/users/${item.owner._id}">
+                <img src="/${item.owner.avatarUrl}" crossorigin="crossorigin" />
+              </a>
+            <div class="meta">
+              <h3>
+                <a href="/videos/${item._id}">
+                  <div id="video-title">
+                    <p>${item.title}</p>
+                  </div>
+                </a>
+              </h3>
+              <div class="video-meta-block">
+                <p>${item.owner.username}</p>
+                <p> · 조회수 ${item.meta.views}회</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
       return this.main.append(videoList);
     });
   }

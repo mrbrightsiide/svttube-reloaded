@@ -115,7 +115,6 @@ export const search = async (req, res) => {
       .populate("video")
       .populate("owner");
   }
-  console.log(videos);
   return res.render("search", { pageTitle: "Search", videos });
 };
 
@@ -161,13 +160,12 @@ export const getVideos = async (req, res) => {
   const { id } = req.params;
   let videos = [];
   if (id === "all") {
-    videos = await Video.find({});
+    videos = await Video.find({}).populate("owner");
   } else if (id === "recent") {
-    //비디오 최신순정렬
-    videos = await Video.find({});
+    videos = await Video.find({}).populate("owner");
     videos.reverse();
   } else {
-    videos = await Video.find({ hashtags: `#${id}` });
+    videos = await Video.find({ hashtags: `#${id}` }).populate("owner");
   }
 
   return res.status(201).json({ videos });
