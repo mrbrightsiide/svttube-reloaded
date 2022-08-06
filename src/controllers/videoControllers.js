@@ -2,6 +2,7 @@ import express from "express";
 import Video from "../models/Video.js";
 import Comment from "../models/Comment.js";
 import User from "../models/User.js";
+import formatCreatedDate from "../client/js/formatCreatedDate";
 
 export const home = async (req, res) => {
   return res.render("home", { pageTitle: "Home" });
@@ -159,13 +160,26 @@ export const deleteComment = async (req, res) => {
 export const getVideos = async (req, res) => {
   const { id } = req.params;
   let videos = [];
+  const videosInType = async (obj) => {
+    let newVideos = JSON.stringify(await Video.find(obj).populate("owner"));
+    let newVideosInObj = JSON.parse(newVideos);
+    videos = newVideosInObj.map((item) => {
+      const newItem = {
+        ...item,
+        createdAt: formatCreatedDate(item.createdAt),
+      };
+      return newItem;
+    });
+    return videos;
+  };
+
   if (id === "all") {
-    videos = await Video.find({}).populate("owner");
+    await videosInType({});
   } else if (id === "recent") {
-    videos = await Video.find({}).populate("owner");
+    videos = await videosInType({});
     videos.reverse();
   } else {
-    videos = await Video.find({ hashtags: `#${id}` }).populate("owner");
+    await videosInType({ hashtags: `#${id}` });
   }
 
   return res.status(201).json({ videos });

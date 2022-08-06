@@ -10,6 +10,7 @@ module.exports = {
     commentSection: BASE_JS + "commentSection.js",
     closeAd: BASE_JS + "closeAd.js",
     videoCategory: BASE_JS + "videoCategory.js",
+    formatCreatedDate: BASE_JS + "formatCreatedDate.js",
   },
   mode: "development",
   watch: true,

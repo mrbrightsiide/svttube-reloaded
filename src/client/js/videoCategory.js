@@ -46,6 +46,7 @@ export class VideoCard {
               </h3>
               <div class="video-meta-block">
                 <p>${item.owner.username}</p>
+                <p>${item.createdAt}</p>
                 <p> · 조회수 ${item.meta.views}회</p>
               </div>
             </div>
@@ -111,6 +112,7 @@ export class InitPage {
               </h3>
               <div class="video-meta-block">
                 <p>${item.owner.username}</p>
+                <p>${item.createdAt}</p>
                 <p> · 조회수 ${item.meta.views}회</p>
               </div>
             </div>
