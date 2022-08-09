@@ -1,6 +1,7 @@
 export class VideoCard {
   constructor(id) {
     this.main = document.createElement("div");
+    this.main.setAttribute("id", "video-contents-wrap");
     this.id = id;
     this.product = {};
   }
@@ -45,9 +46,13 @@ export class VideoCard {
                 </a>
               </h3>
               <div class="video-meta-block">
-                <p>${item.owner.username}</p>
-                <p>${item.createdAt}</p>
-                <p> · 조회수 ${item.meta.views}회</p>
+                <div>
+                  <p>${item.owner.username}</p>
+                </div>
+                <div>
+                  <p>${item.createdAt}</p>
+                  <p> · 조회수 ${item.meta.views}회</p>
+                </div>
               </div>
             </div>
           </div>
@@ -66,6 +71,7 @@ export class VideoCard {
 export class InitPage {
   constructor() {
     this.main = document.createElement("div");
+    this.main.setAttribute("id", "video-contents-wrap");
     this.product = {};
     this.mainElement = document.querySelector("#video-wrap");
   }
@@ -111,9 +117,13 @@ export class InitPage {
                 </a>
               </h3>
               <div class="video-meta-block">
-                <p>${item.owner.username}</p>
-                <p>${item.createdAt}</p>
-                <p> · 조회수 ${item.meta.views}회</p>
+                <div>
+                  <p>${item.owner.username}</p>
+                </div>
+                <div>
+                  <p>${item.createdAt}</p>
+                  <p> · 조회수 ${item.meta.views}회</p>
+                </div>
               </div>
             </div>
           </div>
