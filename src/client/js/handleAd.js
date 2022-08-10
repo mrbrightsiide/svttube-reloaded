@@ -14,9 +14,9 @@ const adList = [
   },
   {
     text: "HOT",
-    videoId: "facdd0103e955645ae6f454ae45a3180",
-    videoLink: "62f37b3612314b15cc51586a",
-    bgColor: "#fee0ea",
+    videoId: "37e8424771ac397df014c385136a9d7a",
+    videoLink: "62f3857039b1c44b98468c55",
+    bgColor: "#ffe6d1",
   },
 ];
 
