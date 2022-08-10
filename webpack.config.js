@@ -8,7 +8,7 @@ module.exports = {
     videoplayer: BASE_JS + "videoPlayer.js",
     recorder: BASE_JS + "recorder.js",
     commentSection: BASE_JS + "commentSection.js",
-    closeAd: BASE_JS + "handleAd.js",
+    handleAd: BASE_JS + "handleAd.js",
     videoCategory: BASE_JS + "videoCategory.js",
     formatCreatedDate: BASE_JS + "formatCreatedDate.js",
   },
