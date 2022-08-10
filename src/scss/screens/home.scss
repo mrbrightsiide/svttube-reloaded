@@ -64,7 +64,6 @@ $grid-item-max-width: 380px;
   display: flex;
   width: 100%;
   height: 260px;
-  background: #f1ebff;
   .svt-promo-banner {
     margin: 0 70px;
     width: 100%;
@@ -76,7 +75,7 @@ $grid-item-max-width: 380px;
       align-items: center;
       width: 100%;
       justify-content: space-between;
-      .banner-text {
+      .banner-content {
         font-size: 24px;
         line-height: 35px;
       }
