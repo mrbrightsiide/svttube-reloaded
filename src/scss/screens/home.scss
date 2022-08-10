@@ -81,6 +81,16 @@ $grid-item-max-width: 380px;
       }
       #videoContainer {
         width: auto;
+        #mute{
+          font-size: 1.8rem;
+          position: absolute;
+          right: 15px;
+          top: 15px;
+          background: none;
+          color: #fff;
+          border: none;
+          cursor: pointer;
+        }
         video {
           max-height: 260px;
           width: auto;

@@ -40,3 +40,21 @@ const handleAdClose = (event) => {
   }
 };
 window.addEventListener("click", handleAdClose);
+
+// Control sound button of ad video
+const muteBtn = document.getElementById("mute");
+const muteBtnIcon = muteBtn.querySelector("i");
+
+const handleMuteClick = (e) => {
+  if (adVideo.muted) {
+    adVideo.muted = false;
+  } else {
+    adVideo.muted = true;
+  }
+
+  muteBtnIcon.classList = adVideo.muted
+    ? "fas fa-volume-mute"
+    : "fas fa-volume-up";
+};
+
+muteBtn.addEventListener("click", handleMuteClick);
