@@ -102,7 +102,6 @@ export const finishGithubLogin = async (req, res) => {
         },
       })
     ).json();
-    // console.log(userData);
     const emailData = await (
       await fetch(`${apiUrl}/user/emails`, {
         headers: {
@@ -153,7 +152,6 @@ export const postEdit = async (req, res) => {
     body: { email, username, name, location },
     file,
   } = req;
-  // console.log(file);
   await User.findByIdAndUpdate(_id, {
     email,
     username,
@@ -212,7 +210,6 @@ export const postChnagePassword = async (req, res) => {
 export const see = async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id).populate("video");
-  // console.log(user);
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User Not Found." });
   }
