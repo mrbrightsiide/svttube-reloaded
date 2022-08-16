@@ -90,7 +90,6 @@ export class InitPage {
   async setProductList() {
     await this.getProductData();
     this.product.forEach((item) => {
-      console.log(item);
       const videoList = document.createElement("article");
       videoList.innerHTML = `
       <div class="video-item-wrap">
