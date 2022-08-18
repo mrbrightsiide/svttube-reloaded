@@ -6,16 +6,18 @@ block content
       .form-wrap
         .form-box
           div
+            //- input#video(type="file", accept="video/*", required, name="video")
+            input#input(type="file")
             video#preview
             button#actionBtn Start Recording
           h1#page-title= pageTitle
           if errorMessage
             span= errorMessage
           form(method="POST", enctype="multipart/form-data")
+            //- button#thumb-btn(type="submit", value="get thumbnail") Get Thumbnail
             label(for="video")
-            input#video(type="file", accept="video/*", required, name="video")
             label(for="video") Thumbnail File
-            input(type="file", accept="image/*", id="thumb", name="thumb")
+            input#thumb(type="file", accept="image/*", name="thumb")
             input(
               name="title",
               placeholder="Title",
@@ -39,3 +41,4 @@ block content
             button#upload-btn(type="submit", value="upload video") Upload Video
 block scripts
   script(src="/static/js/recorder.js")
+  script(src="/static/js/getThumbnails.js")

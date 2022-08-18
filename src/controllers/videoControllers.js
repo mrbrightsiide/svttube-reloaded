@@ -188,3 +188,32 @@ export const getVideos = async (req, res) => {
 export const getCategory = (req, res) => {
   res.redirect("/");
 };
+
+export const createTumbnail = (req, res) => {
+  const ffmpeg = require("fluent-ffmpeg");
+  ffmpeg(req.body.url)
+    .on("filenames", (filenames) => {
+      console.log(`Will generate ${filenames.join(", ")}`);
+      console.log(filenames);
+      filePath = "uploads/thumbs/" + filenames[0];
+    })
+    .on("end", () => {
+      console.log("Screenshot taken");
+      return res
+        .json({
+          success: true,
+          url: filePath,
+          fileDuration: fileDurate,
+        })
+        .on("error", (err) => {
+          console.error(err);
+          return res.json({ success: false, err });
+        })
+        .screeenshot({
+          count: 3,
+          folder: "uploads/thumbs",
+          size: "320x240",
+          filename: "thumbnail-%b.png",
+        });
+    });
+};
