@@ -19,7 +19,6 @@ const onUploadVideo = async (e) => {
 
   ffmpeg.FS("writeFile", files.input, await fetchFile(videoFile));
 
-  // await ffmpeg.run("-i", files.input, "-r", "60", files.output);
   await ffmpeg.run(
     "-i",
     files.input,
@@ -34,34 +33,12 @@ const onUploadVideo = async (e) => {
   const thumbBlob = new Blob([thumbFile.buffer], { type: "image/jpg" });
   const thumbUrl = URL.createObjectURL(thumbBlob);
   console.log(thumbUrl);
-  // downloadFile(thumbUrl, "MyThumbnail.jpg");
-  // ffmpeg.FS("unlink", files.input);
-  // ffmpeg.FS("unlink", files.output);
-  // ffmpeg.FS("unlink", files.thumb);
 
   const thumbPreview = document.createElement("img");
 
   thumbPreview.setAttribute("src", thumbUrl);
 
   formBox.append(thumbPreview);
-
-  // URL.revokeObjectURL(thumbUrl);
-
-  // console.log(fileUrl);
-
-  // if (fileUrl) {
-  //   // 비디오파일 url을 ffmpeg로 보내기
-  //   await fetch(`/api/thumbnail`, {
-  //     method: "POST",
-  //     headers: {
-  //       videofile: fileUrl,
-  //     },
-  //   })
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log(err));
-  // }
-  // const hmmm = await response.json();
-  // dom으로 썸네일 그리기;
 };
 
 inputVideo.addEventListener("change", onUploadVideo);
