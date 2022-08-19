@@ -11,6 +11,7 @@ module.exports = {
     handleAd: BASE_JS + "handleAd.js",
     videoCategory: BASE_JS + "videoCategory.js",
     formatCreatedDate: BASE_JS + "formatCreatedDate.js",
+    getThumbnail: BASE_JS + "getThumbnail.js",
   },
   mode: "development",
   watch: true,
