@@ -2,6 +2,7 @@ import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 
 const formBox = document.querySelector(".form-box");
 
+const inputThumb = document.querySelector("#thumb");
 const inputVideo = document.querySelector("#videoInput");
 
 const onUploadVideo = async (e) => {
@@ -32,13 +33,27 @@ const onUploadVideo = async (e) => {
   const thumbFile = ffmpeg.FS("readFile", files.thumb);
   const thumbBlob = new Blob([thumbFile.buffer], { type: "image/jpg" });
   const thumbUrl = URL.createObjectURL(thumbBlob);
-  console.log(thumbUrl);
+  const file = new File([thumbFile], "thumbnail", {
+    type: "image/jpeg",
+  });
+  console.log(file);
 
   const thumbPreview = document.createElement("img");
 
   thumbPreview.setAttribute("src", thumbUrl);
 
   formBox.append(thumbPreview);
+
+  // Create a new File object
+  const myFile = new File(["thumb"], "thumbnail.jpg", {
+    type: "text/plain",
+    lastModified: new Date(),
+  });
+
+  // Create a DataTransfer to get a FileList
+  const dataTransfer = new DataTransfer();
+  dataTransfer.items.add(myFile);
+  inputThumb.files = dataTransfer.files;
 };
 
 inputVideo.addEventListener("change", onUploadVideo);
