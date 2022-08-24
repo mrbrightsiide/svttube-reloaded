@@ -1,6 +1,6 @@
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 
-const formBox = document.querySelector(".form-box");
+const formBox = document.querySelector(".thumbnailpreview");
 const inputThumb = document.querySelector("#thumb");
 const inputVideo = document.querySelector("#videoInput");
 
@@ -37,6 +37,8 @@ const onUploadVideo = async (e) => {
 
   thumbPreview.setAttribute("src", thumbUrl);
   thumbPreview.setAttribute("id", "thumb-preview");
+  thumbPreview.setAttribute("style", "object-fit:cover");
+  formBox.classList.add("selected");
 
   formBox.append(thumbPreview);
 

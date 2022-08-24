@@ -19,8 +19,10 @@ block content
               required,
               name="video"
             )
-            label(for="video") Thumbnail File
-            input#thumb(type="file", accept="image/*", name="thumb")
+            label(for="video") Select Thumbnail
+            .thumbnails-wrap
+              .thumbnailpreview
+              input#thumb(type="file", accept="image/*", name="thumb")
             input(
               name="title",
               placeholder="Title",
