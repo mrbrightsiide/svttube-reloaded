@@ -1,5 +1,6 @@
 .thumbnails-wrap {
   display: flex;
+  align-items: center;
   justify-content: space-around;
   width: 100%;
   max-width: 408px;
@@ -14,7 +15,7 @@
     margin: 5px;
     margin-top: 10px;
     overflow: hidden;
-    background-color: #f9f9f9;
+    background-color: #f2f2f2;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -24,6 +25,22 @@
 
   #thumb {
     display: none;
+  }
+}
+
+.form-wrap .form-box form button.upload-thumb-btn {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  height: 100%;
+  margin: 0 0 0 5px;
+  color: #606060;
+  background: none;
+  i {
+    margin-bottom: 7px;
+    font-size: 1.7rem;
   }
 }
 

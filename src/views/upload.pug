@@ -12,7 +12,7 @@ block content
           if errorMessage
             span= errorMessage
           form(method="POST", enctype="multipart/form-data")
-            label(for="video")
+            label(for="video") Upload Video
             input#videoInput(
               type="file",
               accept="video/*",
@@ -23,7 +23,9 @@ block content
             .thumbnails-wrap
               .thumbnail-preview
               .thumbnail-input-preview
-              button.upload-thumb-btn Upload Thumbnail
+              button.upload-thumb-btn
+                i.fa-solid.fa-file-arrow-up 
+                p Upload Thumbnail
               input#thumb(type="file", accept="image/*", name="thumb")
             input(
               name="title",
