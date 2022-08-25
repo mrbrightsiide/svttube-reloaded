@@ -46,7 +46,9 @@ const onUploadVideo = async (e) => {
     `background-image:url(${thumbUrl})`
   );
   selected(createdThumbPreview);
-  unSelected(inputThumbPreview);
+  if (!uploadedThumbfile === "") {
+    unSelected(inputThumbPreview);
+  }
   const myFile = new File([thumbFile], "thumbnail.jpg", {
     type: "image/jpeg",
   });
@@ -73,8 +75,15 @@ const onUploadThumbnail = (e) => {
 };
 
 const onClickCreatedThumb = (e) => {
+  if (createdThumbfileUrl === "" && !isLoading) {
+    return alert(
+      "Please upload video first, It will automatically create thumbnail"
+    );
+  }
   selected(createdThumbPreview);
-  unSelected(inputThumbPreview);
+  if (!uploadedThumbfile === "") {
+    unSelected(inputThumbPreview);
+  }
   const myFile = new File([createdThumbfileUrl], "thumbnail.jpg", {
     type: "image/jpeg",
   });
@@ -84,6 +93,9 @@ const onClickCreatedThumb = (e) => {
 };
 
 const onClickInputThumb = (e) => {
+  if (uploadedThumbfile === "") {
+    return alert("Please upload your thumbnail");
+  }
   inputThumb.files = uploadedThumbfile;
   selected(inputThumbPreview);
   unSelected(createdThumbPreview);
