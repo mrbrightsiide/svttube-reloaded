@@ -20,6 +20,22 @@ const onUploadVideo = async (e) => {
   };
 
   const ffmpeg = createFFmpeg({ log: true });
+
+  uploadedThumbfile = "";
+  if (inputThumbPreview.classList.contains("selected")) {
+    inputThumbPreview.classList.remove("selected");
+  }
+  if (inputThumbPreview.classList.contains("unselected")) {
+    inputThumbPreview.classList.remove("unselected");
+  }
+  inputThumbPreview.setAttribute("style", `background-image:url("")`);
+  if (createdThumbPreview.classList.contains("selected")) {
+    createdThumbPreview.classList.remove("selected");
+  }
+  if (createdThumbPreview.classList.contains("unselected")) {
+    createdThumbPreview.classList.remove("unselected");
+  }
+  createdThumbPreview.setAttribute("style", `background-image:url("")`);
   isLoading = true;
   createdThumbPreview.classList.add("is-loading");
   await ffmpeg.load();
@@ -51,7 +67,9 @@ const onUploadVideo = async (e) => {
     `background-image:url(${thumbUrl})`
   );
   selected(createdThumbPreview);
-  unSelected(inputThumbPreview);
+  if (uploadedThumbfile) {
+    unSelected(inputThumbPreview);
+  }
   const myFile = new File([thumbFile], "thumbnail.jpg", {
     type: "image/jpeg",
   });
