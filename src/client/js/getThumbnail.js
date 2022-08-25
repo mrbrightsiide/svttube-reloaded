@@ -7,6 +7,7 @@ const createdThumbPreview = document.querySelector(".thumbnail-preview");
 const inputThumbPreview = document.querySelector(".thumbnail-input-preview");
 let createdThumbfileUrl = "";
 let uploadedThumbfile = "";
+let isLoading = false;
 
 const onUploadVideo = async (e) => {
   e.preventDefault();
@@ -19,6 +20,8 @@ const onUploadVideo = async (e) => {
   };
 
   const ffmpeg = createFFmpeg({ log: true });
+  isLoading = true;
+  createdThumbPreview.classList.add("is-loading");
   await ffmpeg.load();
 
   ffmpeg.FS("writeFile", files.input, await fetchFile(videoFile));
@@ -41,14 +44,14 @@ const onUploadVideo = async (e) => {
   if (createdThumbPreview.childNodes[0]) {
     createdThumbPreview.childNodes[0].remove();
   }
+  isLoading = false;
+  createdThumbPreview.classList.remove("is-loading");
   createdThumbPreview.setAttribute(
     "style",
     `background-image:url(${thumbUrl})`
   );
   selected(createdThumbPreview);
-  if (!uploadedThumbfile === "") {
-    unSelected(inputThumbPreview);
-  }
+  unSelected(inputThumbPreview);
   const myFile = new File([thumbFile], "thumbnail.jpg", {
     type: "image/jpeg",
   });
@@ -80,10 +83,11 @@ const onClickCreatedThumb = (e) => {
       "Please upload video first, It will automatically create thumbnail"
     );
   }
-  selected(createdThumbPreview);
-  if (!uploadedThumbfile === "") {
-    unSelected(inputThumbPreview);
+  if (isLoading) {
+    return e.preventDefault();
   }
+  selected(createdThumbPreview);
+  unSelected(inputThumbPreview);
   const myFile = new File([createdThumbfileUrl], "thumbnail.jpg", {
     type: "image/jpeg",
   });
