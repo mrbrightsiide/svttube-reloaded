@@ -1,10 +1,10 @@
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 
-const formBox = document.querySelector(".thumbnail-preview");
+const inputVideo = document.querySelector("#videoInput");
 const inputThumb = document.querySelector("#thumb");
 const thumbUploadBtn = document.querySelector(".upload-thumb-btn");
+const createdThumbPreview = document.querySelector(".thumbnail-preview");
 const inputThumbPreview = document.querySelector(".thumbnail-input-preview");
-const inputVideo = document.querySelector("#videoInput");
 let createdThumbfileUrl = "";
 let uploadedThumbfile = "";
 
@@ -38,12 +38,15 @@ const onUploadVideo = async (e) => {
   const thumbBlob = new Blob([thumbFile.buffer], { type: "image/jpg" });
   const thumbUrl = URL.createObjectURL(thumbBlob);
 
-  if (formBox.childNodes[0]) {
-    formBox.childNodes[0].remove();
+  if (createdThumbPreview.childNodes[0]) {
+    createdThumbPreview.childNodes[0].remove();
   }
-  formBox.setAttribute("style", `background-image:url(${thumbUrl})`);
-  formBox.classList.add("selected");
-  inputThumbPreview.classList.remove("selected");
+  createdThumbPreview.setAttribute(
+    "style",
+    `background-image:url(${thumbUrl})`
+  );
+  selected(createdThumbPreview);
+  unSelected(inputThumbPreview);
   const myFile = new File([thumbFile], "thumbnail.jpg", {
     type: "image/jpeg",
   });
@@ -63,32 +66,44 @@ const onUploadThumbnail = (e) => {
       "style",
       `background-image:url(${e.target.result})`
     );
-    inputThumbPreview.classList.add("selected");
-    formBox.classList.remove("selected");
+    selected(inputThumbPreview);
+    unSelected(createdThumbPreview);
   };
   reader.readAsDataURL(inputThumb.files[0]);
 };
 
-inputVideo.addEventListener("change", onUploadVideo);
-inputThumb.addEventListener("change", onUploadThumbnail);
+const onClickCreatedThumb = (e) => {
+  selected(createdThumbPreview);
+  unSelected(inputThumbPreview);
+  const myFile = new File([createdThumbfileUrl], "thumbnail.jpg", {
+    type: "image/jpeg",
+  });
+  const dataTransfer = new DataTransfer();
+  dataTransfer.items.add(myFile);
+  inputThumb.files = dataTransfer.files;
+};
+
+const onClickInputThumb = (e) => {
+  inputThumb.files = uploadedThumbfile;
+  selected(inputThumbPreview);
+  unSelected(createdThumbPreview);
+};
+
+const unSelected = (el) => {
+  el.classList.remove("selected");
+  el.classList.add("unselected");
+};
+
+const selected = (el) => {
+  el.classList.add("selected");
+  el.classList.remove("unselected");
+};
+
 thumbUploadBtn.addEventListener("click", (e) => {
   e.preventDefault();
   inputThumb.click();
 });
-formBox.addEventListener("click", (e) => {
-  formBox.classList.add("selected");
-  inputThumbPreview.classList.remove("selected");
-  const myFile = new File([createdThumbfileUrl], "thumbnail.jpg", {
-    type: "image/jpeg",
-  });
-  console.log(createdThumbfileUrl);
-  const dataTransfer = new DataTransfer();
-  dataTransfer.items.add(myFile);
-  inputThumb.files = dataTransfer.files;
-});
-
-inputThumbPreview.addEventListener("click", (e) => {
-  inputThumb.files = uploadedThumbfile;
-  inputThumbPreview.classList.add("selected");
-  formBox.classList.remove("selected");
-});
+inputVideo.addEventListener("change", onUploadVideo);
+inputThumb.addEventListener("change", onUploadThumbnail);
+createdThumbPreview.addEventListener("click", onClickCreatedThumb);
+inputThumbPreview.addEventListener("click", onClickInputThumb);

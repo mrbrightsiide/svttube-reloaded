@@ -30,3 +30,7 @@
 .selected {
   border: 5px solid #1a73e8 !important;
 }
+
+.unselected {
+  filter: opacity(50%);
+}
