@@ -1,6 +1,24 @@
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
-const actionBtn = document.getElementById("actionBtn");
-const video = document.getElementById("preview");
+let actionBtn = "";
+const modalWrap = document.createElement("div");
+const modal = document.createElement("div");
+const body = document.querySelector("body");
+const recordBtn = document.querySelector("#record-btn");
+let video = document.createElement("video");
+const videoWrap = document.createElement("div");
+const btn = document.createElement("button");
+
+modalWrap.classList.add("modal-wrap");
+modal.classList.add("modal-cont");
+video.setAttribute("id", "preview");
+videoWrap.classList.add("video-wrap");
+btn.setAttribute("id", "actionBtn");
+btn.innerText = "Start Recording";
+videoWrap.append(video);
+modal.append(videoWrap);
+modal.append(btn);
+modalWrap.append(modal);
+document.body.prepend(modalWrap);
 
 let stream;
 let recorder;
@@ -9,7 +27,6 @@ let videoFile;
 const files = {
   input: "recording.webm",
   output: "output.mp4",
-  thumb: "thumbnail.jpg",
 };
 
 const downloadFile = (fileUrl, fileName) => {
@@ -34,34 +51,18 @@ const handleDownload = async () => {
 
   await ffmpeg.run("-i", files.input, "-r", "60", files.output);
 
-  await ffmpeg.run(
-    "-i",
-    files.input,
-    "-ss",
-    "00:00:01",
-    "-frames:v",
-    "1",
-    files.thumb
-  );
-
   const mp4File = ffmpeg.FS("readFile", files.output);
-  const thumbFile = ffmpeg.FS("readFile", files.thumb);
 
   const mp4Blob = new Blob([mp4File.buffer], { type: "video/mp4" });
-  const thumbBlob = new Blob([thumbFile.buffer], { type: "image/jpg" });
 
   const mp4Url = URL.createObjectURL(mp4Blob);
-  const thumbUrl = URL.createObjectURL(thumbBlob);
 
   downloadFile(mp4Url, "MyRecording.mp4");
-  downloadFile(thumbUrl, "MyThumbnail.jpg");
 
   ffmpeg.FS("unlink", files.input);
   ffmpeg.FS("unlink", files.output);
-  ffmpeg.FS("unlink", files.thumb);
 
   URL.revokeObjectURL(mp4Url);
-  URL.revokeObjectURL(thumbUrl);
   URL.revokeObjectURL(videoFile);
 
   actionBtn.disabled = false;
@@ -69,17 +70,11 @@ const handleDownload = async () => {
   actionBtn.addEventListener("click", handleStart);
 };
 
-const handleStop = () => {
-  actionBtn.innerText = "Download Recording";
-  actionBtn.removeEventListener("click", handleStop);
-  actionBtn.addEventListener("click", handleDownload);
-  recorder.stop();
-};
-
 const handleStart = () => {
-  actionBtn.innerText = "Stop Recording";
+  video = document.getElementById("preview");
+  actionBtn.innerText = "Recording";
+  actionBtn.disabled = true;
   actionBtn.removeEventListener("click", handleStart);
-  actionBtn.addEventListener("click", handleStop);
   recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
   recorder.ondataavailable = (event) => {
     videoFile = URL.createObjectURL(event.data);
@@ -87,19 +82,49 @@ const handleStart = () => {
     video.src = videoFile;
     video.loop = true;
     video.play();
+    actionBtn.innerText = "Download";
+    actionBtn.disabled = false;
+    actionBtn.addEventListener("click", handleDownload);
   };
   recorder.start();
+  setTimeout(() => {
+    recorder.stop();
+  }, 1000);
 };
 
 const init = async () => {
+  video = document.getElementById("preview");
+  if (!video.srcObject) {
+    videoWrap.classList.add("is-loading");
+  }
   stream = await navigator.mediaDevices.getUserMedia({
     audio: false,
-    video: true,
+    video: {
+      width: 1024,
+      height: 576,
+    },
   });
+  videoWrap.classList.remove("is-loading");
   video.srcObject = stream;
   video.play();
 };
 
-init();
+recordBtn.addEventListener("click", (e) => {
+  modalWrap.classList.toggle("show");
+  actionBtn = document.getElementById("actionBtn");
+  if (!video.getAttributeNames().includes("src")) init();
+  if (modalWrap.classList.contains("show")) {
+    body.style.overflow = "hidden";
+  }
+  actionBtn.addEventListener("click", handleStart);
+});
 
-actionBtn.addEventListener("click", handleStart);
+modalWrap.addEventListener("click", (event) => {
+  if (event.target === modalWrap) {
+    modalWrap.classList.toggle("show");
+
+    if (!modalWrap.classList.contains("show")) {
+      body.style.overflow = "auto";
+    }
+  }
+});

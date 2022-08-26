@@ -5,26 +5,30 @@ block content
     .form-page-wrap
       .form-wrap
         .form-box
-          div
-            video#preview
-            button#actionBtn Start Recording
           h1#page-title= pageTitle
           if errorMessage
             span= errorMessage
           form(method="POST", enctype="multipart/form-data")
-            label(for="video") Upload Video
-            input#videoInput(
-              type="file",
-              accept="video/*",
-              required,
-              name="video"
-            )
-            label(for="video") Select Thumbnail
+            .upload-record-wrap
+              .upload-video-wrap
+                i.fa-solid.fa-file-arrow-up
+                label(for="video") Upload Video
+                input#videoInput(
+                  type="file",
+                  accept="video/*",
+                  required,
+                  name="video"
+                )
+              button#record-btn.button-form
+                i.fa-solid.fa-video
+                p Record
+
+            label#thumbLabel(for="thumb") Select Thumbnail
             .thumbnails-wrap
               .thumbnail-preview
               .thumbnail-input-preview
-              button.upload-thumb-btn
-                i.fa-solid.fa-file-arrow-up 
+              button.upload-thumb-btn.button-form
+                i.fa-solid.fa-images 
                 p Upload Thumbnail
               input#thumb(type="file", accept="image/*", name="thumb")
             input(
@@ -47,7 +51,7 @@ block content
               required,
               type="text"
             )
-            button#upload-btn(type="submit", value="upload video") Upload Video
+            button#upload-btn(type="submit", value="upload video") Upload
 block scripts
   script(src="/static/js/recorder.js")
   script(src="/static/js/getThumbnail.js")

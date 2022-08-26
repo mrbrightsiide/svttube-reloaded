@@ -8,6 +8,11 @@ const inputThumbPreview = document.querySelector(".thumbnail-input-preview");
 let createdThumbfileUrl = "";
 let uploadedThumbfile = "";
 let isLoading = false;
+const uploadVideoBtn = document.querySelector(".upload-video-wrap");
+
+uploadVideoBtn.addEventListener("click", () => {
+  inputVideo.click();
+});
 
 const onUploadVideo = async (e) => {
   e.preventDefault();
@@ -87,7 +92,7 @@ const onUploadThumbnail = (e) => {
     }
     inputThumbPreview.setAttribute(
       "style",
-      `background-image:url(${e.target.result})`
+      `background-image:url(${e.thumbnailtarget.result})`
     );
     selected(inputThumbPreview);
     unSelected(createdThumbPreview);
@@ -98,7 +103,7 @@ const onUploadThumbnail = (e) => {
 const onClickCreatedThumb = (e) => {
   if (createdThumbfileUrl === "" && !isLoading) {
     return alert(
-      "Please upload video first, It will automatically create thumbnail"
+      "Please upload video first, Thumbnail would be Automatically created"
     );
   }
   if (isLoading) {
@@ -116,7 +121,7 @@ const onClickCreatedThumb = (e) => {
 
 const onClickInputThumb = (e) => {
   if (uploadedThumbfile === "") {
-    return alert("Please upload your thumbnail");
+    return inputThumb.click();
   }
   inputThumb.files = uploadedThumbfile;
   selected(inputThumbPreview);
