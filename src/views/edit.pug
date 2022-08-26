@@ -1,12 +1,31 @@
 extends layouts/base.pug
 
 block content
-     .page-manager
-         .form-page-wrap
-            .form-wrap
-                .form-box
-                    form(method="POST")
-                        input(name="title", placeholder = "video title", value=video.title + " video", required)
-                        input(name="description" placeholder="Description", required , type="text" minlength="20" value=video.description)
-                        input(name="hashtags" placeholder="Hashtags, separated by comma.", required , type="text" value=video.hashtags.join())
-                        input(value="Save", type="submit")
+  .page-manager
+    .form-page-wrap
+      .form-wrap
+        .form-box
+          form(method="POST")
+            input(
+              name="title",
+              placeholder="video title",
+              value=video.title + " video",
+              required,
+              maxlength="100"
+            )
+            input(
+              name="description",
+              placeholder="Description",
+              required,
+              type="text",
+              minlength="10",
+              value=video.description
+            )
+            input(
+              name="hashtags",
+              placeholder="Hashtags, separated by comma.",
+              required,
+              type="text",
+              value=video.hashtags.join()
+            )
+            input(value="Save", type="submit")
