@@ -1,21 +1,51 @@
 extends layouts/base
 
 block content
-    .page-manager
-         .form-page-wrap
-            .form-wrap
-                .form-box
-                    h1(id="page-title")=pageTitle
-                    form(method="POST", enctype="multipart/form-data")
-                        .edit-profile-img
-                            img(src="/"+loggedInUser.avatarUrl)
-                        input(type="file", id="avatar", name="avatar", accept="image/*")
-                        input(placeholder="name" name="name", type="text",required, value=loggedInUser.name)
-                        input(placeholder="email" name="email", type="email",required, value=loggedInUser.email)
-                        input(placeholder="username" name="username", type="text",required,unique, value=loggedInUser.username)
-                        input(placeholder="location" name="location", type="text",required, value=loggedInUser.location)
-                        if !loggedInUser.socialOnly
-                            hr
-                            .form-btn
-                                a(href="change-password") Change Password &rarr;
-                        button(type="submit", value="Update Profile", id="edit-profile-btn") Update Profile
+  .page-manager
+    .form-page-wrap
+      .form-wrap
+        .form-box
+          h1#page-title= pageTitle
+          form(method="POST", enctype="multipart/form-data")
+            #preview-wrap.profile-img-wrap
+              .edit-profile-img
+                img#preview-img(src="/" + loggedInUser.avatarUrl)
+              i.fa-regular.fa-image
+            input#avatar(type="file", name="avatar", accept="image/*")
+            input(
+              placeholder="name",
+              name="name",
+              type="text",
+              required,
+              value=loggedInUser.name
+            )
+            input(
+              placeholder="email",
+              name="email",
+              type="email",
+              required,
+              value=loggedInUser.email
+            )
+            input(
+              placeholder="username",
+              name="username",
+              type="text",
+              required,
+              unique,
+              value=loggedInUser.username
+            )
+            input(
+              placeholder="location",
+              name="location",
+              type="text",
+              required,
+              value=loggedInUser.location
+            )
+            if !loggedInUser.socialOnly
+              hr
+              .form-btn
+                a(href="change-password") Change Password &rarr;
+            button#edit-profile-btn(type="submit", value="Update Profile") Update Profile
+
+block scripts
+  script(src="/static/js/imagePreview.js")

@@ -12,6 +12,7 @@ module.exports = {
     videoCategory: BASE_JS + "videoCategory.js",
     formatCreatedDate: BASE_JS + "formatCreatedDate.js",
     getThumbnail: BASE_JS + "getThumbnail.js",
+    imagePreview: BASE_JS + "imagePreview.js",
   },
   mode: "development",
   watch: true,
