@@ -92,7 +92,7 @@ const onUploadThumbnail = (e) => {
     }
     inputThumbPreview.setAttribute(
       "style",
-      `background-image:url(${e.thumbnailtarget.result})`
+      `background-image:url(${e.target.result})`
     );
     selected(inputThumbPreview);
     unSelected(createdThumbPreview);
