@@ -1,11 +1,12 @@
 const videoContainer = document.getElementById("videoContainer");
 const form = document.getElementById("commentForm");
-const deleteBtns = document.querySelectorAll(".delete_comment_btn");
+const deleteBtns = document.getElementsByClassName("delete_comment_btn");
 
 const addComment = (text, id) => {
   const videoComments = document.querySelector(".video__comments ul");
   const newComment = document.createElement("li");
   newComment.dataset.id = id;
+  newComment.setAttribute("id", "comment");
   newComment.className = "video__comment";
   const icon = document.createElement("i");
   icon.className = "fas fa-comment";
@@ -13,6 +14,8 @@ const addComment = (text, id) => {
   span.innerText = ` ${text}`;
   const button = document.createElement("button");
   button.innerText = "❌";
+  button.classList.add("delete_comment_btn");
+  button.addEventListener("click", handleDelete);
   newComment.appendChild(icon);
   newComment.appendChild(span);
   newComment.appendChild(button);
@@ -23,11 +26,11 @@ const handleSubmit = async (event) => {
   event.preventDefault();
   const textarea = form.querySelector("textarea");
   const text = textarea.value;
-  const videoID = videoContainer.dataset.id;
+  const videoId = videoContainer.dataset.id;
   if (text == "") {
     return;
   }
-  const response = await fetch(`/api/videos/${videoID}/comment`, {
+  const response = await fetch(`/api/videos/${videoId}/comment`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -45,22 +48,25 @@ if (form) {
   form.addEventListener("submit", handleSubmit);
 }
 
-export const handleDelete = async (event) => {
+const handleDelete = async (event) => {
   event.preventDefault();
-  const commentList = document.getElementById("comment");
-  const clickedButton = event.target;
-  const comment = clickedButton.parentElement;
-  const id = commentList.dataset.id;
+  const videoid = videoContainer.dataset.id;
+  const clickedComment = event.target.parentElement;
+  const id = clickedComment.dataset.id;
   const respons = await fetch(`/api/comment/${id}/delete`, {
     method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ videoid }),
   });
   if (respons.status === 403) {
     alert("Not authorized!");
   } else if (respons.status === 201) {
-    comment.remove();
+    clickedComment.remove();
   }
 };
 
-Array.from(deleteBtns).forEach((button) =>
-  button.addEventListener("click", handleDelete)
+Array.from(deleteBtns).forEach((btn) =>
+  btn.addEventListener("click", handleDelete)
 );

@@ -151,9 +151,15 @@ export const createComment = async (req, res) => {
 };
 
 export const deleteComment = async (req, res) => {
-  const { id } = req.params;
-  const comment = await Comment.findByIdAndDelete(id);
-  comment.save();
+  const {
+    body: { videoid },
+    params: { id },
+  } = req;
+  const video = await Video.findById(videoid);
+  await Comment.findByIdAndDelete(id);
+  const commentIndex = video.comments.indexOf(id);
+  video.comments.splice(commentIndex, 1);
+  video.save();
   return res.sendStatus(201);
 };
 

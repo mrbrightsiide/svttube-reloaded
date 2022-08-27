@@ -2,7 +2,7 @@ extends layouts/base
 
 block content
   #videoContainer(data-id=video._id)
-    video(src='/' + video.fileUrl)
+    video(src="/" + video.fileUrl)
     #videoControls.videoControls
       .videoControls__play
         span#play.videoControls__playBtn
@@ -25,28 +25,28 @@ block content
         span#fullScreen
           i.fas.fa-expand
   .video__data
-        p.vidieo__title=video.title
-        small.video__owner Uploaded by
-          a(href=`/users/${video.owner._id}`)=video.owner.name
-        small.video__createdAt=new Date(video.createdAt).toLocaleDateString("ko-kr", {weekday:'long', year: 'numeric', month:'long', day:'numeric'})
-        if String(video.owner._id) === String(loggedInUser._id)
-          a(href=`${video.id}/edit`) Edit Video &rarr;
-          br
-          a(href=`${video.id}/delete`) Delete Video &rarr;
+    p.vidieo__title= video.title
+    small.video__owner Uploaded by
+      a(href=`/users/${video.owner._id}`)= video.owner.name
+    small.video__createdAt= new Date(video.createdAt).toLocaleDateString("ko-kr", { weekday: "long", year: "numeric", month: "long", day: "numeric" })
+    if String(video.owner._id) === String(loggedInUser._id)
+      a(href=`${video.id}/edit`) Edit Video &rarr;
+      br
+      a(href=`${video.id}/delete`) Delete Video &rarr;
   if loggedIn
-        div.video__add-comments
-            form.video__comment-form#commentForm
-                textarea(cols="30", rows="10", placeholder="Write a nice commment...")
-                button Add Comment
-  div.video__comments
-        ul
-            each val in video.comments.reverse()
-                li.video__comment#comment(data-id=val._id)
-                    i.fas.fa-comment
-                    span #{val.text}
-                    if loggedIn && String(val.owner) === String(loggedInUser._id)
-                      button.delete_comment_btn ❌
+    .video__add-comments
+      form#commentForm.video__comment-form
+        textarea(cols="30", rows="10", placeholder="Write a nice commment...")
+        button Add Comment
+  .video__comments
+    ul#comment-wrap
+      each val in video.comments.reverse()
+        li#comment.video__comment(data-id=val._id)
+          i.fas.fa-comment
+          span #{ val.text }
+          if loggedIn && String(val.owner) === String(loggedInUser._id)
+            button.delete_comment_btn ❌
 block scripts
   script(src="/static/js/videoPlayer.js")
-  if loggedIn 
+  if loggedIn
     script(src="/static/js/commentSection.js") 
