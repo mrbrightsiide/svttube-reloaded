@@ -47,7 +47,7 @@ export class VideoCard {
               </h3>
               <div class="video-meta-block">
                 <div>
-                  <p>${item.owner.username}</p>
+                  <p>${item.owner.name}</p>
                 </div>
                 <div>
                   <p>${item.createdAt}</p>
@@ -117,7 +117,7 @@ export class InitPage {
               </h3>
               <div class="video-meta-block">
                 <div>
-                  <p>${item.owner.username}</p>
+                  <p>${item.owner.name}</p>
                 </div>
                 <div>
                   <p>${item.createdAt}</p>

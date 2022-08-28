@@ -2,11 +2,11 @@ import User from "../models/User.js";
 import Video from "../models/Video.js";
 import fetch from "node-fetch";
 import bcryptjs from "bcryptjs";
-// import { token } from "morgan";
 
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
+
 export const postJoin = async (req, res) => {
-  const { name, email, username, password, password2, location } = req.body;
+  const { name, email, userid, password, password2, location } = req.body;
   const pageTitle = "join";
   if (password !== password2) {
     return res.status(400).render("join", {
@@ -14,18 +14,18 @@ export const postJoin = async (req, res) => {
       errorMessage: "Pasword confirmation does not match :(",
     });
   }
-  const exists = await User.exists({ $or: [{ email }, { username }] });
+  const exists = await User.exists({ $or: [{ email }, { username: userid }] });
   if (exists) {
     return res.status(400).render("join", {
       pageTitle,
-      errorMessage: "This email/username is already taken :(",
+      errorMessage: "This email/id is already taken :(",
     });
   }
   try {
     await User.create({
       name,
       email,
-      username,
+      username: userid,
       password,
       location,
     });
@@ -42,13 +42,13 @@ export const getLogin = (req, res) =>
   res.render("login", { pageTitle: "Login" });
 
 export const postLogin = async (req, res) => {
-  const { username, password } = req.body;
+  const { userid, password } = req.body;
   const pageTitle = "Login";
-  const user = await User.findOne({ username, socialOnly: false });
+  const user = await User.findOne({ username: userid, socialOnly: false });
   if (!user) {
     return res.status(400).render("login", {
       pageTitle,
-      errorMessage: "An account with this username does not exist",
+      errorMessage: "An account with this id does not exist",
     });
   }
   const ok = await bcryptjs.compare(password, user.password);
@@ -144,17 +144,18 @@ export const logout = (req, res) => {
 export const getEdit = (req, res) => {
   return res.render("edit-profile", { pageTitle: "Edit Profile" });
 };
+
 export const postEdit = async (req, res) => {
   const {
     session: {
       user: { _id, avatarUrl },
     },
-    body: { email, username, name, location },
+    body: { email, userid, name, location },
     file,
   } = req;
   await User.findByIdAndUpdate(_id, {
     email,
-    username,
+    username: userid,
     name,
     location,
   });
@@ -163,7 +164,7 @@ export const postEdit = async (req, res) => {
     {
       avatarUrl: file ? file.path : avatarUrl,
       email,
-      username,
+      username: userid,
       name,
       location,
     },
