@@ -22,14 +22,20 @@ header
             .loggedinUser-icons-wrap
               li
                 a(href=`/users/${loggedInUser._id}`, title="My videos")
-                  #myvideos-icon.loggedin-user-icons
+                  img#myvideos-ico.loggedin-user-icons(
+                    src="/static/img/myvideos.svg"
+                  )
               li 
                 a(href="/videos/upload", title="Upload video")
-                  #upload-video-icon.loggedin-user-icons
+                  img#upload-ico.loggedin-user-icons(
+                    src="/static/img/uploadvideos.svg"
+                  )
 
               li 
                 a(href="/users/logout", title="Log out")
-                  #logout-icon.loggedin-user-icons
+                  img#logout-ico.loggedin-user-icons(
+                    src="/static/img/logout.svg"
+                  )
             li
               a(href="/users/edit", title="Edit profile")
                 .user-profilepic

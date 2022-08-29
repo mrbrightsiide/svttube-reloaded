@@ -15,6 +15,8 @@
   background: #fff;
   .masthead-start {
     min-width: 250px;
+    display: flex;
+    align-items: center;
     .guide-menu {
       width: 40px;
       height: 40px;
@@ -29,17 +31,23 @@
     }
     .svttube-logo {
       padding: 18px 14px;
-      vertical-align: sub;
+      display: flex;
+      align-items: center;
       .logo-icon {
         color: $svttubered;
         font-size: 25px;
       }
       i:last-child {
-        margin-left: 2px;
+        margin-left: 1px;
         color: $icon-active;
         font-weight: bold;
-        font-size: 23px;
-        letter-spacing: -1.2px;
+        font-size: 21.8px;
+        letter-spacing: -1.3px;
+      }
+      img{
+        width: 100%;
+        max-height: 18.4px;
+        margin-left: 2px;
       }
     }
   }
@@ -92,29 +100,38 @@
     .loggedinUser-icons-wrap {
       display: inline-block;
       margin-right: 20px;
-      a {
+      li a {
         position: relative;
         z-index: 999;
         display: inline-block;
         margin: 6px;
         padding: 6px;
-      }
-      a[title]:hover:after {
-        position: absolute;
-        bottom: -150%;
-        left: -30%;
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-items: center;
-        padding: 5px 10px;
-        color: #fff;
-        font-size: 1.3rem;
-        line-height: 1.2;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 2px;
-        content: attr(title);
+        &[title]:hover:after {
+          position: absolute;
+          bottom: -150%;
+          left: -30%;
+          z-index: 9999;
+          display: flex;
+          align-items: center;
+          justify-items: center;
+          padding: 5px 10px;
+          color: #fff;
+          font-size: 1.3rem;
+          line-height: 1.2;
+          text-align: center;
+          background: rgba(0, 0, 0, 0.5);
+          border-radius: 2px;
+          content: attr(title);
+        }
+        #myvideos-ico{
+          width: 17px;
+        }
+        #upload-ico{
+          width: 20px;
+        }
+        #logout-ico{
+          width: 13px;
+        }
       }
     }
     .loggedin-user-icons {
@@ -122,16 +139,6 @@
       height: 24px;
       background-repeat: no-repeat;
       background-position: center;
-    }
-    #myvideos-icon {
-      background-image: url("http://localhost:4000/static/img/myvideos-icon.png");
-    }
-    #logout-icon {
-      margin-left: -6px;
-      background-image: url("http://localhost:4000/static/img/logout-icon.png");
-    }
-    #upload-video-icon {
-      background-image: url("http://localhost:4000/static/img/uploadvideos-icon.png");
     }
   }
   .user-profilepic {
@@ -168,7 +175,8 @@
 
 .guide-container {
   position: fixed;
-  display: flex;
+  // display: flex;
+  display: none;
   flex-direction: column;
   width: 240px;
   .guide-wrap {
