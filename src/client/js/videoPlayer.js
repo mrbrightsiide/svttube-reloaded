@@ -2,6 +2,7 @@ const video = document.querySelector("video");
 const playBtn = document.getElementById("play");
 const playBtnIcon = playBtn.querySelector("i");
 const muteBtn = document.getElementById("mute");
+const volumeContainer = document.querySelector(".videoControls__volume");
 const muteBtnIcon = muteBtn.querySelector("i");
 const volumeRange = document.getElementById("volume");
 const currenTime = document.getElementById("currenTime");
@@ -16,6 +17,20 @@ let controlsTimeout = null;
 let controlsMovementTimeout = null;
 let volumeValue = 0.5;
 video.volume = volumeValue;
+
+const inputRangeBgFill = (element, value, pointColor, bgColor) => {
+  element.setAttribute(
+    "style",
+    `background:linear-gradient(to right, ${pointColor} 0%, ${pointColor} ${value}%, ${bgColor} ${value}%, ${bgColor} 100%)`
+  );
+};
+
+inputRangeBgFill(
+  volumeRange,
+  volumeValue * 100,
+  "#fff",
+  "rgba(100, 100, 100, 0.8)"
+);
 
 const handlePlayClick = (e) => {
   if (video.paused) {
@@ -47,6 +62,14 @@ const handleMuteClick = (e) => {
     ? "fas fa-volume-mute"
     : "fas fa-volume-up";
   volumeRange.value = video.muted ? 0 : volumeValue;
+  video.muted
+    ? inputRangeBgFill(volumeRange, "0", "#fff", "rgba(100, 100, 100, 0.8)")
+    : inputRangeBgFill(
+        volumeRange,
+        video.volume * 100,
+        "#fff",
+        "rgba(100, 100, 100, 0.8)"
+      );
 };
 
 const handleVolumeChange = (event) => {
@@ -55,10 +78,17 @@ const handleVolumeChange = (event) => {
   } = event;
   if (video.muted) {
     video.muted = false;
-    muteBtn.innerText = "Mute";
   }
+  muteBtnIcon.classList =
+    value === "0" ? "fas fa-volume-mute" : "fas fa-volume-up";
   volumeValue = value;
   video.volume = value;
+  inputRangeBgFill(
+    volumeRange,
+    video.volume * 100,
+    "#fff",
+    "rgba(100, 100, 100, 0.8)"
+  );
 };
 
 const formatTime = (seconds) =>
@@ -66,12 +96,14 @@ const formatTime = (seconds) =>
 
 const handleLoadedMetadata = () => {
   totalTime.innerText = formatTime(Math.floor(video.duration));
-  timeline.max = Math.floor(video.duration);
+  timeline.max = video.duration;
 };
 
 const handleTimeUpdate = () => {
   currenTime.innerText = formatTime(Math.floor(video.currentTime));
-  timeline.value = Math.floor(video.currentTime);
+  timeline.value = video.currentTime;
+  let timeValue = (video.currentTime / video.duration) * 100;
+  inputRangeBgFill(timeline, timeValue, "#ff1300", "#ddd");
 };
 
 const handleTimelineChange = (event) => {
@@ -112,10 +144,17 @@ const handleMouseLeave = () => {
 };
 
 const handleEended = () => {
-  const { id } = videoContainer.dataset;
-  fetch(`/api/videos/${id}/view`, { method: "POST" });
+  // const { id } = videoContainer.dataset;
+  // fetch(`/api/videos/${id}/view`, { method: "POST" });
+  playBtnIcon.classList = "fa-solid fa-rotate-right";
 };
 
+volumeContainer.addEventListener("mousemove", (e) => {
+  volumeRange.classList.add("showing");
+});
+volumeContainer.addEventListener("mouseleave", (e) => {
+  volumeRange.classList.remove("showing");
+});
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMuteClick);
 volumeRange.addEventListener("input", handleVolumeChange);
