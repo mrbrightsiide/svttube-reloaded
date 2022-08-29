@@ -18,6 +18,9 @@ let controlsMovementTimeout = null;
 let volumeValue = 0.5;
 video.volume = volumeValue;
 
+video.play();
+playBtnIcon.classList = "fas fa-pause";
+
 const inputRangeBgFill = (element, value, pointColor, bgColor) => {
   element.setAttribute(
     "style",
