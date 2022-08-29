@@ -2,14 +2,14 @@ header
   .masthead
     .masthead-container
       .masthead-start
-        button.guide-menu#guide_menu_btn
+        button#guide_menu_btn.guide-menu
           svg(viewBox="0 0 100 80", width="20", height="20")
             rect(width="100", height="4") 
             rect(y="30", width="100", height="4") 
             rect(y="60", width="100", height="4")
         a.svttube-logo(href="/")
           i.fab.fa-youtube.logo-icon
-          i SvtTube
+          img(src="/static/img/logo.svg", alt="")
       .searchbox
         .searchbox-form
           form(method="GET", action="/search")
@@ -33,7 +33,7 @@ header
             li
               a(href="/users/edit", title="Edit profile")
                 .user-profilepic
-                    img(src='/' + loggedInUser.avatarUrl,crossorigin)
+                  img(src="/" + loggedInUser.avatarUrl, crossorigin)
           else
             li
               button.loginbtn.svt-icon
