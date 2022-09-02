@@ -1,3 +1,5 @@
+import formatCreatedDate from "./formatCreatedDate";
+
 const videoContainer = document.getElementById("videoContainer");
 const form = document.getElementById("commentForm");
 const deleteBtns = document.getElementsByClassName("delete_comment_btn");
@@ -12,12 +14,15 @@ const addComment = (text, id) => {
   icon.className = "fas fa-comment";
   const span = document.createElement("span");
   span.innerText = ` ${text}`;
+  const creratedDate = document.createElement("span");
+  creratedDate.innerText = `${formatCreatedDate(Date.now())}`;
   const button = document.createElement("button");
   button.innerText = "❌";
   button.classList.add("delete_comment_btn");
   button.addEventListener("click", handleDelete);
   newComment.appendChild(icon);
   newComment.appendChild(span);
+  newComment.appendChild(creratedDate);
   newComment.appendChild(button);
   videoComments.prepend(newComment);
 };
