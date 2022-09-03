@@ -2,9 +2,9 @@
   position: relative;
   display: flex;
   width: 100%;
-  min-height: 480px;
-  max-height: 56.25vw;
-  max-height: calc(100vh - 169px);
+  /* min-height: 480px;*/
+  max-height: 72vh;
+  /* max-height: calc(100vh - 169px);*/
   background: #000;
   video {
     bottom: 0;

@@ -1,4 +1,5 @@
 extends layouts/base
+include mixins/video
 
 block content
   #watch-page-wrap
@@ -35,44 +36,58 @@ block content
               #fullScreen
                 i.fas.fa-expand
       .video__data
-        p.vidieo__title= video.title
-        small.video__owner Uploaded by
-          a(href=`/users/${video.owner._id}`)= video.owner.name
-        small.video__createdAt= new Date(video.createdAt).toLocaleDateString("ko-kr", { weekday: "long", year: "numeric", month: "long", day: "numeric" })
+        small.hashtags= String(video.hashtags).split(",").join(" ")
+        h1.video__title= video.title
+        //- small.video__owner Uploaded by
+          //- a(href=`/users/${video.owner._id}`)= video.owner.name
+        .video-info
+          small #{ video.meta.views } views
+          small.video__createdAt= new Date(video.createdAt).toLocaleDateString("ko-kr", { weekday: "long", year: "numeric", month: "long", day: "numeric" })
+          p= video.description
+        .owner-info-wrap
+          .owner-profile
+            div
+              img(src=`/${video.owner.avatarUrl}`)
+            div
+              h3= video.owner.name
+              p 0 subscribers
+          button SUBSCRIBE
         if String(video.owner._id) === String(loggedInUser._id)
           a(href=`${video.id}/edit`) Edit Video &rarr;
           br
           a(href=`${video.id}/delete`) Delete Video &rarr;
+    .related-container
+      each vid in relatedVideos
+        +video(vid)
+    .comment-container
+      span #{ video.comments.length } Comments
       if loggedIn
         .video__add-comments
           form#commentForm.video__comment-form
-            textarea(
-              cols="30",
-              rows="10",
-              placeholder="Write a nice commment..."
-            )
-            button Add Comment
-    .related-container
-      div
-        h2 title
-        p 내용
-      div
-        h2 title
-        p 내용
-      div
-        h2 title
-        p 내용
-    .comment-container
+            .loggedin-user-profile
+              img(src=`/${loggedInUser.avatarUrl}`, crossorigin)
+            div
+              .comment-textarea-wrap
+                textarea(cols="30", rows="10", placeholder="Add a commment")
+              button(type="submit", value="add comment") Comment
       .video__comments
         ul#comment-wrap
-          each val in video.comments.reverse()
-            li#comment.video__comment(data-id=val._id)
-              i.fas.fa-comment
-              span #{ val.text }
-              if loggedIn && String(val.owner) === String(loggedInUser._id)
+          each comment in video.comments.reverse()
+            li#comment.video__comment(data-id=comment._id)
+              .comment-content
+                a(href=`/users/${comment.owner._id}`) 
+                  .comment-avatar
+                    img(src=`/${comment.owner.avatarUrl}`)
+                .comment-text
+                  div
+                    span= comment.owner.username
+                    span= formatCreatedDate(comment.createAt)
+                  span.comment-txt= comment.text
+              if loggedIn && String(comment.owner._id) === String(loggedInUser._id)
                 button.delete_comment_btn ❌
 
 block scripts
   script(src="/static/js/videoPlayer.js")
+  script(src="/static/js/formatCreatedDate.js")
   if loggedIn
     script(src="/static/js/commentSection.js") 

@@ -1,113 +1,111 @@
-// Config
+/*Config*/
 @import "./config/_variables.scss";
 @import "./config/reset.scss";
 
-// Components
+/*Components*/
 @import "./components/form.scss";
 @import "./components/video-player.scss";
 
-// Screens
+/* Screens */
 @import "./screens/header.scss";
 @import "./screens/home.scss";
 @import "./screens/edit-profile.scss";
 @import "./screens/watch.scss";
 @import "./screens/upload.scss";
 
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
-//Fonts
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
-
-html{
-    font-size: 62.5%;
-    line-height: 1.285;
-    font-family:Roboto, Arial, sans-serif;
-    color:#030303;
+html {
+  color: #030303;
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.285;
 }
 
-html::-webkit-scrollbar{
-    width: 16px;
+html::-webkit-scrollbar {
+  width: 16px;
 }
-html::-webkit-scrollbar-thumb{
-    background-color: #606060;
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 4px solid transparent;
+html::-webkit-scrollbar-thumb {
+  background-color: #606060;
+  background-clip: padding-box;
+  border: 4px solid transparent;
+  border-radius: 10px;
 }
-html::-webkit-scrollbar-track{
-    background-color: #f9f9f9;
-    border-radius: 10px;
-}
-
-body{
-    font-size: 1.2rem;
-    overflow-x:hidden;
+html::-webkit-scrollbar-track {
+  background-color: #f9f9f9;
+  border-radius: 10px;
 }
 
-.svt-icon{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    vertical-align: middle;
+body {
+  overflow-x: hidden;
+  font-size: 1.2rem;
 }
 
-.opend{
-    visibility: visible;
+.svt-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
 }
 
+.opend {
+  visibility: visible;
+}
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 @keyframes fadeOut {
-    from{
-        transform: none;
-        opacity: 1;
-    }
-    to{
-        transform: translateY(-50px);
-        opacity: 0;
-    }
+  from {
+    transform: none;
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
 }
 
-.message{
-    position: absolute;
-    z-index: 999;
-    top: 20px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    max-width: 200px;
-    padding: 10px 20px;
-    border-radius: 99999px;
-    text-align: center;
-    animation: fadeOut 0.5s ease-in-out forwards;
-    animation-delay: 1.5s;
-    color: #fff;
-    &.error{
-        background: $svttubered ;
-    }
-    &.info{
-        background: $button-color ;
-    }
+.message {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  max-width: 200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  color: #fff;
+  text-align: center;
+  border-radius: 99999px;
+  animation: fadeOut 0.5s ease-in-out forwards;
+  animation-delay: 1.5s;
+  &.error {
+    background: $svttubered;
+  }
+  &.info {
+    background: $button-color;
+  }
 }
 
 #page-title {
-    margin-bottom: 35px;
-    font-size: 2.5rem;
-  }
+  margin-bottom: 35px;
+  font-size: 2.5rem;
+}
 
-#default-btn{
-    display: inline-block;
-    font-size: 1.7rem;
-    padding: 4px 10px;
-    border: 2px solid #1a73e8;
-    color: #1a73e8;
-    margin-top: 30px;
-    border-radius: 5px;
-    background: none;
-    background-color: transparent;
-    cursor: pointer;
+#default-btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 4px 10px;
+  color: #1a73e8;
+  font-size: 1.7rem;
+  background: none;
+  background-color: transparent;
+  border: 2px solid #1a73e8;
+  border-radius: 5px;
+  cursor: pointer;
 }
