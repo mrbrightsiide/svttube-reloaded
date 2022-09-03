@@ -3,6 +3,7 @@ import Video from "../models/Video.js";
 import Comment from "../models/Comment.js";
 import User from "../models/User.js";
 import formatCreatedDate from "../client/js/formatCreatedDate";
+import shuffle from "./../client/js/suffle";
 
 export const home = async (req, res) => {
   return res.render("home", { pageTitle: "Home" });
@@ -14,10 +15,18 @@ export const watch = async (req, res) => {
   const video = await Video.findById(id)
     .populate("owner")
     .populate({ path: "comments", populate: { path: "owner" } });
+  const relatedVideos = shuffle(await Video.find({}).populate("owner")).slice(
+    0,
+    8
+  );
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video not found :(" });
   }
-  return res.render("watch", { pageTitle: video.title, video });
+  return res.render("watch", {
+    pageTitle: video.title,
+    video,
+    relatedVideos,
+  });
 };
 
 export const getEdit = async (req, res) => {
