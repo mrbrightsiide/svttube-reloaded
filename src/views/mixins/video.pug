@@ -1,21 +1,21 @@
 mixin video(video)
   .video-item-wrap
     .video-item
-      a(href=`/videos/${video.id}`)
+      a.thumbnail-anchor(href=`/videos/${video.id}`)
         .thumbnail-wrap
           .thumbnail(style=`background-image:url(/${video.thumbUrl}`)
             .thumbnail-img
       .details
         a(href=`/videos/${video.id}`)
-            a#user-profilepic
-              if pathUrl.includes("users")
-                img(src=`/${user.avatarUrl}`, crossorigin)
-              else
-                img(src=`/${video.owner.avatarUrl}`, crossorigin)
+          a#user-profilepic
+            if pathUrl.includes("users")
+              img(src=`/${user.avatarUrl}`, crossorigin)
+            else
+              img(src=`/${video.owner.avatarUrl}`, crossorigin)
         .meta
           h3
             a(href=`/videos/${video.id}`)
               #video-title= video.title
           .video-meta-block
-            p= video.owner.username
-            p= ` · 조회수 ${video.meta.views}회`
+            p= video.owner.name
+            p= `${formatCreatedDate(video.createdAt)} · 조회수 ${video.meta.views}회`

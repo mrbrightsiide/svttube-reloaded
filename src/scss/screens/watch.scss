@@ -31,9 +31,10 @@
 
 .comment-container {
   width: calc(71% - 1vw);
-  padding-top: 12px;
   padding-right: 1vw;
   background: #d6e8ff;
+  margin-top: 20px;
+  float: left;
   span {
     font-size: 1.6rem;
     line-height: 2.2rem;
@@ -267,6 +268,15 @@ small {
   }
 }
 
+.edit-video {
+  display: flex;
+  margin-top: 15px;
+  a {
+    color: #065fd4;
+    margin-right: 10px;
+  }
+}
+
 @media (max-width: 1012px) {
   .player-container,
   .related-container,
@@ -274,5 +284,6 @@ small {
     float: none;
     width: 100%;
     padding: 0;
+    clear: both;
   }
 }

@@ -38,8 +38,6 @@ block content
       .video__data
         small.hashtags= String(video.hashtags).split(",").join(" ")
         h1.video__title= video.title
-        //- small.video__owner Uploaded by
-          //- a(href=`/users/${video.owner._id}`)= video.owner.name
         .video-info
           small #{ video.meta.views } views
           small.video__createdAt= new Date(video.createdAt).toLocaleDateString("ko-kr", { weekday: "long", year: "numeric", month: "long", day: "numeric" })
@@ -53,9 +51,10 @@ block content
               p 0 subscribers
           button SUBSCRIBE
         if String(video.owner._id) === String(loggedInUser._id)
-          a(href=`${video.id}/edit`) Edit Video &rarr;
-          br
-          a(href=`${video.id}/delete`) Delete Video &rarr;
+          .edit-video
+            a(href=`${video.id}/edit`) Edit Video &rarr;
+            br
+            a(href=`${video.id}/delete`) Delete Video &rarr;
     .related-container
       each vid in relatedVideos
         +video(vid)
