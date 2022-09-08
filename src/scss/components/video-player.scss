@@ -2,10 +2,8 @@
   position: relative;
   display: flex;
   width: 100%;
-  /* min-height: 480px;*/
-  max-height: 72vh;
-  /* max-height: calc(100vh - 169px);*/
-  background: #000;
+  background: transparent;
+  overflow: hidden;
   video {
     bottom: 0;
     display: flex;
@@ -68,16 +66,27 @@
   }
 }
 
-#fullScreen {
-  margin-right: 10px;
-  cursor: pointer;
-}
-
 .controls-btn-wrap {
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
   font-size: 2rem;
+  div:last-child {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    div {
+      margin-right: 13px;
+      cursor: pointer;
+      &#theater {
+        width: 24px;
+        height: 17px;
+        border: 2px solid #fff;
+        box-sizing: border-box;
+        margin-right: 20px;
+      }
+    }
+  }
 }
 
 .videoControls__timeline {

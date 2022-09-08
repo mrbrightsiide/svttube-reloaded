@@ -1,17 +1,44 @@
 #watch-page-wrap {
   margin: 0 auto;
   margin-top: 56px;
+  display: grid;
   padding: 0 5vw;
   background-color: #f9f9f9;
+  grid-auto-rows: auto;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: min-content min-content 1fr;
+  /* justify-items: center;*/
+}
+
+#videoContainer {
+  /*극장모드*/
+  max-height: calc(100vh - 169px);
+  min-height: 480px;
+  &.theater {
+    width: calc(100vw - 16px);
+    height: 56.25vw;
+    grid-column: 1/3;
+    margin-left: -5vw;
+    background: #000;
+  }
+  &.basic {
+    height: auto;
+    grid-column: 1/2;
+  }
 }
 
 .player-container {
-  float: left;
-  width: calc(71% - 1vw);
-  padding-top: 3vh;
+  padding-top: 0.5vh;
   padding-right: 1vw;
   overflow: hidden;
-  background: rgb(255, 214, 164);
+  grid-row: 2/3;
+  background: #ffd6a4;
+  &.theater {
+    grid-row: auto;
+  }
+  &.basic {
+    grid-row: 2/3;
+  }
 }
 
 .video__data {
@@ -30,11 +57,15 @@
 }
 
 .comment-container {
-  width: calc(71% - 1vw);
   padding-right: 1vw;
   background: #d6e8ff;
   margin-top: 20px;
-  float: left;
+  &.theater {
+    grid-row: 3 / auto;
+  }
+  &.basic {
+    grid-row: auto;
+  }
   span {
     font-size: 1.6rem;
     line-height: 2.2rem;
@@ -121,11 +152,16 @@
 }
 
 .related-container {
-  float: right;
-  width: calc(29% - 1vw);
   padding-top: 3vh;
   padding-left: 1vw;
+  grid-column: 2/3;
   background: pink;
+  &.theater {
+    grid-row: 2/4;
+  }
+  &.basic {
+    grid-row: 1/4;
+  }
   .video-item-wrap {
     margin-bottom: 1.4vh;
     .video-item {

@@ -9,9 +9,13 @@ const currenTime = document.getElementById("currenTime");
 const totalTime = document.getElementById("totalTime");
 const timeline = document.getElementById("timeline");
 const fullScreenBtn = document.getElementById("fullScreen");
+const theaterBtn = document.getElementById("theater");
 const fullScreenIcon = fullScreenBtn.querySelector("i");
 const videoContainer = document.getElementById("videoContainer");
 const videoControls = document.getElementById("videoControls");
+const playerContainer = document.querySelector(".player-container");
+const commentContainer = document.querySelector(".comment-container");
+const relatedContainer = document.querySelector(".related-container");
 
 let controlsTimeout = null;
 let controlsMovementTimeout = null;
@@ -151,6 +155,15 @@ const handleEended = () => {
   // fetch(`/api/videos/${id}/view`, { method: "POST" });
   playBtnIcon.classList = "fa-solid fa-rotate-right";
 };
+
+theaterBtn.addEventListener("click", (e) => {
+  [videoContainer, playerContainer, relatedContainer, commentContainer].map(
+    (el) => {
+      el.classList.toggle("theater");
+      el.classList.toggle("basic");
+    }
+  );
+});
 
 volumeContainer.addEventListener("mousemove", (e) => {
   volumeRange.classList.add("showing");
