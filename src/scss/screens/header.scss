@@ -21,6 +21,29 @@
     .loginbtn {
       filter: brightness(0) invert(1);
     }
+    .searchbox .searchbox-form form {
+      input {
+        color: #fff;
+        background: #000;
+        border-color: #000;
+        box-shadow: inset 0 1px 2px #000;
+        &:-webkit-autofill {
+          &,
+          &:hover,
+          &:focus,
+          &:active {
+            -webkit-transition: background-color 9999s ease-out;
+            -webkit-box-shadow: 0 0 0 30px #000 inset !important;
+            -webkit-text-fill-color: #fff !important;
+          }
+        }
+      }
+      button {
+        background: #404040;
+        color: #fff;
+        border-color: #404040;
+      }
+    }
   }
   .masthead-start {
     display: flex;
@@ -82,7 +105,7 @@
           width: calc(100% - 80px);
           height: 36px;
           padding: 0 10px;
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           border: 1px solid #ccc;
           border-radius: 2px 0 0 2px;
           box-shadow: inset 0 1px 2px #eee;
@@ -90,15 +113,26 @@
             border: 1px solid #065fd4;
             outline: none;
           }
+          &:-webkit-autofill {
+            &,
+            &:hover,
+            &:focus,
+            &:active {
+              -webkit-transition: background-color 9999s ease-out;
+              -webkit-box-shadow: 0 0 0 30px #fff inset !important;
+              -webkit-text-fill-color: #000 !important;
+            }
+          }
         }
         button {
           width: 64px;
-          height: 38px;
+          height: 36px;
           color: #121212;
           background: #f8f8f8;
           border: 1px solid #ccc;
           border-left: none;
           border-radius: 0 2px 2px 0;
+          box-sizing: border-box;
           cursor: pointer;
         }
       }
