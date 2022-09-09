@@ -16,6 +16,7 @@ const videoControls = document.getElementById("videoControls");
 const playerContainer = document.querySelector(".player-container");
 const commentContainer = document.querySelector(".comment-container");
 const relatedContainer = document.querySelector(".related-container");
+const mastHead = document.querySelector(".masthead-container");
 
 let controlsTimeout = null;
 let controlsMovementTimeout = null;
@@ -157,12 +158,16 @@ const handleEended = () => {
 };
 
 theaterBtn.addEventListener("click", (e) => {
-  [videoContainer, playerContainer, relatedContainer, commentContainer].map(
-    (el) => {
-      el.classList.toggle("theater");
-      el.classList.toggle("basic");
-    }
-  );
+  [
+    videoContainer,
+    playerContainer,
+    relatedContainer,
+    commentContainer,
+    mastHead,
+  ].map((el) => {
+    el.classList.toggle("theater");
+    el.classList.toggle("basic");
+  });
 });
 
 volumeContainer.addEventListener("mousemove", (e) => {

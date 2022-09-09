@@ -12,11 +12,20 @@
   justify-content: space-between;
   height: 56px;
   padding: 0 20px 0 25px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.99);
+  &.theater {
+    background: rgba(35, 35, 35, 0.99);
+    .guide-menu,
+    .masthead-end .loggedin-user-icons,
+    .svttube-logo img,
+    .loginbtn {
+      filter: brightness(0) invert(1);
+    }
+  }
   .masthead-start {
-    min-width: 250px;
     display: flex;
     align-items: center;
+    min-width: 250px;
     .guide-menu {
       width: 40px;
       height: 40px;
@@ -30,9 +39,9 @@
       cursor: pointer;
     }
     .svttube-logo {
-      padding: 18px 14px;
       display: flex;
       align-items: center;
+      padding: 18px 14px;
       .logo-icon {
         color: $svttubered;
         font-size: 25px;
@@ -44,7 +53,7 @@
         font-size: 21.8px;
         letter-spacing: -1.3px;
       }
-      img{
+      img {
         width: 100%;
         max-height: 18.4px;
         margin-left: 2px;
@@ -123,13 +132,13 @@
           border-radius: 2px;
           content: attr(title);
         }
-        #myvideos-ico{
+        #myvideos-ico {
           width: 17px;
         }
-        #upload-ico{
+        #upload-ico {
           width: 20px;
         }
-        #logout-ico{
+        #logout-ico {
           width: 13px;
         }
       }
@@ -175,7 +184,7 @@
 
 .guide-container {
   position: fixed;
-  // display: flex;
+  /* display: flex;*/
   display: none;
   flex-direction: column;
   width: 240px;
@@ -213,7 +222,7 @@
         overflow: hidden;
         font-weight: 400;
         font-size: 1.42rem;
-        font-family: "Roboto", "Arial", sans-serif;
+        font-family: "Roboto", sans-serif;
         line-height: 2rem;
         white-space: nowrap;
         text-overflow: ellipsis;

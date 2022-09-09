@@ -39,7 +39,7 @@ header
             li
               a(href="/users/edit", title="Edit profile")
                 .user-profilepic
-                  img(src="/" + loggedInUser.avatarUrl, crossorigin)
+                  img(src=`/${loggedInUser.avatarUrl}`, crossorigin)
           else
             li
               button.loginbtn.svt-icon
