@@ -321,6 +321,9 @@ small {
   }
   #videoContainer {
     min-height: 200px;
+    &.basic {
+      max-height: calc(100vh - 180px);
+    }
   }
   .player-container,
   .related-container,

@@ -32,9 +32,11 @@ block content
                 max="1"
               )
           div
-            #theater
-            #fullScreen
-              i.fas.fa-expand
+            a(title="Theater mode", basic)
+              #theater
+            a(title="Fullscreen")
+              #fullScreen
+                i.fas.fa-expand
     .player-container.basic
       .video__data
         small.hashtags= String(video.hashtags).split(",").join(" ")
@@ -80,7 +82,7 @@ block content
                     img(src=`/${comment.owner.avatarUrl}`)
                 .comment-text
                   div
-                    span= comment.owner.username
+                    span= comment.owner.name
                     span= formatCreatedDate(comment.createAt)
                   span.comment-txt= comment.text
               if loggedIn && String(comment.owner._id) === String(loggedInUser._id)

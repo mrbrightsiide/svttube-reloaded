@@ -126,7 +126,11 @@ const handleFullscreen = () => {
   if (fullscreen) {
     document.exitFullscreen();
     fullScreenIcon.classList = "fas fa-expand";
+    theaterBtn.setAttribute("style", "display : block");
+    fullScreenBtn.parentElement.setAttribute("title", "Fullscreen");
   } else {
+    theaterBtn.setAttribute("style", "display : none");
+    fullScreenBtn.parentElement.setAttribute("title", "Exit fullscreen");
     videoContainer.requestFullscreen();
     fullScreenIcon.classList = "fas fa-compress";
   }
@@ -144,11 +148,17 @@ const handleMouseMove = () => {
     controlsMovementTimeout = null;
   }
   videoControls.classList.add("showing");
-  controlsMovementTimeout = setTimeout(hideControls, 1000);
+  if (!video.paused) {
+    controlsMovementTimeout = setTimeout(hideControls, 1000);
+  }
 };
 
 const handleMouseLeave = () => {
-  controlsTimeout = setTimeout(hideControls, 200);
+  if (video.paused) {
+    videoControls.classList.add("showing");
+  } else {
+    controlsTimeout = setTimeout(hideControls, 200);
+  }
 };
 
 const handleEended = () => {
@@ -164,10 +174,16 @@ theaterBtn.addEventListener("click", (e) => {
     relatedContainer,
     commentContainer,
     mastHead,
+    theaterBtn,
   ].map((el) => {
     el.classList.toggle("theater");
     el.classList.toggle("basic");
   });
+  if (theaterBtn.classList.contains("basic")) {
+    theaterBtn.parentElement.setAttribute("title", "Default view");
+  } else {
+    theaterBtn.parentElement.setAttribute("title", "Theater mode");
+  }
 });
 
 volumeContainer.addEventListener("mousemove", (e) => {
