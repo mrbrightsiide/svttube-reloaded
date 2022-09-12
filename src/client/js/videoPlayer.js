@@ -180,9 +180,9 @@ theaterBtn.addEventListener("click", (e) => {
     el.classList.toggle("basic");
   });
   if (theaterBtn.classList.contains("basic")) {
-    theaterBtn.parentElement.setAttribute("title", "Default view");
-  } else {
     theaterBtn.parentElement.setAttribute("title", "Theater mode");
+  } else {
+    theaterBtn.parentElement.setAttribute("title", "Default view");
   }
 });
 

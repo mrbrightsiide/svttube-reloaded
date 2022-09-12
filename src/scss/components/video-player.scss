@@ -18,7 +18,7 @@
     box-sizing: border-box;
     width: 100%;
     margin: 0 auto;
-    padding: 40px 0 15px 0;
+    padding: 40px 10px 15px 10px;
     color: #fff;
     background: rgb(0, 0, 0);
     background: linear-gradient(
@@ -75,15 +75,41 @@
     display: flex;
     justify-items: center;
     align-items: center;
+    a {
+      &[title]:hover::before {
+        position: absolute;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        padding: 5px 10px;
+        color: #fff;
+        font-size: 1.3rem;
+        line-height: 1.2;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 2px;
+        content: attr(title);
+        bottom: 45px;
+        margin-left: -35px;
+      }
+    }
     div {
       margin-right: 13px;
       cursor: pointer;
       &#theater {
-        width: 24px;
-        height: 17px;
-        border: 2px solid #fff;
         box-sizing: border-box;
         margin-right: 20px;
+        &.basic {
+          width: 24px;
+          height: 17px;
+          border: 2px solid #fff;
+        }
+        &.theater {
+          width: 20px;
+          height: 12px;
+          border: 3px solid #fff;
+        }
       }
     }
   }

@@ -275,7 +275,7 @@ small {
   justify-content: space-between;
   margin-top: 20px;
   padding: 5px 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 5px;
   h2 {
     font-weight: bold;
@@ -324,6 +324,9 @@ small {
     &.basic {
       max-height: calc(100vh - 180px);
     }
+  }
+  .related-container {
+    margin-top: 20px;
   }
   .player-container,
   .related-container,
