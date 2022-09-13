@@ -1,4 +1,4 @@
-//video variables
+/*video variables*/
 $grid-items-per-row: 4;
 $grid-item-margin: 16px;
 $grid-item-max-width: 380px;
@@ -13,7 +13,7 @@ $grid-item-max-width: 380px;
 
 .page-manager {
   display: flex;
-  margin-left: 240px;
+  // margin-left: 240px;
   margin-top: 56px;
   flex: 1 1 0%;
 }
@@ -25,7 +25,8 @@ $grid-item-max-width: 380px;
 
 .category-bar {
   display: flex;
-  width: calc(100% - 240px);
+  width: 100%;
+  // width: calc(100% - 240px);
   position: fixed;
   z-index: 99;
   background: rgb(255, 255, 255, 0.96);
@@ -81,7 +82,8 @@ $grid-item-max-width: 380px;
       }
       #videoContainer {
         width: auto;
-        #mute{
+        min-height: 260px;
+        #mute {
           font-size: 1.8rem;
           position: absolute;
           right: 15px;
@@ -90,6 +92,8 @@ $grid-item-max-width: 380px;
           color: #fff;
           border: none;
           cursor: pointer;
+          z-index: 99;
+          background-color: red;
         }
         video {
           max-height: 260px;
@@ -99,6 +103,7 @@ $grid-item-max-width: 380px;
     }
   }
   #close-btn {
+    z-index: 999;
     position: absolute;
     right: 10px;
     cursor: pointer;
@@ -153,7 +158,6 @@ $grid-item-max-width: 380px;
     position: relative;
     display: flex;
     flex-direction: row;
-    cursor: pointer;
     #user-profilepic {
       display: flex;
       height: 36px;
@@ -178,7 +182,6 @@ $grid-item-max-width: 380px;
         margin: 12px 0 4px 0;
         a {
           #video-title {
-            font-family: "Roboto", "Arial", sans-serif;
             font-size: 1.6rem;
             line-height: 2.2rem;
             max-height: 4.4rem;
@@ -202,7 +205,7 @@ $grid-item-max-width: 380px;
             justify-items: center;
           }
           p {
-            font-family: "Roboto", "Arial", sans-serif;
+            font-family: "Roboto", sans-serif;
             font-size: 1.4rem;
             line-height: 2rem;
             font-weight: 400;
