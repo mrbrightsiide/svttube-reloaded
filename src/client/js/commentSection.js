@@ -6,25 +6,30 @@ const deleteBtns = document.getElementsByClassName("delete_comment_btn");
 
 const addComment = (text, id) => {
   const videoComments = document.querySelector(".video__comments ul");
-  const newComment = document.createElement("li");
-  newComment.dataset.id = id;
-  newComment.setAttribute("id", "comment");
-  newComment.className = "video__comment";
-  const icon = document.createElement("i");
-  icon.className = "fas fa-comment";
-  const span = document.createElement("span");
-  span.innerText = ` ${text}`;
-  const creratedDate = document.createElement("span");
-  creratedDate.innerText = `${formatCreatedDate(Date.now())}`;
+  const comment = document.createElement("li");
   const button = document.createElement("button");
-  button.innerText = "❌";
   button.classList.add("delete_comment_btn");
+  button.innerText = "❌";
+  comment.innerHTML = `
+  <li class="video__comment" id="comment" data-id=${id}>
+    <div class="comment-content">
+        <a>
+            <div class="comment-avatar">
+              <img src="/${userAvatarUrl.replaceAll("&quot;", "")}"/>
+            </div>
+        </a>
+        <div class="comment-text">
+            <div>
+              <span>${username}</span>
+              <span>${formatCreatedDate(Date.now())}</span>
+            </div>
+            <span class="comment-txt">${text}</span>
+        </div>
+    </div>
+  </li>`;
   button.addEventListener("click", handleDelete);
-  newComment.appendChild(icon);
-  newComment.appendChild(span);
-  newComment.appendChild(creratedDate);
-  newComment.appendChild(button);
-  videoComments.prepend(newComment);
+  comment.childNodes[1].appendChild(button);
+  videoComments.prepend(comment);
 };
 
 const handleSubmit = async (event) => {

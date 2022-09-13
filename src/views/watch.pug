@@ -92,4 +92,7 @@ block scripts
   script(src="/static/js/videoPlayer.js")
   script(src="/static/js/formatCreatedDate.js")
   if loggedIn
+    script
+      | let username = '#{ loggedInUser.name }'
+      | let userAvatarUrl = '#{ JSON.stringify(loggedInUser.avatarUrl) }'
     script(src="/static/js/commentSection.js") 
