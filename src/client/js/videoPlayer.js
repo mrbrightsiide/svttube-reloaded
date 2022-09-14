@@ -27,8 +27,11 @@ video.play();
 playBtnIcon.classList = "fas fa-pause";
 
 if (window.location.pathname.includes("users")) {
+  const videoContainer = document.querySelector("#videoContainer");
   const anchor = document.createElement("a");
   const title = document.createElement("h3");
+  videoContainer.classList.remove("basic");
+  videoContainer.classList.remove("theater");
   anchor.setAttribute("href", `/videos/${mainVideoId}`);
   anchor.classList.add("main-video-anchor");
   title.innerText = mainVideoTitle;
@@ -143,9 +146,9 @@ const handleFullscreen = () => {
     theaterBtn.setAttribute("style", "display : block");
     fullScreenBtn.parentElement.setAttribute("title", "Fullscreen");
   } else {
-    theaterBtn.setAttribute("style", "display : none");
     fullScreenBtn.parentElement.setAttribute("title", "Exit fullscreen");
     videoContainer.requestFullscreen();
+    theaterBtn.setAttribute("style", "display : none");
     fullScreenIcon.classList = "fas fa-compress";
   }
 };

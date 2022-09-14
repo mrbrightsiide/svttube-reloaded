@@ -1,5 +1,5 @@
 mixin player(video)
-  #videoContainer(data-id=video._id)
+  #videoContainer.basic(data-id=video._id)
     video(src="/" + video.fileUrl)
     #videoControls.videoControls
       input#timeline.videoControls__timeline(
@@ -29,7 +29,7 @@ mixin player(video)
             )
         div
           a(title="Theater mode")
-            #theater
+            #theater.basic
           a(title="Fullscreen")
             #fullScreen
               i.fas.fa-expand
