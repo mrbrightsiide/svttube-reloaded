@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import Video from "../models/Video.js";
 import fetch from "node-fetch";
 import bcryptjs from "bcryptjs";
+import formatCreatedDate from "../client/js/formatCreatedDate";
 
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 
@@ -153,6 +154,7 @@ export const postEdit = async (req, res) => {
     body: { email, userid, name, location },
     file,
   } = req;
+  // edit profile에 eamil, username 유효성검사 추가 -> 중복안되게!!
   await User.findByIdAndUpdate(_id, {
     email,
     username: userid,
@@ -209,10 +211,13 @@ export const postChnagePassword = async (req, res) => {
 };
 
 export const see = async (req, res) => {
+  res.locals.formatCreatedDate = formatCreatedDate;
   const { id } = req.params;
   const user = await User.findById(id).populate("video");
+  let mainVideo = user.video[Math.floor(Math.random() * user.video.length)];
+  // res.locals.mainVideo = mainVideo;
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User Not Found." });
   }
-  return res.render("users/profile", { pageTitle: user.name, user });
+  return res.render("users/profile", { pageTitle: user.name, user, mainVideo });
 };

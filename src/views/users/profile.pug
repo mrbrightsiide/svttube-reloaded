@@ -1,11 +1,45 @@
 extends ../layouts/base.pug
 include ../mixins/video
-
+include ../mixins/player
 
 block content
-    .page-manager
-        .contents-wrap
-            each video in user.video
-                +video(video)
-            else
-                li sorry nothing found :(
+  .page-manager
+    .contents-wrap
+      .profile-wrap
+        .userinfo-container
+          .userinfo-banner
+            img(src=`/${user.avatarUrl}`)
+          .user-profile-wrap
+            .user-profile
+              div
+                img(src=`/${user.avatarUrl}`)
+              div
+                h1= user.name
+                p 0 subscribers
+            button SUBSCRIBE
+        if user.video.length > 0
+          .profile-contents-wrap
+            .main-video-container
+              .main-video-player-wrap
+                +player(mainVideo)
+              .main-video-info
+                h3= mainVideo.title
+                small= `${mainVideo.meta.views} views · ${formatCreatedDate(mainVideo.createdAt)}`
+                p= mainVideo.description
+            hr.line
+            .upload-videos-container
+              h2.category-title Uploads
+              #video-wrap.video-wrap
+                #video-contents-wrap
+                  each video in user.video
+                    +video(video)
+        else
+          h1.err This user has no video.
+
+block scripts
+  if user.video.length > 0
+    script
+      | let mainVideoTitle = "#{ mainVideo.title.toString() }"
+      | let mainVideoId = "#{ mainVideo._id.toString() }"
+    script(src="/static/js/videoPlayer.js")
+    script(src="/static/js/formatCreatedDate.js")

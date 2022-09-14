@@ -26,6 +26,16 @@ video.volume = volumeValue;
 video.play();
 playBtnIcon.classList = "fas fa-pause";
 
+if (window.location.pathname.includes("users")) {
+  const anchor = document.createElement("a");
+  const title = document.createElement("h3");
+  anchor.setAttribute("href", `/videos/${mainVideoId}`);
+  anchor.classList.add("main-video-anchor");
+  title.innerText = mainVideoTitle;
+  anchor.append(title);
+  videoControls.prepend(anchor);
+}
+
 const inputRangeBgFill = (element, value, pointColor, bgColor) => {
   element.setAttribute(
     "style",
@@ -123,6 +133,10 @@ const handleTimelineChange = (event) => {
 
 const handleFullscreen = () => {
   const fullscreen = document.fullscreenElement;
+  if (window.location.pathname.includes("users")) {
+    const anchor = document.querySelector(".main-video-anchor");
+    anchor.classList.toggle("hide");
+  }
   if (fullscreen) {
     document.exitFullscreen();
     fullScreenIcon.classList = "fas fa-expand";

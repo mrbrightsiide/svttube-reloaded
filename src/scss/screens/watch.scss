@@ -41,6 +41,14 @@
   &.basic {
     grid-row: 2/3;
   }
+  small {
+    font-weight: 600;
+    &.hashtags {
+      color: #065fd4;
+      font-weight: 300;
+      font-size: 1.2rem;
+    }
+  }
 }
 
 .video__data {
@@ -230,8 +238,8 @@
             align-items: center;
             span {
               &:first-child {
-                margin-right: 3px;
-                font-weight: bold;
+                margin-right: 5px;
+                font-weight: 500;
                 font-size: 1.4rem;
               }
               &:last-child {
@@ -256,18 +264,9 @@
 
 .video__title {
   margin: 5px 0 12px 0;
-  font-weight: 900;
+  font-weight: 600;
   font-size: 2rem;
   line-height: 1.3;
-}
-
-small {
-  font-weight: 900;
-  &.hashtags {
-    color: #065fd4;
-    font-weight: 300;
-    font-size: 1.2rem;
-  }
 }
 
 .owner-info-wrap {
@@ -297,12 +296,19 @@ small {
       align-items: center;
       width: 36px;
       height: 36px;
-      margin-right: 10px;
+      margin-right: 15px;
       object-fit: cover;
     }
     img {
       width: 100%;
       border-radius: 50%;
+    }
+    h3 {
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+    p {
+      color: #777;
     }
   }
 }
