@@ -20,7 +20,7 @@ $grid-item-max-width: 380px;
 
 .contents-wrap {
   width: 100%;
-  background: rgb(249, 249, 249);
+  background: #f1f1f1;
 }
 
 .category-bar {
@@ -92,7 +92,7 @@ $grid-item-max-width: 380px;
           color: #fff;
           border: none;
           cursor: pointer;
-          z-index: 99;
+          z-index: 98;
           background-color: red;
         }
         video {
@@ -179,7 +179,7 @@ $grid-item-max-width: 380px;
       padding-right: 24px;
       width: 100%;
       h3 {
-        margin: 12px 0 4px 0;
+        margin: 11px 0 4px 0;
         a {
           #video-title {
             font-size: 1.6rem;
