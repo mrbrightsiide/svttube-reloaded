@@ -71,6 +71,7 @@
 
 .main-video-container {
   margin: 3.5rem 0;
+  padding: 0 8px;
   .main-video-player-wrap {
     position: relative;
     #videoContainer {
@@ -140,23 +141,12 @@
     font-size: 1.6rem;
     margin-bottom: 2.5rem;
     font-weight: 500;
-  }
-  .video-wrap {
-    #video-contents-wrap {
-      article {
-        &:first-child {
-          margin-left: 0;
-        }
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-    }
+    padding-left: 8px;
   }
 }
 
 hr.line {
-  width: 100%;
+  width: calc(100% - 16px);
   margin-bottom: 2.5rem;
   border: 0;
   border-top: 1px solid #d9d9d9;
@@ -167,21 +157,21 @@ h1.err {
   padding: 3rem 0;
 }
 
-@media screen and (min-width: 1086px) {
+@media screen and (min-width: 1170px) {
   .profile-contents-wrap,
   .user-profile-wrap {
     // svttube 4culums width
     width: 1070px;
   }
   .upload-videos-container .video-wrap #video-contents-wrap article {
-    width: calc((100% - (8px * 6)) / 4);
+    width: calc((100% - (8px * 8)) / 4);
   }
   .main-video-container {
     display: flex;
   }
 }
 
-@media (max-width: 1086px) and (min-width: 676px) {
+@media (max-width: 1170px) and (min-width: 760px) {
   // svttube 3culums width
   .profile-contents-wrap,
   .user-profile-wrap {
@@ -195,14 +185,14 @@ h1.err {
   }
 }
 
-@media (max-width: 676px) {
+@media (max-width: 760px) {
   .profile-contents-wrap,
   .user-profile-wrap {
     // svttube 2culums width
     width: 428px;
   }
   .upload-videos-container .video-wrap #video-contents-wrap article {
-    width: calc((100% - (8px * 6)) / 2);
+    width: calc((100% - (8px * 4)) / 2);
   }
   .main-video-container {
     display: block;

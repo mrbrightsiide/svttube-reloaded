@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: space-between;
   height: 56px;
-  padding: 0 20px 0 25px;
+  padding: 0 3rem;
   background: rgba(255, 255, 255, 0.99);
   &.theater {
     background: rgba(35, 35, 35, 0.99);
@@ -46,44 +46,13 @@
       }
     }
   }
+
   .masthead-start {
     display: flex;
     align-items: center;
     min-width: 250px;
-    .guide-menu {
-      width: 40px;
-      height: 40px;
-      padding: 0%;
-      color: inherit;
-      line-height: 0;
-      vertical-align: middle;
-      background: none;
-      border: none;
-      outline: none;
-      cursor: pointer;
-    }
-    .svttube-logo {
-      display: flex;
-      align-items: center;
-      padding: 18px 14px;
-      .logo-icon {
-        color: $svttubered;
-        font-size: 25px;
-      }
-      i:last-child {
-        margin-left: 1px;
-        color: $icon-active;
-        font-weight: bold;
-        font-size: 21.8px;
-        letter-spacing: -1.3px;
-      }
-      img {
-        width: 100%;
-        max-height: 18.4px;
-        margin-left: 2px;
-      }
-    }
   }
+
   nav {
     display: inline-block;
   }
@@ -146,7 +115,7 @@
       margin-right: 20px;
       li a {
         position: relative;
-        z-index: 999;
+        z-index: 100;
         display: inline-block;
         margin: 6px;
         padding: 6px;
@@ -217,15 +186,113 @@
   }
 }
 
+.masthead-start,
+.modal-logo {
+  .guide-menu,
+  .modal-logo .guide-menu {
+    width: 20px;
+    height: 20px;
+    padding: 0%;
+    color: inherit;
+    line-height: 0;
+    vertical-align: middle;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-right: calc(3rem - 5px);
+  }
+  .svttube-logo,
+  .modal-logo .svttube-logo {
+    display: flex;
+    align-items: center;
+    padding: 18px 14px;
+    .logo-icon {
+      color: $svttubered;
+      font-size: 25px;
+    }
+    i:last-child {
+      margin-left: 1px;
+      color: $icon-active;
+      font-weight: bold;
+      font-size: 21.8px;
+      letter-spacing: -1.3px;
+    }
+    img {
+      width: 100%;
+      max-height: 18.4px;
+      margin-left: 2px;
+    }
+  }
+}
+
 .guide-container {
+  display: flex;
   position: fixed;
-  /* display: flex;*/
-  display: none;
+  top: 56px;
+  left: 0px;
   flex-direction: column;
   width: 240px;
+  height: calc(100vh - 375px);
+  .modal-logo {
+    height: 56px;
+    background: #fff;
+    display: none;
+  }
+  &.close {
+    display: none !important;
+  }
+  &.open {
+    display: flex;
+  }
+  &.modal {
+    position: absolute;
+    z-index: 999999;
+    background: #fff;
+    .modal-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: -56px;
+      padding-left: 3rem;
+      padding-right: 50.45px;
+    }
+  }
+  &.mini {
+    width: 80px;
+    hr {
+      display: none;
+    }
+    .section {
+      & ul li {
+        justify-items: center;
+        width: 20px;
+        padding: 1.5rem 3rem;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+        height: auto;
+        min-height: 0;
+        & i {
+          display: flex;
+          justify-items: center;
+          font-size: 1.8rem;
+          margin-right: 0;
+          width: fit-content;
+        }
+        & p {
+          font-size: 1.2rem;
+          margin-top: 3px;
+        }
+      }
+    }
+    #footer-wrap {
+      display: none;
+    }
+  }
   .guide-wrap {
     flex-direction: column;
-    height: 100%;
     padding-top: 10px;
   }
   hr {
@@ -248,9 +315,9 @@
         background: rgba(0, 0, 0, 0.1);
       }
       & i {
-        width: 21px;
-        height: 21px;
-        margin-right: 21px;
+        width: 20px;
+        height: 20px;
+        margin-right: 20px;
         font-size: 20px;
       }
       & p {
@@ -258,7 +325,6 @@
         font-weight: 400;
         font-size: 1.42rem;
         font-family: "Roboto", sans-serif;
-        line-height: 2rem;
         white-space: nowrap;
         text-overflow: ellipsis;
       }

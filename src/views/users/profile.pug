@@ -23,7 +23,8 @@ block content
               .main-video-player-wrap
                 +player(mainVideo)
               .main-video-info
-                h3= mainVideo.title
+                a(href=`/videos/${mainVideo._id}`)
+                  h3= mainVideo.title
                 small= `${mainVideo.meta.views} views · ${formatCreatedDate(mainVideo.createdAt)}`
                 p= mainVideo.description
             hr.line

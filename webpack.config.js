@@ -13,6 +13,7 @@ module.exports = {
     formatCreatedDate: BASE_JS + "formatCreatedDate.js",
     getThumbnail: BASE_JS + "getThumbnail.js",
     imagePreview: BASE_JS + "imagePreview.js",
+    handleNavBar: BASE_JS + "handleNavBar.js",
   },
   mode: "development",
   watch: true,

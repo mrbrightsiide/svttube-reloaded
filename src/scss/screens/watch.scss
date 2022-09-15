@@ -1,6 +1,5 @@
 #watch-page-wrap {
   margin: 0 auto;
-  margin-top: 56px;
   display: grid;
   padding: 0 4.5vw;
   background-color: #f9f9f9;
@@ -322,7 +321,7 @@
   }
 }
 
-@media (max-width: 1012px) {
+@media (max-width: 1030px) {
   #watch-page-wrap {
     display: block;
   }

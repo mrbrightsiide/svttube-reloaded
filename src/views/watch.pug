@@ -3,60 +3,61 @@ include mixins/video
 include mixins/player
 
 block content
-  #watch-page-wrap
-    +player(video)
-    .player-container.basic
-      .video__data
-        small.hashtags= String(video.hashtags).split(",").join(" ")
-        h1.video__title= video.title
-        .video-info
-          small #{ video.meta.views } views
-          small.video__createdAt= new Date(video.createdAt).toLocaleDateString("ko-kr", { weekday: "long", year: "numeric", month: "long", day: "numeric" })
-          p= video.description
-        .owner-info-wrap
-          .owner-profile
-            a(href=`/users/${video.owner._id}`)
-              div
-                img(src=`/${video.owner.avatarUrl}`)
-            div
+  .page-manager
+    #watch-page-wrap
+      +player(video)
+      .player-container.basic
+        .video__data
+          small.hashtags= String(video.hashtags).split(",").join(" ")
+          h1.video__title= video.title
+          .video-info
+            small #{ video.meta.views } views
+            small.video__createdAt= new Date(video.createdAt).toLocaleDateString("ko-kr", { weekday: "long", year: "numeric", month: "long", day: "numeric" })
+            p= video.description
+          .owner-info-wrap
+            .owner-profile
               a(href=`/users/${video.owner._id}`)
-                h3= video.owner.name
-              p 0 subscribers
-          button SUBSCRIBE
-        if String(video.owner._id) === String(loggedInUser._id)
-          .edit-video
-            a(href=`${video.id}/edit`) Edit Video &rarr;
-            br
-            a(href=`${video.id}/delete`) Delete Video &rarr;
-    .related-container.basic
-      each vid in relatedVideos
-        +video(vid)
-    .comment-container.basic
-      span #{ video.comments.length } Comments
-      if loggedIn
-        .video__add-comments
-          form#commentForm.video__comment-form
-            .loggedin-user-profile
-              img(src=`/${loggedInUser.avatarUrl}`, crossorigin)
-            div
-              .comment-textarea-wrap
-                textarea(cols="30", rows="10", placeholder="Add a commment")
-              button(type="submit", value="add comment") Comment
-      .video__comments
-        ul#comment-wrap
-          each comment in video.comments.reverse()
-            li#comment.video__comment(data-id=comment._id)
-              .comment-content
-                a(href=`/users/${comment.owner._id}`) 
-                  .comment-avatar
-                    img(src=`/${comment.owner.avatarUrl}`)
-                .comment-text
-                  div
-                    span= comment.owner.name
-                    span= formatCreatedDate(comment.createAt)
-                  span.comment-txt= comment.text
-              if loggedIn && String(comment.owner._id) === String(loggedInUser._id)
-                button.delete_comment_btn ❌
+                div
+                  img(src=`/${video.owner.avatarUrl}`)
+              div
+                a(href=`/users/${video.owner._id}`)
+                  h3= video.owner.name
+                p 0 subscribers
+            button SUBSCRIBE
+          if String(video.owner._id) === String(loggedInUser._id)
+            .edit-video
+              a(href=`${video.id}/edit`) Edit Video &rarr;
+              br
+              a(href=`${video.id}/delete`) Delete Video &rarr;
+      .related-container.basic
+        each vid in relatedVideos
+          +video(vid)
+      .comment-container.basic
+        span #{ video.comments.length } Comments
+        if loggedIn
+          .video__add-comments
+            form#commentForm.video__comment-form
+              .loggedin-user-profile
+                img(src=`/${loggedInUser.avatarUrl}`, crossorigin)
+              div
+                .comment-textarea-wrap
+                  textarea(cols="30", rows="10", placeholder="Add a commment")
+                button(type="submit", value="add comment") Comment
+        .video__comments
+          ul#comment-wrap
+            each comment in video.comments.reverse()
+              li#comment.video__comment(data-id=comment._id)
+                .comment-content
+                  a(href=`/users/${comment.owner._id}`) 
+                    .comment-avatar
+                      img(src=`/${comment.owner.avatarUrl}`)
+                  .comment-text
+                    div
+                      span= comment.owner.name
+                      span= formatCreatedDate(comment.createAt)
+                    span.comment-txt= comment.text
+                if loggedIn && String(comment.owner._id) === String(loggedInUser._id)
+                  button.delete_comment_btn ❌
 
 block scripts
   script(src="/static/js/videoPlayer.js")

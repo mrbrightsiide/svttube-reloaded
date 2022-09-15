@@ -9,13 +9,15 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 50px;
+  background: #f1f1f1;
+  height: calc(100vh - 56px);
   .form-box {
     max-width: 450px;
     padding: 60px 75px;
     text-align: center;
     border: 1px solid #dadce0;
     border-radius: 10px;
+    background: #fff;
     form {
       display: flex;
       flex-direction: column;
