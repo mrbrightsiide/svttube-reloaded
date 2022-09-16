@@ -110,9 +110,12 @@
   }
   .masthead-end {
     min-width: 99px;
-    .loggedinUser-icons-wrap {
+    .icons-wrap {
       display: inline-block;
       margin-right: 20px;
+      li:first-child {
+        display: none;
+      }
       li a {
         position: relative;
         z-index: 100;
@@ -121,8 +124,7 @@
         padding: 6px;
         &[title]:hover:after {
           position: absolute;
-          bottom: -150%;
-          left: -30%;
+          left: -25%;
           z-index: 9999;
           display: flex;
           align-items: center;
@@ -135,6 +137,11 @@
           background: rgba(0, 0, 0, 0.5);
           border-radius: 2px;
           content: attr(title);
+          margin-top: 10px;
+        }
+        #search-ico {
+          width: 17px;
+          margin-top: 1px;
         }
         #myvideos-ico {
           width: 17px;
@@ -147,7 +154,7 @@
         }
       }
     }
-    .loggedin-user-icons {
+    .user-icons {
       width: 24px;
       height: 24px;
       background-repeat: no-repeat;
@@ -188,6 +195,19 @@
 
 .masthead-start,
 .modal-logo {
+  .arrow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 18px;
+    background: #fff;
+    z-index: 99999;
+    margin-right: 50px;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
   .guide-menu,
   .modal-logo .guide-menu {
     width: 20px;
@@ -339,4 +359,42 @@
   padding-left: 34px;
   color: rgb(139, 139, 139);
   font-size: 1.2rem;
+}
+
+@media (max-width: 1210px) and (min-width: 749px) {
+  .masthead-container .masthead-start {
+    min-width: 200px;
+  }
+  .masthead-container .masthead-end {
+    min-width: 200px;
+  }
+  .masthead-container .searchbox {
+    max-width: calc(100% - 450px);
+  }
+}
+
+@media (max-width: 864px) {
+  .masthead-container .masthead-start {
+    min-width: 160px;
+  }
+  .masthead-container .searchbox {
+    display: none;
+    &.on {
+      display: flex;
+      position: absolute;
+      z-index: 999;
+      left: 88px;
+      width: 83%;
+    }
+  }
+  .masthead-container .masthead-end .icons-wrap {
+    margin-right: 0;
+  }
+  .masthead-container .masthead-end .icons-wrap li:first-child {
+    display: inline-block;
+    cursor: pointer;
+  }
+  .masthead-container .user-profilepic {
+    margin-right: 0;
+  }
 }

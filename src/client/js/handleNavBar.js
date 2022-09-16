@@ -1,14 +1,15 @@
 const mediaQ = window.matchMedia("screen and (min-width: 1326px)");
 const mediaQMiddle = window.matchMedia(
-  "(max-width: 1325px) and (min-width: 720px)"
+  "(max-width: 1325px) and (min-width: 750px)"
 );
 const mediaQMin = window.matchMedia(
-  "(max-width: 719px) and (min-width: 300px)"
+  "(max-width: 749px) and (min-width: 300px)"
 );
 const navBtn = document.querySelectorAll("#guide_menu_btn");
 const navContainer = document.querySelector(".guide-container");
 const page = document.querySelector(".page-manager");
 const videoPage = window.location.pathname.includes("videos");
+const searchBtn = document.querySelector("#search-ico");
 
 const createModal = () => {
   const modalWrap = document.createElement("div");
@@ -43,11 +44,7 @@ const deleteModal = () => {
 };
 
 const handleNavBtn = (e) => {
-  if (!mediaQ.matches && !videoPage) {
-    navContainer.classList.contains("modal") ? deleteModal() : createModal();
-  }
-
-  if (videoPage) {
+  if (!mediaQ.matches || videoPage) {
     navContainer.classList.contains("modal") ? deleteModal() : createModal();
   }
 
@@ -101,3 +98,22 @@ navBtn.forEach((btn) => {
   btn.addEventListener("click", handleNavBtn);
 });
 handleMeadia();
+
+const menuBtn = document.querySelector("#guide_menu_btn");
+const searchBox = document.querySelector(".searchbox");
+
+searchBtn.addEventListener("click", (e) => {
+  searchBox.classList.add("on");
+  const arrowBtn = document.createElement("div");
+  const img = document.createElement("img");
+  img.setAttribute("src", "/static/img/arrow.svg");
+  arrowBtn.append(img);
+  arrowBtn.classList.add("arrow");
+  navBtn[0].parentNode.prepend(arrowBtn);
+});
+
+const arrowBtn = document.querySelector(".arrow");
+
+arrowBtn.addEventListener("click", (e) => {
+  searchBox.classList.remove("on");
+});

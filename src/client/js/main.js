@@ -5,4 +5,6 @@ import "../img/logo.svg";
 import "../img/logout.svg";
 import "../img/myvideos.svg";
 import "../img/uploadvideos.svg";
+import "../img/search.svg";
+import "../img/arrow.svg";
 import "../js/handleNavBar.js";

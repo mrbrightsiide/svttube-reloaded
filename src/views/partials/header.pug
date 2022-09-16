@@ -17,30 +17,29 @@ header
             button(type="submit", value="search now!")
               i.fas.fa-search
       nav.masthead-end
-        ul
+        ul.icons-wrap
           if loggedIn
-            .loggedinUser-icons-wrap
-              li
-                a(href=`/users/${loggedInUser._id}`, title="My videos")
-                  img#myvideos-ico.loggedin-user-icons(
-                    src="/static/img/myvideos.svg"
-                  )
-              li 
-                a(href="/videos/upload", title="Upload video")
-                  img#upload-ico.loggedin-user-icons(
-                    src="/static/img/uploadvideos.svg"
-                  )
+            li
+              a(title="Search")
+                img#search-ico.user-icons(src="/static/img/search.svg")
+            li
+              a(href=`/users/${loggedInUser._id}`, title="My videos")
+                img#myvideos-ico.user-icons(src="/static/img/myvideos.svg")
+            li 
+              a(href="/videos/upload", title="Upload video")
+                img#upload-ico.user-icons(src="/static/img/uploadvideos.svg")
 
-              li 
-                a(href="/users/logout", title="Log out")
-                  img#logout-ico.loggedin-user-icons(
-                    src="/static/img/logout.svg"
-                  )
+            li 
+              a(href="/users/logout", title="Log out")
+                img#logout-ico.user-icons(src="/static/img/logout.svg")
             li
               a(href="/users/edit", title="Edit profile")
                 .user-profilepic
                   img(src=`/${loggedInUser.avatarUrl}`, crossorigin)
           else
+            li
+              a(title="Search")
+                img#search-ico.user-icons(src="/static/img/search.svg")
             li
               button.loginbtn.svt-icon
                 a(href="/login")
