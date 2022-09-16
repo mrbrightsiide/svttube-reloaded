@@ -233,7 +233,8 @@
   left: 0px;
   flex-direction: column;
   width: 240px;
-  height: calc(100vh - 375px);
+  height: 100vh;
+  background: #fff;
   .modal-logo {
     height: 56px;
     background: #fff;
@@ -246,9 +247,10 @@
     display: flex;
   }
   &.modal {
-    position: absolute;
+    position: fixed;
     z-index: 999999;
     background: #fff;
+    height: 100vh;
     .modal-logo {
       display: flex;
       justify-content: center;
