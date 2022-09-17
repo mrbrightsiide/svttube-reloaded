@@ -7,16 +7,17 @@ mixin video(video)
             .thumbnail(style=`background-image:url(/${video.thumbUrl}`)
               .thumbnail-img
         .details
-          a(href=`/videos/${video.id}`)
-            a#user-profilepic
-              if pathUrl.includes("users")
-                img(src=`/${user.avatarUrl}`, crossorigin)
-              else
-                img(src=`/${video.owner.avatarUrl}`, crossorigin)
           .meta
-            h3
-              a(href=`/videos/${video.id}`)
-                #video-title= video.title
-            .video-meta-block
-              p= video.owner.name
-              p= `${formatCreatedDate(video.createdAt)} · 조회수 ${video.meta.views}회`
+            a(href=`/videos/${video.id}`)
+              a#user-profilepic
+                if pathUrl.includes("users")
+                  img(src=`/${user.avatarUrl}`, crossorigin)
+                else
+                  img(src=`/${video.owner.avatarUrl}`, crossorigin)
+            div
+              h3
+                a(href=`/videos/${video.id}`)
+                  #video-title= video.title
+              .video-meta-block
+                p= video.owner.name
+                p= `${formatCreatedDate(video.createdAt)} · 조회수 ${video.meta.views}회`

@@ -5,6 +5,7 @@
 /*Components*/
 @import "./components/form.scss";
 @import "./components/video-player.scss";
+@import "./components/video-mixin.scss";
 
 /* Screens */
 @import "./screens/header.scss";
@@ -13,6 +14,7 @@
 @import "./screens/watch.scss";
 @import "./screens/upload.scss";
 @import "./screens/profile.scss";
+@import "./screens/search.scss";
 
 /* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap");
