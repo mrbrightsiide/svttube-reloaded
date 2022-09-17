@@ -65,6 +65,8 @@ const handleNavBtn = (e) => {
 };
 
 const handleMeadia = (e) => {
+  console.log("handle start");
+
   if (navContainer.classList.contains("modal")) {
     const modalWrap = document.querySelector(".modal-wrap");
     modalWrap.remove();
@@ -110,10 +112,9 @@ searchBtn.addEventListener("click", (e) => {
   arrowBtn.append(img);
   arrowBtn.classList.add("arrow");
   navBtn[0].parentNode.prepend(arrowBtn);
-});
 
-const arrowBtn = document.querySelector(".arrow");
-
-arrowBtn.addEventListener("click", (e) => {
-  searchBox.classList.remove("on");
+  arrowBtn.addEventListener("click", (e) => {
+    searchBox.classList.remove("on");
+    arrowBtn.remove("on");
+  });
 });
