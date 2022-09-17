@@ -16,10 +16,14 @@
   &.theater {
     background: rgba(35, 35, 35, 0.99);
     caret-color: #fff;
+    .masthead-start .arrow {
+      background: rgba(35, 35, 35, 1);
+    }
     .guide-menu,
-    .masthead-end .loggedin-user-icons,
+    .masthead-end .user-icons,
     .svttube-logo img,
-    .loginbtn {
+    .loginbtn,
+    .masthead-start .arrow img {
       filter: brightness(0) invert(1);
     }
     .searchbox .searchbox-form form {
