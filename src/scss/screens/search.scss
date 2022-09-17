@@ -16,29 +16,32 @@
         width: 45%;
         max-width: 330px;
         height: auto;
-        margin-right: 10px;
+        margin-right: 18px;
       }
       .details {
         width: 55%;
         .meta {
           flex-direction: column;
-          #user-profilepic {
-            position: absolute;
-            bottom: 37px;
-            width: 25px;
-            height: 25px;
-          }
           .meta-txt {
             h3 {
-              font-size: 2rem;
               margin: 0;
-              margin-bottom: 7px;
             }
             .video-meta-block {
-              font-size: 1.3rem;
-              line-height: 1.8;
-              p:first-child {
-                margin-left: 30px;
+              font-size: 1.4rem;
+              line-height: 2.2;
+              display: block;
+              margin-top: 10px;
+              #user-profilepic {
+                width: 25px;
+                height: 25px;
+                margin: 0;
+                margin-right: 7px;
+                margin-bottom: -8px;
+                display: inline-block;
+              }
+              p:nth-child(2) {
+                width: calc(100% - 32px);
+                display: inline-block;
               }
             }
           }
