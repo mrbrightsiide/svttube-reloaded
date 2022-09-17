@@ -9,12 +9,12 @@ mixin video(video)
         .details
           .meta
             a(href=`/videos/${video.id}`)
-              a#user-profilepic
+              a#user-profilepic(href=`/users/${video.owner._id}`)
                 if pathUrl.includes("users")
                   img(src=`/${user.avatarUrl}`, crossorigin)
                 else
                   img(src=`/${video.owner.avatarUrl}`, crossorigin)
-            div
+            .meta-txt
               h3
                 a(href=`/videos/${video.id}`)
                   #video-title= video.title

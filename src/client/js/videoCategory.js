@@ -34,24 +34,26 @@ export class VideoCard {
             </div>
           </a>
           <div class="details">
+          <div class="meta">
               <a id="user-profilepic" href="/users/${item.owner._id}">
                 <img src="/${item.owner.avatarUrl}" crossorigin="crossorigin" />
               </a>
-            <div class="meta">
-              <h3>
-                <a href="/videos/${item._id}">
-                  <div id="video-title">
-                    <p>${item.title}</p>
+              <div class="meta-txt">   
+                <h3>
+                  <a href="/videos/${item._id}">
+                    <div id="video-title">
+                      <p>${item.title}</p>
+                    </div>
+                  </a>
+                </h3>
+                <div class="video-meta-block">
+                  <div>
+                    <p>${item.owner.name}</p>
                   </div>
-                </a>
-              </h3>
-              <div class="video-meta-block">
-                <div>
-                  <p>${item.owner.name}</p>
-                </div>
-                <div>
-                  <p>${item.createdAt}</p>
-                  <p> · 조회수 ${item.meta.views}회</p>
+                  <div>
+                    <p>${item.createdAt}</p>
+                    <p> · 조회수 ${item.meta.views}회</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -104,30 +106,32 @@ export class InitPage {
             </div>
           </a>
           <div class="details">
+          <div class="meta">
               <a id="user-profilepic" href="/users/${item.owner._id}">
                 <img src="/${item.owner.avatarUrl}" crossorigin="crossorigin" />
               </a>
-            <div class="meta">
-              <h3>
-                <a href="/videos/${item._id}">
-                  <div id="video-title">
-                    <p>${item.title}</p>
+              <div class="meta-txt">   
+                <h3>
+                  <a href="/videos/${item._id}">
+                    <div id="video-title">
+                      <p>${item.title}</p>
+                    </div>
+                  </a>
+                </h3>
+                <div class="video-meta-block">
+                  <div>
+                    <p>${item.owner.name}</p>
                   </div>
-                </a>
-              </h3>
-              <div class="video-meta-block">
-                <div>
-                  <p>${item.owner.name}</p>
-                </div>
-                <div>
-                  <p>${item.createdAt}</p>
-                  <p> · 조회수 ${item.meta.views}회</p>
+                  <div>
+                    <p>${item.createdAt}</p>
+                    <p> · 조회수 ${item.meta.views}회</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>`;
+    </div>`;
       return this.main.append(videoList);
     });
   }
