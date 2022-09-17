@@ -179,8 +179,8 @@ const handleMouseLeave = () => {
 };
 
 const handleEended = () => {
-  // const { id } = videoContainer.dataset;
-  // fetch(`/api/videos/${id}/view`, { method: "POST" });
+  const { id } = videoContainer.dataset;
+  fetch(`/api/videos/${id}/view`, { method: "POST" });
   playBtnIcon.classList = "fa-solid fa-rotate-right";
 };
 

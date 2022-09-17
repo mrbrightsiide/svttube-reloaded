@@ -38,7 +38,6 @@ export const getEdit = async (req, res) => {
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video not found :(" });
   }
-  console.log(typeof video.owner, typeof _id);
   if (String(video.owner) !== String(_id)) {
     req.flash("error", "Not authorized");
     return res.status(403).redirect("/");
@@ -117,6 +116,7 @@ export const deleteVideo = async (req, res) => {
 };
 
 export const search = async (req, res) => {
+  res.locals.formatCreatedDate = formatCreatedDate;
   const { keyword } = req.query;
   let videos = [];
   if (keyword) {
