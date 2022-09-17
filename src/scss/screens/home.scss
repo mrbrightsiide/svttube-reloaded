@@ -77,15 +77,16 @@ $grid-item-max-width: 380px;
       .banner-content {
         font-size: 24px;
         line-height: 35px;
+        padding-right: 1.8rem;
       }
       #videoContainer {
         width: auto;
-        min-height: 260px;
+        min-height: auto;
         #mute {
           font-size: 1.8rem;
           position: absolute;
-          right: 15px;
-          top: 15px;
+          right: 2%;
+          top: 5%;
           background: none;
           color: #fff;
           border: none;
@@ -94,7 +95,6 @@ $grid-item-max-width: 380px;
         }
         video {
           max-height: 260px;
-          width: auto;
         }
       }
     }
@@ -170,6 +170,16 @@ $grid-item-max-width: 380px;
 }
 
 @media (max-width: 659px) {
+  .svt-promo-banner {
+    margin: 0 3rem !important;
+  }
+  .masthead_ad .svt-promo-banner .banner .banner-content {
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+  .banner-content #default-btn {
+    padding: 4px 6px;
+  }
   .category-bar {
     width: 100%;
     overflow: auto;

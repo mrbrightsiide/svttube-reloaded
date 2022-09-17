@@ -25,6 +25,7 @@ const adContainer = document.querySelector(".masthead_ad");
 const adText = document.querySelector("#banner-txt");
 const adVideo = document.querySelector("#banner-video");
 const adBtnAnchor = document.querySelector("#banner-btn");
+const videoContainer = document.querySelector("#videoContainer");
 
 adText.innerHTML = `Check out the new song<br>"${currentAd.text}" by Seventeen!`;
 adVideo.setAttribute("src", `/uploads/videos/${currentAd.videoId}`);
@@ -42,8 +43,13 @@ const handleAdClose = (event) => {
 window.addEventListener("click", handleAdClose);
 
 // Control sound button of ad video
-const muteBtn = document.getElementById("mute");
-const muteBtnIcon = muteBtn.querySelector("i");
+const muteBtn = document.createElement("button");
+const muteBtnText = document.createElement("i");
+muteBtnText.classList.add("fas");
+muteBtn.setAttribute("id", "mute");
+muteBtnText.classList.add("fa-volume-mute");
+muteBtn.append(muteBtnText);
+videoContainer.prepend(muteBtn);
 
 const handleMuteClick = (e) => {
   if (adVideo.muted) {
@@ -52,7 +58,7 @@ const handleMuteClick = (e) => {
     adVideo.muted = true;
   }
 
-  muteBtnIcon.classList = adVideo.muted
+  muteBtnText.classList = adVideo.muted
     ? "fas fa-volume-mute"
     : "fas fa-volume-up";
 };
