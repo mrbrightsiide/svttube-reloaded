@@ -358,10 +358,17 @@
 }
 
 #footer-wrap {
+  position: fixed;
+  width: 206px;
   margin-top: 20px;
   padding-left: 34px;
   color: rgb(139, 139, 139);
   font-size: 1.2rem;
+  bottom: 35px;
+  p {
+    margin-top: 20px;
+    margin-right: 3rem;
+  }
 }
 
 @media (max-width: 1210px) and (min-width: 680px) {
