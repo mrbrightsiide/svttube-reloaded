@@ -3,8 +3,8 @@ import multerS3 from "multer-s3";
 import aws from "aws-sdk";
 
 const s3 = new aws.S3({
-  credictials: {
-    accessKieId: process.env.AWS_ID,
+  credentials: {
+    accessKeyId: process.env.AWS_ID,
     secretAccessKey: process.env.AWS_SECRET,
   },
 });
@@ -54,11 +54,11 @@ export const publicOnlyMiddleware = (req, res, next) => {
 export const avatarUpload = multer({
   dest: "uploads/avatars/",
   limits: { fileSize: 5000000 },
-  storage: isHeroku ? s3ImageUploader : null,
+  storage: isHeroku ? s3ImageUploader : undefined,
 });
 
 export const videoUpload = multer({
   dest: "uploads/videos/",
   limits: { fileSize: 35000000 },
-  storage: isHeroku ? s3VideoUploader : null,
+  storage: isHeroku ? s3VideoUploader : undefined,
 });
