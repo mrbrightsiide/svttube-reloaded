@@ -63,17 +63,18 @@ const handleDelete = async (event) => {
   const videoid = videoContainer.dataset.id;
   const clickedComment = event.target.parentElement;
   const id = clickedComment.dataset.id;
-  const respons = await fetch(`/api/comment/${id}/delete`, {
+  const response = await fetch(`/api/comment/${id}/delete`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ videoid }),
   });
-  if (respons.status === 403) {
-    alert("Not authorized!");
-  } else if (respons.status === 201) {
-    clickedComment.remove();
+  if (response.status === 403) {
+    return alert("Not authorized!");
+  }
+  if (response.status === 201) {
+    return clickedComment.remove();
   }
 };
 
