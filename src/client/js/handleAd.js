@@ -9,13 +9,13 @@ const adList = [
   {
     text: "Rock with you",
     videoId: "88f2d2e2971853e27ef8261e8c7bc4c2",
-    videoLink: "62f3795012314b15cc515814",
+    videoLink: "6322f49a9f87a74618ff25bc",
     bgColor: "#dbf0ff",
   },
   {
     text: "HOT",
     videoId: "37e8424771ac397df014c385136a9d7a",
-    videoLink: "62f3857039b1c44b98468c55",
+    videoLink: "6327befe8894e336a8285d9b",
     bgColor: "#ffe6d1",
   },
 ];
