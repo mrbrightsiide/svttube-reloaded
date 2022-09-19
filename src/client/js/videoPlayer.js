@@ -184,7 +184,7 @@ const handleEended = () => {
   playBtnIcon.classList = "fa-solid fa-rotate-right";
 };
 
-theaterBtn.addEventListener("click", (e) => {
+theaterBtn.addEventListener("click", async (e) => {
   [
     videoContainer,
     playerContainer,
@@ -198,9 +198,19 @@ theaterBtn.addEventListener("click", (e) => {
   });
   if (theaterBtn.classList.contains("basic")) {
     theaterBtn.parentElement.setAttribute("title", "Theater mode");
+    theaterBtn.parentElement.setAttribute("data-id", "basic");
   } else {
     theaterBtn.parentElement.setAttribute("title", "Default view");
+    theaterBtn.parentElement.setAttribute("data-id", "theater");
   }
+  let mode = theaterBtn.parentElement.dataset.id;
+  await fetch(`/api/theatermode`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ mode }),
+  });
 });
 
 volumeContainer.addEventListener("mousemove", (e) => {

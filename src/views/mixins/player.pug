@@ -1,5 +1,5 @@
 mixin player(video)
-  #videoContainer.basic(data-id=video._id)
+  #videoContainer(class=`${isTheaterMode ? "theater" :"basic"}`, data-id=video._id)
     video(src="/" + video.fileUrl)
     #videoControls.videoControls
       input#timeline.videoControls__timeline(
@@ -28,8 +28,11 @@ mixin player(video)
               max="1"
             )
         div
-          a(title="Theater mode")
-            #theater.basic
+          a(
+            title=`${isTheaterMode ? "Default View" :"Theater Mode"}`,
+            data-id=`${isTheaterMode ? "theater" : "basic"}`
+          )
+            #theater(class=`${isTheaterMode ? "theater" :"basic"}`)
           a(title="Fullscreen")
             #fullScreen
               i.fas.fa-expand

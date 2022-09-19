@@ -1,6 +1,6 @@
 header
   .masthead
-    .masthead-container.basic
+    .masthead-container(class=`${isTheaterMode ? "theater" :"basic"}`)
       .masthead-start
         button#guide_menu_btn.guide-menu
           svg(viewBox="0 0 100 80", width="20", height="20")

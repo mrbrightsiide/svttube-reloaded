@@ -5,6 +5,7 @@ export const localsMiddleware = (req, res, next) => {
   res.locals.siteName = "SvtTube";
   res.locals.loggedInUser = req.session.user || {};
   res.locals.pathUrl = req.path;
+  res.locals.isTheaterMode = Boolean(req.session.isTheaterMode);
   next();
 };
 
@@ -27,6 +28,7 @@ export const publicOnlyMiddleware = (req, res, next) => {
 };
 
 export const avatarUpload = multer({
+  // dest는 destination
   dest: "uploads/avatars/",
   limits: { fileSize: 5000000 },
 });

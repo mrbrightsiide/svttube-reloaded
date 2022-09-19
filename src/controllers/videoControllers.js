@@ -217,3 +217,11 @@ export const getVideos = async (req, res) => {
 export const getCategory = (req, res) => {
   res.redirect("/");
 };
+
+export const checkTheaterMode = (req, res) => {
+  const { mode } = req.body;
+  req.session.isTheaterMode = mode === "theater" ? true : false;
+  console.log(`modeisNow : ${mode}`);
+  console.log(`sessionisNow : ${req.session.isTheaterMode}`);
+  res.sendStatus("201");
+};

@@ -6,7 +6,7 @@ block content
   .page-manager
     #watch-page-wrap
       +player(video)
-      .player-container.basic
+      .player-container(class=`${isTheaterMode ? "theater" :"basic"}`)
         .video__data
           small.hashtags= String(video.hashtags).split(",").join(" ")
           h1.video__title= video.title
@@ -29,10 +29,10 @@ block content
               a(href=`${video.id}/edit`) Edit Video &rarr;
               br
               a(href=`${video.id}/delete`) Delete Video &rarr;
-      .related-container.basic
+      .related-container(class=`${isTheaterMode ? "theater" :"basic"}`)
         each vid in relatedVideos
           +video(vid)
-      .comment-container.basic
+      .comment-container(class=`${isTheaterMode ? "theater" :"basic"}`)
         span #{ video.comments.length } Comments
         if loggedIn
           .video__add-comments
