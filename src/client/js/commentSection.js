@@ -1,4 +1,4 @@
-import formatCreatedDate from "./formatCreatedDate";
+import formatCreatedDate from "../../utils/formatCreatedDate";
 
 const videoContainer = document.getElementById("videoContainer");
 const form = document.getElementById("commentForm");

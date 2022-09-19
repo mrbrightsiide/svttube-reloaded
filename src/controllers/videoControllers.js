@@ -2,8 +2,8 @@ import express from "express";
 import Video from "../models/Video.js";
 import Comment from "../models/Comment.js";
 import User from "../models/User.js";
-import formatCreatedDate from "../client/js/formatCreatedDate";
-import shuffle from "./../client/js/suffle";
+import formatCreatedDate from "../utils/formatCreatedDate.js";
+import shuffle from "../utils/suffle.js";
 
 export const home = async (req, res) => {
   return res.render("home", { pageTitle: "Home" });

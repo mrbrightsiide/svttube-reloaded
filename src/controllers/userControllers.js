@@ -2,7 +2,7 @@ import User from "../models/User.js";
 import Video from "../models/Video.js";
 import fetch from "node-fetch";
 import bcryptjs from "bcryptjs";
-import formatCreatedDate from "../client/js/formatCreatedDate";
+import formatCreatedDate from "../utils/formatCreatedDate.js";
 
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 

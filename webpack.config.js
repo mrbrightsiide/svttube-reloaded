@@ -10,18 +10,15 @@ module.exports = {
     commentSection: BASE_JS + "commentSection.js",
     handleAd: BASE_JS + "handleAd.js",
     videoCategory: BASE_JS + "videoCategory.js",
-    formatCreatedDate: BASE_JS + "formatCreatedDate.js",
     getThumbnail: BASE_JS + "getThumbnail.js",
     imagePreview: BASE_JS + "imagePreview.js",
     handleNavBar: BASE_JS + "handleNavBar.js",
   },
   mode: "development",
-  watch: true,
   output: {
     filename: "js/[name].js",
     path: path.resolve(__dirname, "assets"),
     clean: true,
-    // 새로운 output폴더를 빌드하면, 기존에 있던 사용하지 않게되는 output폴더를 지워주는 속성.
   },
   plugins: [
     new MiniCssExtractPlugin({
