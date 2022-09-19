@@ -3,6 +3,7 @@ import Video from "../models/Video.js";
 import fetch from "node-fetch";
 import bcryptjs from "bcryptjs";
 import formatCreatedDate from "../utils/formatCreatedDate.js";
+import { isHeroku } from "../middlewares.js";
 
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 
@@ -164,7 +165,7 @@ export const postEdit = async (req, res) => {
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
-      avatarUrl: file ? file.path : avatarUrl,
+      avatarUrl: file ? (isHeroku ? file.location : file.path) : avatarUrl,
       email,
       username: userid,
       name,

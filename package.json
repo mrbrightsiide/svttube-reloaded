@@ -23,6 +23,7 @@
     "@babel/runtime": "^7.18.9",
     "@ffmpeg/core": "^0.8.5",
     "@ffmpeg/ffmpeg": "^0.9.7",
+    "aws-sdk": "^2.1218.0",
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^4.4.1",
     "dotenv": "^8.2.0",
@@ -33,6 +34,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "mongoose": "^5.12.3",
     "multer": "^1.4.2",
+    "multer-s3": "^3.0.1",
     "node-fetch": "^2.6.1",
     "pug": "^3.0.2",
     "regenerator-runtime": "^0.13.7"

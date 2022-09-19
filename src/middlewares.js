@@ -1,4 +1,27 @@
 import multer from "multer";
+import multerS3 from "multer-s3";
+import aws from "aws-sdk";
+
+const s3 = new aws.S3({
+  credictials: {
+    accessKieId: process.env.AWS_ID,
+    secretAccessKey: process.env.AWS_SECRET,
+  },
+});
+
+export const isHeroku = process.env.NODE_ENV === "production";
+
+const s3ImageUploader = multerS3({
+  s3: s3,
+  bucket: "svttube/images",
+  acl: "public-read",
+});
+
+const s3VideoUploader = multerS3({
+  s3: s3,
+  bucket: "svttube/videos",
+  acl: "public-read",
+});
 
 export const localsMiddleware = (req, res, next) => {
   res.locals.loggedIn = Boolean(req.session.loggedIn);
@@ -6,6 +29,7 @@ export const localsMiddleware = (req, res, next) => {
   res.locals.loggedInUser = req.session.user || {};
   res.locals.pathUrl = req.path;
   res.locals.isTheaterMode = Boolean(req.session.isTheaterMode);
+  res.locals.isHeroku = isHeroku;
   next();
 };
 
@@ -28,12 +52,13 @@ export const publicOnlyMiddleware = (req, res, next) => {
 };
 
 export const avatarUpload = multer({
-  // dest는 destination
   dest: "uploads/avatars/",
   limits: { fileSize: 5000000 },
+  storage: isHeroku ? s3ImageUploader : null,
 });
 
 export const videoUpload = multer({
   dest: "uploads/videos/",
-  limits: { fileSize: 100000000 },
+  limits: { fileSize: 35000000 },
+  storage: isHeroku ? s3VideoUploader : null,
 });
