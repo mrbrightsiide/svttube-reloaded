@@ -139,6 +139,18 @@ $grid-item-max-width: 380px;
       margin-bottom: 40px;
       contain: style layout;
       overflow: hidden;
+      .meta {
+        h3 {
+          a {
+            #video-title {
+              max-height: 4.4rem;
+              font-size: 1.6rem;
+              line-height: 2.2rem;
+              padding-right: 10px;
+            }
+          }
+        }
+      }
     }
   }
 }

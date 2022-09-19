@@ -190,10 +190,12 @@
         h3 {
           margin: 0;
           margin-bottom: 6px;
-          #video-title {
-            max-height: 3.4rem;
-            font-size: 1.4rem;
-            line-height: 1.7rem;
+          a {
+            #video-title {
+              max-height: 4rem;
+              font-size: 1.4rem;
+              line-height: 2rem;
+            }
           }
         }
         .video-meta-block {

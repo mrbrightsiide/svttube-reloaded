@@ -143,6 +143,17 @@
     font-weight: 500;
     padding-left: 8px;
   }
+
+  .video-wrap #video-contents-wrap article .meta h3 {
+    margin-bottom: 6px;
+    a {
+      #video-title {
+        max-height: 4rem;
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
+    }
+  }
 }
 
 hr.line {
