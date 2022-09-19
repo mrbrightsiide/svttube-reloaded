@@ -65,8 +65,6 @@ const handleNavBtn = (e) => {
 };
 
 const handleMeadia = (e) => {
-  console.log("handle start");
-
   if (navContainer.classList.contains("modal")) {
     const modalWrap = document.querySelector(".modal-wrap");
     modalWrap.remove();
