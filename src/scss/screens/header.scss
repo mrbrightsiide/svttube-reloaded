@@ -182,18 +182,21 @@
     }
   }
   button.loginbtn {
-    padding: 8px 11px;
+    padding: 0;
     color: $button-color;
     background: transparent;
     border: 1px solid $button-color;
-  }
-  button.loginbtn a i {
-    font-size: 14px;
-    vertical-align: middle;
-  }
-  button.loginbtn a i:first-child {
-    margin-right: 10px;
-    font-size: 23px;
+    a {
+      padding: 2px !important;
+      i {
+        font-size: 14px;
+        vertical-align: middle;
+        &:first-child {
+          margin-right: 10px;
+          font-size: 23px;
+        }
+      }
+    }
   }
 }
 
