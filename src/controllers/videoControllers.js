@@ -4,6 +4,7 @@ import Comment from "../models/Comment.js";
 import User from "../models/User.js";
 import formatCreatedDate from "../utils/formatCreatedDate.js";
 import shuffle from "../utils/suffle.js";
+import { isHeroku } from "../middlewares.js";
 
 export const home = async (req, res) => {
   return res.render("home", { pageTitle: "Home" });
@@ -94,6 +95,7 @@ export const postUpload = async (req, res) => {
     user.save();
     return res.redirect("/");
   } catch (error) {
+    console.log(error);
     return res.status(400).render("upload", {
       pageTitle: "Upload Video",
       errorMessage: error._message,

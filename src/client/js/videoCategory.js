@@ -25,18 +25,20 @@ export class VideoCard {
       <div class="video-item-wrap">
         <div class="video-item">
           <a href="/videos/${item._id}">
-            <div class="thumbnail-wrap">
-              <div
-                class="thumbnail"
-                style="background-image: url(/${item.thumbUrl})"
-              >
-              </div>
+          <div class="thumbnail-wrap">
+            <div class="thumbnail">
+              <img
+                class="thumbnail-img"
+                src="${item.thumbUrl}"
+                crossorigin="crossorigin"
+              />
             </div>
+        </div>
           </a>
           <div class="details">
-          <div class="meta">
+            <div class="meta">
               <a id="user-profilepic" href="/users/${item.owner._id}">
-                <img src="/${item.owner.avatarUrl}" crossorigin="crossorigin" />
+                <img src="${item.owner.avatarUrl}" crossorigin="crossorigin" />
               </a>
               <div class="meta-txt">   
                 <h3>
@@ -97,18 +99,20 @@ export class InitPage {
       <div class="video-item-wrap">
         <div class="video-item">
           <a href="/videos/${item._id}">
-            <div class="thumbnail-wrap">
-              <div
-                class="thumbnail"
-                style="background-image: url(/${item.thumbUrl})"
-              >
-              </div>
+          <div class="thumbnail-wrap">
+            <div class="thumbnail">
+              <img
+                class="thumbnail-img"
+                src="${item.thumbUrl}"
+                crossorigin="crossorigin"
+              />
             </div>
+        </div>
           </a>
           <div class="details">
-          <div class="meta">
+            <div class="meta">
               <a id="user-profilepic" href="/users/${item.owner._id}">
-                <img src="/${item.owner.avatarUrl}" crossorigin="crossorigin" />
+                <img src="${item.owner.avatarUrl}" crossorigin="crossorigin" />
               </a>
               <div class="meta-txt">   
                 <h3>

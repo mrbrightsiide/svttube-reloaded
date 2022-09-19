@@ -155,25 +155,19 @@ export const postEdit = async (req, res) => {
     body: { email, userid, name, location },
     file,
   } = req;
-  // edit profile에 eamil, username 유효성검사 추가 -> 중복안되게!!
-  await User.findByIdAndUpdate(_id, {
-    email,
-    username: userid,
-    name,
-    location,
-  });
-  const updatedUser = await User.findByIdAndUpdate(
-    _id,
-    {
+  try {
+    await User.findByIdAndUpdate(_id, {
       avatarUrl: file ? (isHeroku ? file.location : file.path) : avatarUrl,
       email,
       username: userid,
       name,
       location,
-    },
-    { new: true }
-  );
-  req.session.user = updatedUser;
+    });
+    const user = await User.findOne({ _id });
+    req.session.user = user;
+  } catch (err) {
+    console.log(err);
+  }
   return res.redirect("/");
 };
 
@@ -216,7 +210,6 @@ export const see = async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id).populate("video");
   let mainVideo = user.video[Math.floor(Math.random() * user.video.length)];
-  // res.locals.mainVideo = mainVideo;
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User Not Found." });
   }

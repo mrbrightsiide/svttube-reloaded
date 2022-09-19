@@ -4,17 +4,17 @@ mixin video(video)
       .video-item
         a.thumbnail-anchor(href=`/videos/${video.id}`)
           .thumbnail-wrap
-            .thumbnail(style=`background-image:url(/${video.thumbUrl}`)
-              .thumbnail-img
+            .thumbnail
+              img.thumbnail-img(src=video.thumbUrl, crossorigin)
         .details
           .meta
             if !pathUrl.includes("search")
               a(href=`/videos/${video.id}`)
                 a#user-profilepic(href=`/users/${video.owner._id}`)
                   if pathUrl.includes("users")
-                    img(src=`/${user.avatarUrl}`, crossorigin)
+                    img(src=user.avatarUrl, crossorigin)
                   else
-                    img(src=`/${video.owner.avatarUrl}`, crossorigin)
+                    img(src=video.owner.avatarUrl, crossorigin)
             .meta-txt
               h3
                 a(href=`/videos/${video.id}`)
@@ -23,8 +23,8 @@ mixin video(video)
                 if pathUrl.includes("search")
                   a#user-profilepic(href=`/users/${video.owner._id}`)
                     if pathUrl.includes("users")
-                      img(src=`/${user.avatarUrl}`, crossorigin)
+                      img(src=user.avatarUrl, crossorigin)
                     else
-                      img(src=`/${video.owner.avatarUrl}`, crossorigin)
+                      img(src=video.owner.avatarUrl, crossorigin)
                 p= video.owner.name
                 p= `${formatCreatedDate(video.createdAt)} · 조회수 ${video.meta.views}회`

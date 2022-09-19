@@ -9,7 +9,7 @@ block content
           form(method="POST", enctype="multipart/form-data")
             #preview-wrap.profile-img-wrap
               .edit-profile-img
-                img#preview-img(src="/" + loggedInUser.avatarUrl)
+                img#preview-img(src=loggedInUser.avatarUrl, crossorigin)
               i.fa-regular.fa-image
             input#avatar(type="file", name="avatar", accept="image/*")
             input(
