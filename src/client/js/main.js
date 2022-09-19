@@ -1,3 +1,4 @@
+import "regenerator-runtime";
 import "../../scss/styles.scss";
 import "../img/logo.svg";
 import "../img/profile_default.jpg";
