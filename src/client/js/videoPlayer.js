@@ -23,7 +23,6 @@ let controlsMovementTimeout = null;
 let volumeValue = 0.5;
 video.volume = volumeValue;
 
-video.play();
 playBtnIcon.classList = "fas fa-pause";
 
 if (window.location.pathname.includes("users")) {
@@ -234,4 +233,4 @@ fullScreenBtn.addEventListener("click", handleFullscreen);
 video.setAttribute("src", videoSrc);
 video.setAttribute("crossorigin", "crossorigin");
 video.autoplay = true;
-videoContainer.append(video);
+videoContainer.prepend(video);
