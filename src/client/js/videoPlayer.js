@@ -1,4 +1,4 @@
-const video = document.querySelector("video");
+const video = document.createElement("video");
 const playBtn = document.getElementById("play");
 const playBtnIcon = playBtn.querySelector("i");
 const muteBtn = document.getElementById("mute");
@@ -222,7 +222,7 @@ volumeContainer.addEventListener("mouseleave", (e) => {
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMuteClick);
 volumeRange.addEventListener("input", handleVolumeChange);
-video.addEventListener("loadeddata", handleLoadedMetadata);
+video.addEventListener("loadedmetadata", handleLoadedMetadata);
 video.addEventListener("timeupdate", handleTimeUpdate);
 video.addEventListener("ended", handleEended);
 video.addEventListener("click", handlePlayClick);
@@ -231,3 +231,7 @@ videoContainer.addEventListener("mouseleave", handleMouseLeave);
 document.addEventListener("keyup", handleSpacebarPress);
 timeline.addEventListener("input", handleTimelineChange);
 fullScreenBtn.addEventListener("click", handleFullscreen);
+video.setAttribute("src", videoSrc);
+video.setAttribute("crossorigin", "crossorigin");
+video.autoplay = true;
+videoContainer.append(video);

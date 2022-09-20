@@ -60,6 +60,8 @@ block content
                   button.delete_comment_btn ❌
 
 block scripts
+  script
+    | let videoSrc = "#{ video.fileUrl }"
   script(src="/static/js/videoPlayer.js")
   script(src="/static/js/formatCreatedDate.js")
   if loggedIn
