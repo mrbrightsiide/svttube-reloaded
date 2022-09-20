@@ -23,7 +23,6 @@ let controlsMovementTimeout = null;
 let volumeValue = 0.5;
 video.volume = volumeValue;
 
-video.play();
 playBtnIcon.classList = "fas fa-pause";
 
 if (window.location.pathname.includes("users")) {
