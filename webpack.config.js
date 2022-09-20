@@ -5,7 +5,7 @@ const BASE_JS = "./src/client/js/";
 module.exports = {
   entry: {
     main: BASE_JS + "main.js",
-    videoplayer: BASE_JS + "videoPlayer.js",
+    videoPlayer: BASE_JS + "videoPlayer.js",
     recorder: BASE_JS + "recorder.js",
     commentSection: BASE_JS + "commentSection.js",
     handleAd: BASE_JS + "handleAd.js",
@@ -13,6 +13,7 @@ module.exports = {
     getThumbnail: BASE_JS + "getThumbnail.js",
     imagePreview: BASE_JS + "imagePreview.js",
     handleNavBar: BASE_JS + "handleNavBar.js",
+    formatCreatedDate: BASE_JS + "formatCreatedDate.js",
   },
   mode: "development",
   output: {

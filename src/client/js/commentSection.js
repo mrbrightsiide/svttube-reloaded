@@ -15,7 +15,10 @@ const addComment = (text, id) => {
     <div class="comment-content">
         <a>
             <div class="comment-avatar">
-              <img src="/${userAvatarUrl.replaceAll("&quot;", "")}"/>
+              <img src="${userAvatarUrl.replaceAll(
+                "&quot;",
+                ""
+              )}" crossorigin="crossorigin"/>
             </div>
         </a>
         <div class="comment-text">
