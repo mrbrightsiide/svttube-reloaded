@@ -23,7 +23,6 @@ let controlsMovementTimeout = null;
 let volumeValue = 0.5;
 video.volume = volumeValue;
 
-video.play();
 playBtnIcon.classList = "fas fa-pause";
 
 if (window.location.pathname.includes("users")) {
@@ -116,6 +115,7 @@ const formatTime = (seconds) =>
   new Date(seconds * 1000).toISOString().substring(11, 19);
 
 const handleLoadedMetadata = () => {
+  console.log("data loaded");
   totalTime.innerText = formatTime(Math.floor(video.duration));
   timeline.max = video.duration;
 };
@@ -222,7 +222,7 @@ volumeContainer.addEventListener("mouseleave", (e) => {
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMuteClick);
 volumeRange.addEventListener("input", handleVolumeChange);
-video.addEventListener("loadeddata", handleLoadedMetadata);
+video.addEventListener("loadedmetadata", handleLoadedMetadata);
 video.addEventListener("timeupdate", handleTimeUpdate);
 video.addEventListener("ended", handleEended);
 video.addEventListener("click", handlePlayClick);
