@@ -50,7 +50,7 @@ block content
                 .comment-content
                   a(href=`/users/${comment.owner._id}`) 
                     .comment-avatar
-                      img(src=comment.owner.avatarUrl)
+                      img(src=comment.owner.avatarUrl, crossorigin)
                   .comment-text
                     div
                       span= comment.owner.name
