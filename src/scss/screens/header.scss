@@ -186,6 +186,10 @@
     color: $button-color;
     background: transparent;
     border: 1px solid $button-color;
+    margin-left: 10px;
+    &.off {
+      opacity: 0;
+    }
     a {
       padding: 2px !important;
       i {

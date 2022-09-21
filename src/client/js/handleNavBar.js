@@ -104,6 +104,8 @@ const searchBox = document.querySelector(".searchbox");
 
 searchBtn.addEventListener("click", (e) => {
   searchBox.classList.add("on");
+  const loginBtn = document.querySelector(".loginbtn");
+  loginBtn.classList.add("off");
   const arrowBtn = document.createElement("div");
   const img = document.createElement("img");
   img.setAttribute("src", "/static/img/arrow.svg");
@@ -113,6 +115,7 @@ searchBtn.addEventListener("click", (e) => {
 
   arrowBtn.addEventListener("click", (e) => {
     searchBox.classList.remove("on");
+    loginBtn.classList.remove("off");
     arrowBtn.remove("on");
   });
 });
