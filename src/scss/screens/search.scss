@@ -8,10 +8,11 @@
   padding: 3rem calc(3rem - 10px);
   background: #f1f1f1;
   .video-item-wrap {
-    width: calc(100% - 20px);
+    width: calc(100% - 60px);
     margin: 10px 10px 30px 10px;
     .video-item {
       display: flex;
+      width: 100%;
       .thumbnail-anchor {
         width: 45%;
         max-width: 330px;
@@ -19,12 +20,16 @@
         margin-right: 18px;
       }
       .details {
-        width: 55%;
+        width: 50%;
         .meta {
           flex-direction: column;
           .meta-txt {
+            margin: 0;
             h3 {
               margin: 0;
+              line-height: 1.3;
+              height: 4.5rem;
+              font-size: 1.8rem;
             }
             .video-meta-block {
               font-size: 1.4rem;

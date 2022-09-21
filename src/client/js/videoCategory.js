@@ -41,13 +41,11 @@ export class VideoCard {
                 <img src="${item.owner.avatarUrl}" crossorigin="crossorigin" />
               </a>
               <div class="meta-txt">   
-                <h3>
-                  <a href="/videos/${item._id}">
-                    <div id="video-title">
+                <a href="/videos/${item._id}">
+                    <h3 id="video-title">
                       <p>${item.title}</p>
-                    </div>
+                    </h3>
                   </a>
-                </h3>
                 <div class="video-meta-block">
                   <div>
                     <p>${item.owner.name}</p>
@@ -115,13 +113,11 @@ export class InitPage {
                 <img src="${item.owner.avatarUrl}" crossorigin="crossorigin" />
               </a>
               <div class="meta-txt">   
-                <h3>
-                  <a href="/videos/${item._id}">
-                    <div id="video-title">
+                <a href="/videos/${item._id}">
+                    <h3 id="video-title">
                       <p>${item.title}</p>
-                    </div>
+                    </h3>
                   </a>
-                </h3>
                 <div class="video-meta-block">
                   <div>
                     <p>${item.owner.name}</p>

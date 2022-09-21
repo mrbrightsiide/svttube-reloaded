@@ -33,25 +33,32 @@
     .meta {
       overflow: hidden;
       padding-right: 0;
-      width: 100%;
+      width: calc(100% - 12px);
       display: flex;
       .meta-txt {
         padding-right: 12px;
-        h3 {
+        width: calc(100% - 48px);
+        margin-top: 12px;
+        a {
           margin: 11px 0 4px 0;
-          a {
-            #video-title {
-              overflow: hidden;
-              white-space: normal;
-              -webkit-line-clamp: 2;
-              font-weight: 500;
-            }
+          #video-title {
+            margin: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            word-wrap: break-word;
+            line-height: 1.3;
+            max-height: 4.5rem;
+            font-size: 1.6rem;
           }
         }
         .video-meta-block {
           color: #606060;
           display: flex;
           flex-direction: column;
+          margin-top: 5px;
           div {
             width: 100%;
             &:last-child {
