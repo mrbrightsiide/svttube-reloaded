@@ -16,9 +16,8 @@ mixin video(video)
                   else
                     img(src=video.owner.avatarUrl, crossorigin)
             .meta-txt
-              h3
-                a(href=`/videos/${video.id}`)
-                  #video-title= video.title
+              a(href=`/videos/${video.id}`)
+                h3#video-title= video.title
               .video-meta-block
                 if pathUrl.includes("search")
                   a#user-profilepic(href=`/users/${video.owner._id}`)
