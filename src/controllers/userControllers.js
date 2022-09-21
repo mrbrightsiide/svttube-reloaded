@@ -155,6 +155,18 @@ export const postEdit = async (req, res) => {
     body: { email, userid, name, location },
     file,
   } = req;
+  const user = await User.findOne({ _id });
+  if (user.email !== email || user.username !== userid) {
+    const exists = await User.exists({
+      $or: [{ email }, { username: userid }],
+    });
+    if (exists) {
+      return res.status(400).render("edit-profile", {
+        errorMessage: "This email/id is already taken :(",
+        pageTitle: "Edit Profile",
+      });
+    }
+  }
   try {
     await User.findByIdAndUpdate(_id, {
       avatarUrl: file ? (isHeroku ? file.location : file.path) : avatarUrl,

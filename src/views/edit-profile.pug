@@ -5,13 +5,14 @@ block content
     .form-page-wrap
       .form-wrap
         .form-box
-          h1#page-title= pageTitle
           form(method="POST", enctype="multipart/form-data")
             #preview-wrap.profile-img-wrap
               .edit-profile-img
                 img#preview-img(src=loggedInUser.avatarUrl, crossorigin)
               i.fa-regular.fa-image
             input#avatar(type="file", name="avatar", accept="image/*")
+            if errorMessage
+              span= errorMessage
             input(
               placeholder="id",
               name="userid",
