@@ -42,7 +42,7 @@ export class VideoCard {
             <div class="thumbnail">
               <img
                 class="thumbnail-img"
-                src="${item.thumbUrl}" onerror="this.src=${THUMB_ONERROR}" crossorigin="crossorigin"
+                src="${item.thumbUrl}" onerror="this.src=${THUMB_ONERROR};" crossorigin="crossorigin"
               />
             </div>
         </div>
@@ -50,7 +50,7 @@ export class VideoCard {
           <div class="details">
             <div class="meta">
               <a id="user-profilepic" href="/users/${item.owner._id}">
-                <img src="${item.owner.avatarUrl}" onerror="this.src=${AVATAR_ONERROR}" crossorigin="crossorigin"/>
+                <img src="${item.owner.avatarUrl}" onerror="this.src=${AVATAR_ONERROR};" crossorigin="crossorigin"/>
               </a>
               <div class="meta-txt">   
                 <a href="/videos/${item._id}">

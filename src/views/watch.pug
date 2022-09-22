@@ -18,7 +18,11 @@ block content
             .owner-profile
               a(href=`/users/${video.owner._id}`)
                 div
-                  img.profile-img(src=video.owner.avatarUrl, crossorigin)
+                  img.profile-img(
+                    src=video.owner.avatarUrl,
+                    crossorigin,
+                    onerror="this.src=\"/static/img/profile_default.jpg\";"
+                  )
               div
                 a(href=`/users/${video.owner._id}`)
                   h3= video.owner.name
@@ -38,7 +42,11 @@ block content
           .video__add-comments
             form#commentForm.video__comment-form
               .loggedin-user-profile
-                img.profile-img(src=loggedInUser.avatarUrl, crossorigin)
+                img.profile-img(
+                  src=loggedInUser.avatarUrl,
+                  crossorigin,
+                  onerror="this.src=\"/static/img/profile_default.jpg\";"
+                )
               div
                 .comment-textarea-wrap
                   textarea(cols="30", rows="10", placeholder="Add a commment")
@@ -55,7 +63,11 @@ block content
                 .comment-content
                   a(href=`/users/${comment.owner._id}`) 
                     .comment-avatar
-                      img.profile-img(src=comment.owner.avatarUrl, crossorigin)
+                      img.profile-img(
+                        src=comment.owner.avatarUrl,
+                        crossorigin,
+                        onerror="this.src=\"/static/img/profile_default.jpg\";"
+                      )
                   .comment-text
                     div
                       span= comment.owner.name

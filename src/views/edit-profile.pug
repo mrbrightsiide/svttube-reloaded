@@ -10,7 +10,8 @@ block content
               .edit-profile-img
                 img#preview-img.profile-img(
                   src=loggedInUser.avatarUrl,
-                  crossorigin
+                  crossorigin,
+                  onerror="this.src=\"/static/img/profile_default.jpg\";"
                 )
               i.fa-regular.fa-image
             input#avatar(type="file", name="avatar", accept="image/*")

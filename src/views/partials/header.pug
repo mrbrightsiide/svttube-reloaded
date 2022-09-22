@@ -35,7 +35,11 @@ header
             li
               a(href="/users/edit", title="Edit profile")
                 .user-profilepic.profile-img
-                  img.profile-img(src=loggedInUser.avatarUrl, crossorigin)
+                  img.profile-img(
+                    src=loggedInUser.avatarUrl,
+                    crossorigin,
+                    onerror="this.src=\"/static/img/profile_default.jpg\";"
+                  )
           else
             li
               a(title="Search")

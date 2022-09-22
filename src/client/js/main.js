@@ -9,5 +9,4 @@ import "../img/myvideos.svg";
 import "../img/uploadvideos.svg";
 import "../img/search.svg";
 import "../img/arrow.svg";
-import "../js/onerrorImg.js";
 import "../js/handleNavBar.js";
