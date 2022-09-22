@@ -1,13 +1,22 @@
 const THUMB_ONERROR = "'/static/img/thumb_default.jpg'";
 const AVATAR_ONERROR = "'/static/img/profile_default.jpg'";
+let isLoading = false;
+const mainElement = document.querySelector(".contents-container");
 
 export class VideoCard {
   constructor(id) {
-    this.main = document.createElement("div");
-    this.main.setAttribute("id", "video-contents-wrap");
+    this.main = document.querySelector("#video-contents-wrap");
     this.id = id;
     this.product = {};
   }
+
+  handleLoading = () => {
+    if (isLoading) {
+      mainElement.classList.add("is-loading");
+    } else {
+      mainElement.classList.remove("is-loading");
+    }
+  };
 
   async getProductData() {
     const response = await fetch(`/api/category/${this.id}`, {
@@ -21,10 +30,11 @@ export class VideoCard {
   }
 
   async setProductList() {
-    await this.getProductData();
-    this.product.forEach((item) => {
-      const videoList = document.createElement("article");
-      videoList.innerHTML = `
+    await this.getProductData().then(() => {
+      const div = document.createElement("div");
+      this.product.forEach((item) => {
+        const videoList = document.createElement("article");
+        videoList.innerHTML = `
       <div class="video-item-wrap">
         <div class="video-item">
           <a href="/videos/${item._id}">
@@ -62,11 +72,18 @@ export class VideoCard {
           </div>
         </div>
     </div>`;
-      return this.main.append(videoList);
+        return div.append(videoList);
+      });
+      isLoading = false;
+      this.handleLoading();
+      this.main.innerHTML = "";
+      this.main.append(div);
     });
   }
 
   render() {
+    isLoading = true;
+    this.handleLoading();
     this.setProductList();
     return this.main;
   }
@@ -131,7 +148,6 @@ class Router {
 
   render(page) {
     const rootElement = document.querySelector(this.rootElement);
-    rootElement.innerHTML = "";
     rootElement.append(page);
   }
 }
