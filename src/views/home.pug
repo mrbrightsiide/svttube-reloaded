@@ -33,7 +33,10 @@ block content
       .contents-container
         .contents
           #video-wrap.video-wrap
+            #video-contents-wrap
+              each vid in videos
+                +video(vid)
 
 block scripts
-  script(src="/static/js/videoCategory.js")
   script(src="/static/js/handleAd.js")
+  script(src="/static/js/videoCategory.js")

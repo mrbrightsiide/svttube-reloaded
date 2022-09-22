@@ -1,3 +1,6 @@
+const THUMB_ONERROR = "'/static/img/thumb_default.jpg'";
+const AVATAR_ONERROR = "'/static/img/profile_default.jpg'";
+
 export class VideoCard {
   constructor(id) {
     this.main = document.createElement("div");
@@ -29,8 +32,7 @@ export class VideoCard {
             <div class="thumbnail">
               <img
                 class="thumbnail-img"
-                src="${item.thumbUrl}"
-                crossorigin="crossorigin"
+                src="${item.thumbUrl}" onerror="this.src=${THUMB_ONERROR}" crossorigin="crossorigin"
               />
             </div>
         </div>
@@ -38,7 +40,7 @@ export class VideoCard {
           <div class="details">
             <div class="meta">
               <a id="user-profilepic" href="/users/${item.owner._id}">
-                <img src="${item.owner.avatarUrl}" crossorigin="crossorigin" />
+                <img src="${item.owner.avatarUrl}" onerror="this.src=${AVATAR_ONERROR}" crossorigin="crossorigin"/>
               </a>
               <div class="meta-txt">   
                 <a href="/videos/${item._id}">
@@ -69,79 +71,6 @@ export class VideoCard {
     return this.main;
   }
 }
-
-export class InitPage {
-  constructor() {
-    this.main = document.createElement("div");
-    this.main.setAttribute("id", "video-contents-wrap");
-    this.product = {};
-    this.mainElement = document.querySelector("#video-wrap");
-  }
-
-  async getProductData() {
-    const response = await fetch(`/api/category/all`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    this.product = await data.videos;
-  }
-
-  async setProductList() {
-    await this.getProductData();
-    this.product.forEach((item) => {
-      const videoList = document.createElement("article");
-      videoList.innerHTML = `
-      <div class="video-item-wrap">
-        <div class="video-item">
-          <a href="/videos/${item._id}">
-          <div class="thumbnail-wrap">
-            <div class="thumbnail">
-              <img
-                class="thumbnail-img"
-                src="${item.thumbUrl}"
-                crossorigin="crossorigin"
-              />
-            </div>
-        </div>
-          </a>
-          <div class="details">
-            <div class="meta">
-              <a id="user-profilepic" href="/users/${item.owner._id}">
-                <img src="${item.owner.avatarUrl}" crossorigin="crossorigin" />
-              </a>
-              <div class="meta-txt">   
-                <a href="/videos/${item._id}">
-                    <h3 id="video-title">
-                      <p>${item.title}</p>
-                    </h3>
-                  </a>
-                <div class="video-meta-block">
-                  <div>
-                    <p>${item.owner.name}</p>
-                  </div>
-                  <div>
-                    <p>${item.createdAt}</p>
-                    <p> · 조회수 ${item.meta.views}회</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>`;
-      return this.main.append(videoList);
-    });
-  }
-
-  render() {
-    this.setProductList();
-    return this.main;
-  }
-}
-
 class Router {
   constructor(routes) {
     this.routes = routes;
@@ -215,7 +144,6 @@ export class App {
   setup() {
     const { el } = this.props;
     const router = new Router({
-      "/": InitPage,
       "/category/:id": VideoCard,
     });
     router.init(el);

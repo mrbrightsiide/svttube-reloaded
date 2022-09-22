@@ -7,7 +7,9 @@ import shuffle from "../utils/suffle.js";
 import { isHeroku } from "../middlewares.js";
 
 export const home = async (req, res) => {
-  return res.render("home", { pageTitle: "Home" });
+  res.locals.formatCreatedDate = formatCreatedDate;
+  const videos = await Video.find().populate("owner");
+  return res.render("home", { pageTitle: "Home", videos });
 };
 
 export const watch = async (req, res) => {

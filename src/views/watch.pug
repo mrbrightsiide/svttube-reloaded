@@ -18,7 +18,7 @@ block content
             .owner-profile
               a(href=`/users/${video.owner._id}`)
                 div
-                  img(src=video.owner.avatarUrl, crossorigin)
+                  img.profile-img(src=video.owner.avatarUrl, crossorigin)
               div
                 a(href=`/users/${video.owner._id}`)
                   h3= video.owner.name
@@ -38,11 +38,16 @@ block content
           .video__add-comments
             form#commentForm.video__comment-form
               .loggedin-user-profile
-                img(src=loggedInUser.avatarUrl, crossorigin)
+                img.profile-img(src=loggedInUser.avatarUrl, crossorigin)
               div
                 .comment-textarea-wrap
                   textarea(cols="30", rows="10", placeholder="Add a commment")
                 button(type="submit", value="add comment") Comment
+        else
+          h2 Want to leave a comment?
+          span
+            a(href="/login") Log in
+          h2 first.
         .video__comments
           ul#comment-wrap
             each comment in video.comments.reverse()
@@ -50,7 +55,7 @@ block content
                 .comment-content
                   a(href=`/users/${comment.owner._id}`) 
                     .comment-avatar
-                      img(src=comment.owner.avatarUrl, crossorigin)
+                      img.profile-img(src=comment.owner.avatarUrl, crossorigin)
                   .comment-text
                     div
                       span= comment.owner.name

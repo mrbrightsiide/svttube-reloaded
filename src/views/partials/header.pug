@@ -34,8 +34,8 @@ header
                 img#logout-ico.user-icons(src="/static/img/logout.svg")
             li
               a(href="/users/edit", title="Edit profile")
-                .user-profilepic
-                  img(src=loggedInUser.avatarUrl, crossorigin)
+                .user-profilepic.profile-img
+                  img.profile-img(src=loggedInUser.avatarUrl, crossorigin)
           else
             li
               a(title="Search")
