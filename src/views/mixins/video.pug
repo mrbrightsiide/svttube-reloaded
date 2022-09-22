@@ -5,7 +5,7 @@ mixin video(video)
         a.thumbnail-anchor(href=`/videos/${video.id}`)
           .thumbnail-wrap
             .thumbnail
-              img.thumbnail-img(src=`\\${video.thumbUrl}`, crossorigin)
+              img.thumbnail-img(src=video.thumbUrl, crossorigin)
         .details
           .meta
             if !pathUrl.includes("search")
@@ -19,11 +19,8 @@ mixin video(video)
                 if pathUrl.includes("search")
                   a#user-profilepic(href=`/users/${video.owner._id}`)
                     if pathUrl.includes("users")
-                      img.profile-img(src=`\\${user.avatarUrl}`, crossorigin)
+                      img.profile-img(src=user.avatarUrl, crossorigin)
                     else
-                      img.profile-img(
-                        src=`\\${video.owner.avatarUrl}`,
-                        crossorigin
-                      )
+                      img.profile-img(src=video.owner.avatarUrl, crossorigin)
                 p= video.owner.name
                 p= `${formatCreatedDate(video.createdAt)} · 조회수 ${video.meta.views}회`
