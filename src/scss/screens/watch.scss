@@ -176,27 +176,25 @@
     margin-bottom: 1.4vh;
     .video-item {
       .thumbnail-anchor {
-        width: 100%;
-        max-width: 165px;
+        width: 165px;
+        height: auto;
         margin-right: 10px;
       }
       display: flex;
     }
     .details {
       display: inline-block;
+      width: calc(100% - 175px);
       #user-profilepic {
         display: none;
       }
       .meta {
-        h3 {
+        .meta-txt {
           margin: 0;
-          margin-bottom: 6px;
-          a {
-            #video-title {
-              max-height: 4rem;
-              font-size: 1.4rem;
-              line-height: 2rem;
-            }
+          #video-title {
+            max-height: 4rem;
+            font-size: 1.5rem;
+            line-height: 2rem;
           }
         }
         .video-meta-block {
