@@ -18,7 +18,7 @@ export class VideoCard {
     }
   };
 
-  async getProductData() {
+  async getVideoData() {
     const response = await fetch(`/api/category/${this.id}`, {
       method: "GET",
       headers: {
@@ -29,8 +29,8 @@ export class VideoCard {
     this.product = await data.videos;
   }
 
-  async setProductList() {
-    await this.getProductData().then(() => {
+  async getVideoList() {
+    await this.getVideoData().then(() => {
       const div = document.createElement("div");
       this.product.forEach((item) => {
         const videoList = document.createElement("article");
@@ -53,15 +53,15 @@ export class VideoCard {
                 <img src="${item.owner.avatarUrl}" onerror="this.src=${AVATAR_ONERROR};" crossorigin="crossorigin"/>
               </a>
               <div class="meta-txt">   
-                <a href="/videos/${item._id}">
+                <a class="video-title-anchor" href="/videos/${item._id}">
                     <h3 id="video-title">
                       <p>${item.title}</p>
                     </h3>
                   </a>
                 <div class="video-meta-block">
-                  <div>
+                  <a href="/users/${item.owner._id}">
                     <p>${item.owner.name}</p>
-                  </div>
+                  </a>
                   <div>
                     <p>${item.createdAt}</p>
                     <p> · 조회수 ${item.meta.views}회</p>
@@ -84,7 +84,7 @@ export class VideoCard {
   render() {
     isLoading = true;
     this.handleLoading();
-    this.setProductList();
+    this.getVideoList();
     return this.main;
   }
 }

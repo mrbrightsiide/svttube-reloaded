@@ -220,7 +220,10 @@ export const postChnagePassword = async (req, res) => {
 export const see = async (req, res) => {
   res.locals.formatCreatedDate = formatCreatedDate;
   const { id } = req.params;
-  const user = await User.findById(id).populate("video");
+  const user = await User.findById(id).populate({
+    path: "video",
+    populate: { path: "owner" },
+  });
   let mainVideo = user.video[Math.floor(Math.random() * user.video.length)];
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User Not Found." });

@@ -38,6 +38,9 @@ const handleAdClose = (event) => {
     event.preventDefault();
     const mainAd = event.target.parentElement;
     mainAd.remove();
+    document
+      .querySelector(".contents")
+      .setAttribute("style", "margin-top : 56px");
   }
 };
 window.addEventListener("click", handleAdClose);
