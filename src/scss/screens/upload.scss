@@ -24,7 +24,7 @@
     cursor: pointer;
     position: relative;
   }
-  .thumbnail-input-preview.upload::after {
+  .thumbnail-input-preview.on-upload::after {
     content: "+";
     display: flex;
     width: 100%;

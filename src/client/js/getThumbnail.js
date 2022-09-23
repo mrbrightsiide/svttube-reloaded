@@ -14,6 +14,17 @@ uploadVideoBtn.addEventListener("click", () => {
   inputVideo.click();
 });
 
+// Set preivew style
+const unSelected = (el) => {
+  el.classList.remove("selected");
+  el.classList.add("unselected");
+};
+
+const selected = (el) => {
+  el.classList.add("selected");
+  el.classList.remove("unselected");
+};
+
 const onUploadVideo = async (e) => {
   e.preventDefault();
   let videoFile = window.URL.createObjectURL(inputVideo.files[0]);
@@ -27,20 +38,18 @@ const onUploadVideo = async (e) => {
   const ffmpeg = createFFmpeg({ log: true });
 
   uploadedThumbfile = "";
-  if (inputThumbPreview.classList.contains("selected")) {
-    inputThumbPreview.classList.remove("selected");
-  }
-  if (inputThumbPreview.classList.contains("unselected")) {
-    inputThumbPreview.classList.remove("unselected");
-  }
-  inputThumbPreview.setAttribute("style", `background-image:url("")`);
-  if (createdThumbPreview.classList.contains("selected")) {
-    createdThumbPreview.classList.remove("selected");
-  }
-  if (createdThumbPreview.classList.contains("unselected")) {
-    createdThumbPreview.classList.remove("unselected");
-  }
+
+  // Initialize preivew style
+  [inputThumbPreview, createdThumbPreview].map((preview) =>
+    ["selected", "unselected"].map((className) => {
+      if (preview.classList.contains(className))
+        preview.classList.remove(className);
+    })
+  );
   createdThumbPreview.setAttribute("style", `background-image:url("")`);
+  inputThumbPreview.setAttribute("style", `background-image:url("")`);
+  inputThumbPreview.classList.add("on-upload");
+
   isLoading = true;
   createdThumbPreview.classList.add("is-loading");
   await ffmpeg.load();
@@ -89,6 +98,7 @@ const onUploadVideo = async (e) => {
 };
 
 const onUploadThumbnail = (e) => {
+  inputThumbPreview.classList.remove("on-upload");
   uploadedThumbfile = e.target.files;
   var reader = new FileReader();
   reader.onload = function (e) {
@@ -100,7 +110,9 @@ const onUploadThumbnail = (e) => {
       `background-image:url(${e.target.result})`
     );
     selected(inputThumbPreview);
-    unSelected(createdThumbPreview);
+    if (createdThumbPreview.classList.contains("selected")) {
+      unSelected(createdThumbPreview);
+    }
   };
   reader.readAsDataURL(inputThumb.files[0]);
 };
@@ -115,7 +127,9 @@ const onClickCreatedThumb = (e) => {
     return e.preventDefault();
   }
   selected(createdThumbPreview);
-  unSelected(inputThumbPreview);
+  if (inputThumbPreview.classList.contains("selected")) {
+    unSelected(inputThumbPreview);
+  }
   const myFile = new File([createdThumbfileUrl], "thumbnail.jpg", {
     type: "image/jpeg",
   });
@@ -130,17 +144,9 @@ const onClickInputThumb = (e) => {
   }
   inputThumb.files = uploadedThumbfile;
   selected(inputThumbPreview);
-  unSelected(createdThumbPreview);
-};
-
-const unSelected = (el) => {
-  el.classList.remove("selected");
-  el.classList.add("unselected");
-};
-
-const selected = (el) => {
-  el.classList.add("selected");
-  el.classList.remove("unselected");
+  if (createdThumbPreview.classList.contains("selected")) {
+    unSelected(createdThumbPreview);
+  }
 };
 
 thumbUploadBtn.addEventListener("click", (e) => {
