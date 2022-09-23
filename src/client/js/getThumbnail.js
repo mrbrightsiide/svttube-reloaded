@@ -19,7 +19,7 @@ const onUploadVideo = async (e) => {
   let videoFile = window.URL.createObjectURL(inputVideo.files[0]);
 
   const files = {
-    input: "recording.webm",
+    input: "upload.webm",
     output: "output.mp4",
     thumb: "thumbnail.jpg",
   };
@@ -51,7 +51,7 @@ const onUploadVideo = async (e) => {
     "-i",
     files.input,
     "-ss",
-    "00:00:01",
+    "00:00:00",
     "-frames:v",
     "1",
     files.thumb
@@ -65,6 +65,7 @@ const onUploadVideo = async (e) => {
   if (createdThumbPreview.childNodes[0]) {
     createdThumbPreview.childNodes[0].remove();
   }
+
   isLoading = false;
   createdThumbPreview.classList.remove("is-loading");
   createdThumbPreview.setAttribute(
@@ -72,15 +73,19 @@ const onUploadVideo = async (e) => {
     `background-image:url(${thumbUrl})`
   );
   selected(createdThumbPreview);
+
   if (uploadedThumbfile) {
     unSelected(inputThumbPreview);
   }
+
   const myFile = new File([thumbFile], "thumbnail.jpg", {
     type: "image/jpeg",
   });
   const dataTransfer = new DataTransfer();
   dataTransfer.items.add(myFile);
   inputThumb.files = dataTransfer.files;
+
+  URL.revokeObjectURL(videoFile);
 };
 
 const onUploadThumbnail = (e) => {

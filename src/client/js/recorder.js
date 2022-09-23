@@ -1,17 +1,19 @@
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 let actionBtn = "";
-const modalWrap = document.createElement("div");
-const modal = document.createElement("div");
 const body = document.querySelector("body");
 const recordBtn = document.querySelector("#record-btn");
+const formWrap = document.querySelector(".form-wrap");
+
+// Create modal content
+const modalWrap = document.createElement("div");
+const modal = document.createElement("div");
 let video = document.createElement("video");
 const videoWrap = document.createElement("div");
-const btn = document.createElement("button");
-
 modalWrap.classList.add("modal-wrap");
 modal.classList.add("modal-cont");
 video.setAttribute("id", "preview");
 videoWrap.classList.add("video-wrap");
+const btn = document.createElement("button");
 btn.setAttribute("id", "actionBtn");
 btn.innerText = "Start Recording";
 videoWrap.append(video);
@@ -23,6 +25,22 @@ document.body.prepend(modalWrap);
 let stream;
 let recorder;
 let videoFile;
+let buttonDisabled = false;
+
+const setButtonDisabledStyle = (btn, innerTxt) => {
+  btn.innerText = innerTxt;
+  if (buttonDisabled) {
+    btn.disabled = true;
+    btn.setAttribute("style", "filter : contrast(0.5);");
+    modalWrap.setAttribute("style", " pointer-events: none");
+    formWrap.setAttribute("style", " pointer-events: none");
+  } else {
+    btn.disabled = false;
+    btn.setAttribute("style", "filter : none");
+    modalWrap.setAttribute("style", " pointer-events: auto");
+    formWrap.setAttribute("style", " pointer-events: auto");
+  }
+};
 
 const files = {
   input: "recording.webm",
@@ -39,10 +57,8 @@ const downloadFile = (fileUrl, fileName) => {
 
 const handleDownload = async () => {
   actionBtn.removeEventListener("click", handleDownload);
-
-  actionBtn.innerText = "Transcoding...";
-
-  actionBtn.disabled = true;
+  buttonDisabled = true;
+  setButtonDisabledStyle(actionBtn, "Transcoding...");
 
   const ffmpeg = createFFmpeg({ log: true });
   await ffmpeg.load();
@@ -65,15 +81,16 @@ const handleDownload = async () => {
   URL.revokeObjectURL(mp4Url);
   URL.revokeObjectURL(videoFile);
 
-  actionBtn.disabled = false;
-  actionBtn.innerText = "Record Again";
+  buttonDisabled = false;
+  setButtonDisabledStyle(actionBtn, "Record Again");
   actionBtn.addEventListener("click", handleStart);
 };
 
 const handleStart = () => {
+  init();
   video = document.getElementById("preview");
-  actionBtn.innerText = "Recording";
-  actionBtn.disabled = true;
+  buttonDisabled = true;
+  setButtonDisabledStyle(actionBtn, "Recording");
   actionBtn.removeEventListener("click", handleStart);
   recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
   recorder.ondataavailable = (event) => {
@@ -82,14 +99,15 @@ const handleStart = () => {
     video.src = videoFile;
     video.loop = true;
     video.play();
-    actionBtn.innerText = "Download";
-    actionBtn.disabled = false;
+    buttonDisabled = false;
+    setButtonDisabledStyle(actionBtn, "Download");
     actionBtn.addEventListener("click", handleDownload);
   };
   recorder.start();
   setTimeout(() => {
     recorder.stop();
   }, 1000);
+  URL.revokeObjectURL(videoFile);
 };
 
 const init = async () => {
