@@ -62,10 +62,7 @@ export class VideoCard {
                   <a href="/users/${item.owner._id}">
                     <p>${item.owner.name}</p>
                   </a>
-                  <div>
-                    <p>${item.createdAt}</p>
-                    <p> · 조회수 ${item.meta.views}회</p>
-                  </div>
+                  <p>${item.createdAt} · 조회수 ${item.meta.views}회</p>
                 </div>
               </div>
             </div>
