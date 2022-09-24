@@ -13,7 +13,7 @@
   height: calc(100vh - 56px);
   .form-box {
     max-width: 450px;
-    padding: 60px 75px;
+    padding: 40px 75px;
     text-align: center;
     border: 1px solid #dadce0;
     border-radius: 10px;
@@ -51,6 +51,7 @@
         cursor: pointer;
       }
       a {
+        margin-top: 10px;
         color: #1a73e8;
         font-size: 1.5rem;
         i {
@@ -66,6 +67,10 @@
       font-size: 1.28rem;
       &:hover {
         border-bottom: 1px solid #a5a5a5;
+      }
+      span {
+        color: #1a73e8;
+        margin-left: 0.5rem;
       }
     }
   }

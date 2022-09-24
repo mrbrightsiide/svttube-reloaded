@@ -48,8 +48,8 @@ block content
 block scripts
   if user.video.length > 0
     script
-      | let videoSrc = "#{ mainVideo.fileUrl.toString() }"
-      | let mainVideoTitle = "#{ mainVideo.title.toString() }"
-      | let mainVideoId = "#{ mainVideo._id.toString() }"
+      | let videoSrc = "#{ mainVideo.fileUrl.toString() }";
+      | let mainVideoTitle = "#{ mainVideo.title.toString().replaceAll(/\\/gi, "\\\\") }";
+      | let mainVideoId = "#{ mainVideo._id.toString() }";
     script(src="/static/js/videoPlayer.js")
     script(src="/static/js/formatCreatedDate.js")

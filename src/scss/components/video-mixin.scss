@@ -37,12 +37,13 @@
     .meta {
       overflow: hidden;
       padding-right: 0;
-      width: calc(100% - 12px);
+      width: 100%;
       display: flex;
       .meta-txt {
         padding-right: 12px;
         width: calc(100% - 48px);
         margin-top: 12px;
+        word-break: break-all;
         .video-title-anchor {
           margin: 11px 0 4px 0;
           #video-title {
@@ -56,6 +57,7 @@
             line-height: 1.3;
             max-height: 4.5rem;
             font-size: 1.6rem;
+            font-weight: 500;
           }
         }
         .video-meta-block {

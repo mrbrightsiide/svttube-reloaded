@@ -52,10 +52,9 @@ block content
                   textarea(cols="30", rows="10", placeholder="Add a commment")
                 button(type="submit", value="add comment") Comment
         else
-          h2 Want to leave a comment?
-          span
-            a(href="/login") Log in
-          h2 first.
+          h2.login-text Want to leave a comment?
+            span
+              a(href="/login") Log in first.
         .video__comments
           ul#comment-wrap
             each comment in video.comments.reverse()
@@ -83,6 +82,6 @@ block scripts
   script(src="/static/js/formatCreatedDate.js")
   if loggedIn
     script
-      | let username = "#{ loggedInUser.name }"
+      | let username = "#{ loggedInUser.name.toString() }"
       | let userAvatarUrl = "#{ JSON.stringify(loggedInUser.avatarUrl) }"
     script(src="/static/js/commentSection.js") 
