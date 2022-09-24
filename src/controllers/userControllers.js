@@ -156,13 +156,22 @@ export const postEdit = async (req, res) => {
     file,
   } = req;
   const user = await User.findOne({ _id });
-  if (user.email !== email || user.username !== userid) {
+  if (user.email !== email) {
+    const exists = await User.exists({ email });
+    if (exists) {
+      return res.status(400).render("edit-profile", {
+        errorMessage: "This email has already taken :(",
+        pageTitle: "Edit Profile",
+      });
+    }
+  }
+  if (user.username !== userid) {
     const exists = await User.exists({
-      $or: [{ email }, { username: userid }],
+      username: userid,
     });
     if (exists) {
       return res.status(400).render("edit-profile", {
-        errorMessage: "This email/id is already taken :(",
+        errorMessage: "This id has already taken :(",
         pageTitle: "Edit Profile",
       });
     }
@@ -228,5 +237,9 @@ export const see = async (req, res) => {
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User Not Found." });
   }
-  return res.render("users/profile", { pageTitle: user.name, user, mainVideo });
+  return res.render("users/profile", {
+    pageTitle: user.name,
+    user,
+    mainVideo,
+  });
 };
