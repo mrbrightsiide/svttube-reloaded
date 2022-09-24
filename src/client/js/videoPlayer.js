@@ -33,19 +33,21 @@ if (window.location.pathname.includes("users")) {
   videoContainer.classList.remove("theater");
   anchor.setAttribute("href", `/videos/${mainVideoId}`);
   anchor.classList.add("main-video-anchor");
-  title.innerText = mainVideoTitle;
+  title.innerText = mainVideoTitle
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;/gi, '"');
   anchor.append(title);
   videoControls.prepend(anchor);
 }
 
-const inputRangeBgFill = (element, value, pointColor, bgColor) => {
+const fillInputRangeBg = (element, value, pointColor, bgColor) => {
   element.setAttribute(
     "style",
     `background:linear-gradient(to right, ${pointColor} 0%, ${pointColor} ${value}%, ${bgColor} ${value}%, ${bgColor} 100%)`
   );
 };
 
-inputRangeBgFill(
+fillInputRangeBg(
   volumeRange,
   volumeValue * 100,
   "#fff",
@@ -83,8 +85,8 @@ const handleMuteClick = (e) => {
     : "fas fa-volume-up";
   volumeRange.value = video.muted ? 0 : volumeValue;
   video.muted
-    ? inputRangeBgFill(volumeRange, "0", "#fff", "rgba(100, 100, 100, 0.8)")
-    : inputRangeBgFill(
+    ? fillInputRangeBg(volumeRange, "0", "#fff", "rgba(100, 100, 100, 0.8)")
+    : fillInputRangeBg(
         volumeRange,
         video.volume * 100,
         "#fff",
@@ -103,7 +105,7 @@ const handleVolumeChange = (event) => {
     value === "0" ? "fas fa-volume-mute" : "fas fa-volume-up";
   volumeValue = value;
   video.volume = value;
-  inputRangeBgFill(
+  fillInputRangeBg(
     volumeRange,
     video.volume * 100,
     "#fff",
@@ -123,7 +125,7 @@ const handleTimeUpdate = () => {
   currenTime.innerText = formatTime(Math.floor(video.currentTime));
   timeline.value = video.currentTime;
   let timeValue = (video.currentTime / video.duration) * 100;
-  inputRangeBgFill(timeline, timeValue, "#ff1300", "#ddd");
+  fillInputRangeBg(timeline, timeValue, "#ff1300", "#ddd");
 };
 
 const handleTimelineChange = (event) => {
