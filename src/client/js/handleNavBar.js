@@ -49,8 +49,10 @@ const handleNavBtn = (e) => {
   }
 
   if (mediaQ.matches && !videoPage) {
+    const categoryBar = document.querySelector(".category-bar");
     navContainer.classList.toggle("mini");
     page.classList.toggle("mini");
+    categoryBar.classList.toggle("mini");
   }
 
   if (mediaQMiddle.matches && !videoPage) {

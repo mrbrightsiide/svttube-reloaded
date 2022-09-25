@@ -22,6 +22,7 @@ export const watch = async (req, res) => {
     0,
     8
   );
+  res.locals.hi = `${video.title}`;
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video not found :(" });
   }

@@ -35,6 +35,9 @@ $grid-item-max-width: 380px;
   font-size: 1.4rem;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  &.mini {
+    width: calc(100% - 80px);
+  }
   ul {
     li {
       display: inline-block;
