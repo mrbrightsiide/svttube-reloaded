@@ -1,10 +1,11 @@
 # SVTtube
-바닐라 javacript를 사용하여 만든 유튜브 클론코딩입니다. NodeJS, Express.js, webpack, SCSS, pug템플릿을 사용하였습니다.</br></br>
-<img src="https://user-images.githubusercontent.com/90305737/192520355-e8d72311-acd4-4201-af53-3ed110ab3b91.png" width="700"/></br></br>
+바닐라 javacript를 사용하여 만든 유튜브 클론코딩입니다.  
+<b>NodeJS, Express.js, webpack, SCSS, pug템플릿</b>을 사용하였습니다.</br></br>
+
 
 ## Link
 📌 https://svttube.herokuapp.com/</br></br>
-
+<img src="https://user-images.githubusercontent.com/90305737/192520355-e8d72311-acd4-4201-af53-3ed110ab3b91.png" width="700"/></br></br>
 ## Description
 **파일 구조**
 ```bash
