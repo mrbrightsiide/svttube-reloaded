@@ -1,6 +1,6 @@
 # SVTtube
 바닐라 javacript를 사용하여 만든 유튜브 클론코딩입니다.  
-<b>NodeJS, Express.js, webpack, SCSS, pug템플릿</b>을 사용하였습니다.</br></br>
+<b>NodeJS, Express.js, webpack, SCSS</b>를 사용하였습니다.</br></br>
 
 
 ## Link
@@ -41,11 +41,11 @@
 /videos/upload -> Upload video
 ```
 </br>**✔ 구현**
-- ffmpeg를 사용하여 썸네일을 추출하고, 촬영한 비디오를 변환하여 다운로드하는 기능을 구현했습니다.
-- 바닐라javascript로 class문법과 fetch를 사용하여 비디오 메뉴변경을 싱글 페이지 내에서 구현하였습니다.
+- <b>ffmpeg</b> 라이브러리를 사용하여 썸네일을 추출하고, 촬영한 비디오를 변환하여 다운로드하는 기능을 구현했습니다.
+- 바닐라javascript로 <b>class문법</b>과 <b>fetch</b>를 사용하여 비디오 메뉴변경을 싱글 페이지 내에서 구현하였습니다.
 <img src="https://user-images.githubusercontent.com/90305737/192525070-47fb6ee6-07f8-4516-9b71-fd7ed6a36446.gif" width="500"/></br></br>
 - fetch를 사용하여 싱글 페이지 내에서 댓글 작성하기, 영상 조회수 카운트를 구현하였습니다.
-- SCSS로 반응형 레이아웃을 구현하였습니다.
+- SCSS로 <b>반응형 레이아웃</b>을 구현하였습니다.
   
 </br>**✔ 기능**
 - 유저 로그인, 회원가입, github로 회원가입, 유저 프로필 수정
